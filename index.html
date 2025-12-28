@@ -1,454 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>THE LONELY PATH | Hassan Jatoi Journal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hassan Jatoi | Prose Anthology</title>
+    
+    <!-- Premium Font Library -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;1,300&family=Old+Standard+TT:ital,wght@0,400;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&family=Spectral:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@200;400&family=Inter:wght@300;400&family=Libre+Baskerville:ital@0;1&family=Cardo:ital@0;1&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Outfit:wght@100;300;600&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* --- DYNAMIC VARIABLES --- */
+        :root {
+            --bg: #fcfaf7;
+            --text: #1a1a1a;
+            --secondary: rgba(0,0,0,0.5);
+            --accent: #c4a484;
+            --border: rgba(0,0,0,0.06);
+            --font-main: 'EB Garamond', serif;
+            --font-title: 'Cormorant Garamond', serif;
+            --grain-opacity: 0.1;
+        }
 
-<script src="https://unpkg.com/lucide@latest"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        /* --- FONT DEFINITIONS --- */
+        body.font-1 { --font-main: 'EB Garamond'; --font-title: 'Cormorant Garamond'; }
+        body.font-2 { --font-main: 'Lora'; --font-title: 'Playfair Display'; }
+        body.font-3 { --font-main: 'Merriweather'; --font-title: 'Merriweather'; }
+        body.font-4 { --font-main: 'Old Standard TT'; --font-title: 'Old Standard TT'; }
+        body.font-5 { --font-main: 'Inter'; --font-title: 'Montserrat'; }
+        body.font-6 { --font-main: 'Crimson Pro'; --font-title: 'Cormorant Garamond'; }
+        body.font-7 { --font-main: 'Spectral'; --font-title: 'Playfair Display'; }
+        body.font-8 { --font-main: 'Libre Baskerville'; --font-title: 'Libre Baskerville'; }
+        body.font-9 { --font-main: 'Cardo'; --font-title: 'Cormorant Garamond'; }
+        body.font-10 { --font-main: 'Montserrat'; --font-title: 'Inter'; }
 
-<style>
-:root {
-    --bg-deep: #050505;
-    --bg-accent: #0f0f12;
-    --gold: #c5a059;
-    --gold-bright: #e5c385;
-    --text-main: #e0e0e0;
-    --text-dim: #999;
-    --card-glass: rgba(255, 255, 255, 0.03);
-    --border-glass: rgba(197, 160, 89, 0.15);
-    --page-max-width: 780px;
-    --font-serif: 'Lora', serif;
-    --font-display: 'Cinzel', serif;
-    --content-size: 19px;
-    --content-align: center;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Themes */
-.theme-midnight { --bg-deep: #050505; --bg-accent: #0f0f12; --gold: #c5a059; --text-main: #e0e0e0; }
-.theme-minimal { --bg-deep: #ffffff; --bg-accent: #f8f8f8; --gold: #1a1a1a; --text-main: #222; --text-dim: #666; --card-glass: #fff; --border-glass: #eee; }
-.theme-noir { --bg-deep: #000000; --bg-accent: #111; --gold: #ffffff; --text-main: #eee; --text-dim: #888; --card-glass: rgba(255,255,255,0.02); --border-glass: #333; }
-.theme-ocean { --bg-deep: #001219; --bg-accent: #00212e; --gold: #00b4d8; --text-main: #caf0f8; --border-glass: rgba(0, 180, 216, 0.2); }
-.theme-emerald { --bg-deep: #06110a; --bg-accent: #0b1f12; --gold: #52b788; --text-main: #d8f3dc; --border-glass: rgba(82, 183, 136, 0.2); }
-.theme-sunset { --bg-deep: #1a0f0f; --bg-accent: #2d1616; --gold: #ff4e50; --text-main: #f9dcc4; --border-glass: rgba(255, 78, 80, 0.2); }
-.theme-cyber { --bg-deep: #0a0a0c; --bg-accent: #141417; --gold: #00ff41; --text-main: #00ff41; --border-glass: #00ff41; --card-glass: rgba(0,255,65,0.05); }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-main), serif;
+            line-height: 1.6;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            position: relative;
+            text-align: center;
+        }
 
-* { box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+        .paper-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1;
+            opacity: var(--grain-opacity);
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
 
-body {
-    margin: 0; padding: 0;
-    background-color: var(--bg-deep);
-    color: var(--text-main);
-    font-family: 'Outfit', sans-serif;
-    transition: background 0.5s ease, color 0.5s ease;
-    overflow-x: hidden;
-    min-height: 100vh;
-}
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 15px 25px; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid var(--border);
+            background-color: var(--bg);
+            transition: 0.5s;
+        }
+        nav.scrolled { backdrop-filter: blur(10px); background-color: rgba(var(--bg), 0.8); }
 
-.live-status {
-    position: fixed; top: 20px; left: 20px; z-index: 2000;
-    background: var(--card-glass); border: 1px solid var(--border-glass);
-    padding: 8px 12px; border-radius: 8px; backdrop-filter: blur(10px);
-    font-size: 10px; letter-spacing: 2px; color: var(--gold);
-    display: flex; align-items: center; gap: 8px;
-}
-.pulse { width: 6px; height: 6px; background: #00ff41; border-radius: 50%; animation: pulse 2s infinite; }
-@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .nav-logo { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; font-weight: bold; opacity: 0.7; font-family: 'Montserrat', sans-serif; color: var(--text); }
+        
+        .settings-panel {
+            position: fixed; top: 0; right: 0; width: 350px; height: 100vh;
+            background: var(--bg); border-left: 1px solid var(--border);
+            padding: 30px; z-index: 1001; display: none;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            overflow-y: auto;
+            text-align: left;
+        }
+        .settings-panel.active { display: block; animation: slideIn 0.3s ease-out; }
+        
+        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
 
-.nav-dock { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 2000; }
-.dock-circle {
-    width: 56px; height: 56px; border-radius: 50%; background: var(--bg-accent);
-    border: 1px solid var(--border-glass); color: var(--gold);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; transition: 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    backdrop-filter: blur(15px);
-}
-.dock-circle:hover { transform: scale(1.1); background: var(--gold); color: var(--bg-deep); }
+        .settings-label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--text); opacity: 0.6; margin: 25px 0 12px; display: block; font-weight: bold; }
+        
+        .color-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 20px; }
+        .swatch { 
+            width: 100%; aspect-ratio: 1; border: 1px solid var(--border); 
+            cursor: pointer; border-radius: 4px; transition: 0.2s;
+        }
+        .swatch:hover { transform: scale(1.1); border-color: var(--text); }
+        
+        .font-option { 
+            width: 100%; padding: 12px; border: 1px solid var(--border); 
+            background: none; color: var(--text); cursor: pointer; 
+            text-align: left; font-size: 13px; margin-bottom: 6px; border-radius: 6px;
+        }
+        .font-option:hover { background: rgba(0,0,0,0.05); }
 
-#studioPanel {
-    position: fixed; top: 0; right: -100%; width: 100%; max-width: 350px; height: 100dvh;
-    background: var(--bg-accent); border-left: 1px solid var(--border-glass);
-    z-index: 2100; padding: 30px 20px; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex; flex-direction: column; gap: 20px; backdrop-filter: blur(30px);
-    overflow-y: auto;
-}
-#studioPanel.open { right: 0; }
-.studio-header { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-display); color: var(--gold); border-bottom: 1px solid var(--border-glass); padding-bottom: 15px; }
+        .icon-btn { background: none; border: none; cursor: pointer; color: var(--text); padding: 5px; opacity: 0.8; }
+        .icon-btn:hover { opacity: 1; }
 
-.option-section { display: flex; flex-direction: column; gap: 10px; }
-.section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim); }
-.grid-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .container { max-width: 800px; margin: 0 auto; padding: 120px 20px; position: relative; z-index: 2; }
 
-.btn-opt { 
-    background: transparent; border: 1px solid var(--border-glass); color: var(--text-main); 
-    padding: 12px 8px; font-size: 10px; cursor: pointer; border-radius: 6px; 
-    text-transform: uppercase; transition: 0.2s; 
-}
-.btn-opt:hover, .btn-opt.active { border-color: var(--gold); background: rgba(197, 160, 89, 0.1); color: var(--gold); }
+        header { text-align: center; margin-bottom: 120px; }
+        .cover-img { 
+            width: 160px; height: auto; margin: 0 auto 40px; display: block; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2); border: 4px solid #fff;
+        }
+        
+        .title { font-family: var(--font-title); font-size: clamp(45px, 10vw, 80px); font-weight: 300; line-height: 0.9; margin-bottom: 20px; }
 
-.container { position: relative; z-index: 2; padding: 100px 15px 120px 15px; display: flex; flex-direction: column; align-items: center; }
+        article { margin-bottom: 150px; display: flex; flex-direction: column; align-items: center; }
+        .poem-title { font-family: var(--font-title); font-size: clamp(28px, 5vw, 40px); font-weight: 400; margin-bottom: 30px; text-align: center; color: var(--accent); }
+        
+        .content { 
+            font-size: clamp(17px, 4vw, 20px); 
+            line-height: 2; 
+            text-align: center;
+            white-space: pre-line; 
+            max-width: 600px;
+        }
 
-.a5-card {
-    width: 100%; max-width: var(--page-max-width);
-    background: var(--card-glass); border: 1px solid var(--border-glass);
-    padding: 80px 60px; margin-bottom: 60px; border-radius: 4px; 
-    text-align: var(--content-align); transition: all 0.3s ease;
-    page-break-inside: avoid; position: relative;
-}
-
-.poem-num {
-    display: block; font-family: var(--font-display); color: var(--gold);
-    font-size: 14px; letter-spacing: 4px; margin-bottom: 20px; opacity: 0.8;
-}
-
-.hero { border: none; background: transparent; text-align: center; margin-bottom: 100px; padding: 0; box-shadow: none; }
-.cover-img { width: 200px; height: 300px; object-fit: cover; border: 1px solid var(--gold); border-radius: 8px; box-shadow: 0 30px 60px rgba(0,0,0,0.7); }
-
-.article-title { font-family: var(--font-display); font-size: 32px; color: var(--gold); margin-bottom: 40px; letter-spacing: 3px; line-height: 1.3; }
-.article-body { font-family: var(--font-serif); font-size: var(--content-size); line-height: 1.9; white-space: pre-line; color: var(--text-main); opacity: 0.9; }
-.article-footer { margin-top: 60px; font-size: 11px; color: var(--text-dim); letter-spacing: 5px; text-transform: uppercase; border-top: 1px solid var(--border-glass); padding-top: 25px; }
-
-@media screen and (max-width: 650px) {
-    .a5-card { padding: 40px 25px; }
-    .article-title { font-size: 24px; }
-    .container { padding-top: 60px; }
-}
-
-@media print { .no-print { display: none !important; } }
-</style>
+        .meta { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; width: 100%; max-width: 250px; opacity: 0.5; }
+        .line-divider { flex-grow: 1; height: 1px; background: var(--text); }
+        .roman { font-size: 11px; letter-spacing: 3px; font-family: 'Montserrat', sans-serif; }
+        
+        @media (max-width: 600px) {
+            .settings-panel { width: 100%; }
+        }
+    </style>
 </head>
-<body class="theme-midnight">
+<body class="font-1">
 
-<div class="live-status no-print">
-    <div class="pulse"></div>
-    <span id="live-clock">SYNCING...</span>
-</div>
+    <div class="paper-overlay"></div>
 
-<nav class="nav-dock no-print">
-    <div class="dock-circle" title="Studio" onclick="toggleStudio()">
-        <i data-lucide="palette"></i>
-    </div>
-    <div class="dock-circle" title="Download" onclick="downloadPDF()">
-        <i data-lucide="printer"></i>
-    </div>
-    <div class="dock-circle" title="Top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-        <i data-lucide="arrow-up"></i>
-    </div>
-</nav>
-
-<aside id="studioPanel" class="no-print">
-    <div class="studio-header">
-        <span>WRITER'S LAB</span>
-        <i data-lucide="x" style="cursor: pointer;" onclick="toggleStudio()"></i>
-    </div>
-
-    <div class="option-section">
-        <span class="section-label">Journal Theme</span>
-        <div class="grid-opts">
-            <button class="btn-opt active" onclick="setTheme('midnight', this)">Midnight</button>
-            <button class="btn-opt" onclick="setTheme('minimal', this)">Minimal</button>
-            <button class="btn-opt" onclick="setTheme('noir', this)">Noir</button>
-            <button class="btn-opt" onclick="setTheme('ocean', this)">Ocean</button>
-            <button class="btn-opt" onclick="setTheme('emerald', this)">Emerald</button>
-            <button class="btn-opt" onclick="setTheme('sunset', this)">Sunset</button>
-            <button class="btn-opt" onclick="setTheme('cyber', this)">Cyber</button>
+    <nav id="navbar">
+        <div class="nav-logo">Hassan Jatoi</div>
+        <div class="controls">
+            <button class="icon-btn" onclick="toggleSettings()"><i data-lucide="palette"></i></button>
         </div>
-    </div>
+    </nav>
 
-    <div class="option-section">
-        <span class="section-label">Reading Size</span>
-        <div class="grid-opts">
-            <button class="btn-opt" onclick="updateStyle('--content-size', '16px', this)">Compact</button>
-            <button class="btn-opt active" onclick="updateStyle('--content-size', '19px', this)">Reading</button>
-            <button class="btn-opt" onclick="updateStyle('--content-size', '23px', this)">Focus</button>
+    <!-- Settings Panel -->
+    <div id="settings" class="settings-panel">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+            <span style="font-weight:bold; font-size: 14px; letter-spacing: 1px;">DESIGN STUDIO</span>
+            <button class="icon-btn" onclick="toggleSettings()"><i data-lucide="x"></i></button>
         </div>
-    </div>
 
-    <div class="option-section">
-        <span class="section-label">Alignment</span>
-        <div class="grid-opts">
-            <button class="btn-opt active" onclick="updateStyle('--content-align', 'center', this)">Center</button>
-            <button class="btn-opt" onclick="updateStyle('--content-align', 'left', this)">Left</button>
+        <span class="settings-label">Reading Mode (Background)</span>
+        <div class="color-grid" id="bg-grid">
+            <!-- JS will populate 50 backgrounds -->
         </div>
+
+        <span class="settings-label">Typography Color</span>
+        <div class="color-grid" id="text-grid">
+            <!-- JS will populate 50 text colors -->
+        </div>
+
+        <span class="settings-label">Curated Pairings</span>
+        <button class="font-option" onclick="setFont('1')">Garamond Heritage</button>
+        <button class="font-option" onclick="setFont('2')">Playfair Modern</button>
+        <button class="font-option" onclick="setFont('4')">Old Standard Type</button>
+        <button class="font-option" onclick="setFont('5')">Montserrat Minimal</button>
+        <button class="font-option" onclick="setFont('8')">Baskerville Journal</button>
+
+        <span class="settings-label">Visual Texture</span>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <button class="font-option" style="text-align:center" onclick="setGrain(0)">NONE</button>
+            <button class="font-option" style="text-align:center" onclick="setGrain(0.2)">GRAIN</button>
+        </div>
+        <div style="height: 50px;"></div>
     </div>
 
-    <button class="btn-opt" style="margin-top: auto; border-color: var(--gold); color: var(--gold);" onclick="toggleStudio()">
-        CLOSE STUDIO
-    </button>
-</aside>
+    <div class="container">
+        <header>
+            <img src="https://i.ibb.co/pjzBSrCH/1000203080.jpg" alt="Cover Image" class="cover-img">
+            <h1 class="title">Hassan<br>Jatoi</h1>
+            <p style="font-style:italic; opacity: 0.6;">Volume I: Meditations on the Void</p>
+        </header>
 
-<div class="container" id="capture-area">
-    <header class="hero">
-        <img src="https://i.ibb.co/pjzBSrCH/1000203080.jpg" alt="Journal Cover" class="cover-img">
-        <p style="text-transform: uppercase; letter-spacing: 6px; font-size: 13px; color: var(--text-dim); margin-top: 40px;">The Digital Archives of</p>
-        <h1 style="font-family: var(--font-display); font-size: clamp(32px, 10vw, 60px); color: var(--gold); margin: 15px 0;">HASSAN JATOI</h1>
-        <div style="height: 1px; width: 80px; background: var(--gold); margin: 30px auto; opacity: 0.6;"></div>
-        <p style="text-transform: uppercase; letter-spacing: 10px; font-size: 18px; color: var(--gold-bright);">JOURNAL MMXXV</p>
-    </header>
+        <main>
+            <article>
+                <div class="meta"><div class="line-divider"></div><span class="roman">I</span><div class="line-divider"></div></div>
+                <h2 class="poem-title">The Anatomy of Betrayal</h2>
+                <div class="content">Betrayal is not a sudden strike; it is a slow rot that begins in the quietest corners of a shared history. It is the realization that the hands you held to steady yourself were the same ones loosening the soil beneath your feet. Trust is a social contract, yet when it breaks, there is no court of law that can adjudicate the fracture of a soul.</div>
+            </article>
 
-    <main id="content-container" style="display: contents;">
-        <!-- Articles injected here -->
-    </main>
-</div>
+            <article>
+                <div class="meta"><div class="line-divider"></div><span class="roman">II</span><div class="line-divider"></div></div>
+                <h2 class="poem-title">The Weight of Unspoken Love</h2>
+                <div class="content">There is a specific kind of gravity that exists in the space between two people who know everything and say nothing. It is a silence so dense it could collapse into a star. Unspoken love is a heavy ghost to carry; it haunts the mundane, hides in the morning coffee, and makes every casual goodbye feel like a finality.</div>
+            </article>
 
-<script>
-function toggleStudio() {
-    document.getElementById('studioPanel').classList.toggle('open');
-}
+            <article>
+                <div class="meta"><div class="line-divider"></div><span class="roman">III</span><div class="line-divider"></div></div>
+                <h2 class="poem-title">The Echo of Absence</h2>
+                <div class="content">We learn to live with the empty chair, but the air around it never quite settles. Grief is a house where the doors always creak at night. You find yourself talking to the shadows, hoping they’ll borrow the voice of the one you lost.</div>
+            </article>
 
-function setTheme(theme, btn) {
-    document.body.className = 'theme-' + theme;
-    document.querySelectorAll('.btn-opt').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-}
+            <article>
+                <div class="meta"><div class="line-divider"></div><span class="roman">IV</span><div class="line-divider"></div></div>
+                <h2 class="poem-title">Shattered Glass</h2>
+                <div class="content">Love is like holding a mirror; once it breaks, you can try to glue the pieces back together, but your reflection will always be distorted. Every shard holds a memory that cuts the hands that try to heal it.</div>
+            </article>
 
-function updateStyle(varName, value, btn) {
-    document.documentElement.style.setProperty(varName, value);
-    document.querySelectorAll(btn.parentNode.children).forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-}
+            <article>
+                <div class="meta"><div class="line-divider"></div><span class="roman">V</span><div class="line-divider"></div></div>
+                <h2 class="poem-title">The Loneliness of Crowds</h2>
+                <div class="content">There is no isolation quite like standing in a room full of laughing people and feeling like a foreign language that no one wants to translate. You are a ghost among the living, invisible even to those who look right at you.</div>
+            </article>
+        </main>
 
-function downloadPDF() {
-    const element = document.getElementById('capture-area');
-    html2pdf().set({ margin: 0.5, filename: 'Hassan-Jatoi-Journal.pdf', html2canvas: { scale: 2 } }).from(element).save();
-}
+        <footer style="margin-top: 100px; opacity: 0.3; padding-bottom: 40px;">
+            <p style="font-size: 10px; letter-spacing: 5px; text-transform: uppercase;">The Archive Continues</p>
+        </footer>
+    </div>
 
-// Auto inject poems/articles
-const JournalContent = [
-    {
-        title: "Echoes of Waiting",
-        content: "The clock ticks slowly, a rhythm of pain,\nSearching for footsteps in the pouring rain.\nThe door stays silent, the hallway is cold,\nA story of waiting, forever untold.\nI watch the horizon where the sun meets the sea,\nHoping a breeze brings you back to me.\nThe scent of your spirit still hangs in the hall,\nWhile shadows of memory dance on the wall.\nMy soul is a desert, thirsting for grace,\nLost in the absence of your smiling face.\nEvery sunset is heavy, every dawn is a plea,\nTo break these shackles and set my heart free.\nBut the stars remain silent, the moon turns away,\nAs I drift through the ghosts of another long day.\nThe ink on the pages of our story has dried,\nCarrying the secrets I’ve buried inside.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Unspoken Words",
-        content: "A million words written, but none ever said,\nThe paths of my heart are the ones I don't tread.\nI carry your reflection in the depths of my eyes,\nUnder the weight of these vast, lonely skies.\nWe walk in the same wind, we breathe the same air,\nYet the distance between us is more than I bear.\nA touch that was fleeting, a glance that was brief,\nIs the root of my joy and the source of my grief.\nI build you a kingdom in the world of my sleep,\nWith promises made that I’m destined to keep.\nThe world hears my laughter, but never my soul,\nMissing the pieces that once made me whole.\nSo I’ll stay in the shadows, a witness unseen,\nLost in the spaces of what might have been.\nLoving you quietly, without sound or sign,\nKnowing you’re out there, but never quite mine.",
-        date: "DECEMBER 2025"
-    },
-    // Add more articles/poems here...
-];
-const JournalContent = [
-    {
-        title: "Echoes of Waiting",
-        content: "The clock ticks slowly, a rhythm of pain,\nSearching for footsteps in the pouring rain.\nThe door stays silent, the hallway is cold,\nA story of waiting, forever untold.\nI watch the horizon where the sun meets the sea,\nHoping a breeze brings you back to me.\nThe scent of your spirit still hangs in the hall,\nWhile shadows of memory dance on the wall.\nMy soul is a desert, thirsting for grace,\nLost in the absence of your smiling face.\nEvery sunset is heavy, every dawn is a plea,\nTo break these shackles and set my heart free.\nBut the stars remain silent, the moon turns away,\nAs I drift through the ghosts of another long day.\nThe ink on the pages of our story has dried,\nCarrying the secrets I’ve buried inside.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Unspoken Words",
-        content: "A million words written, but none ever said,\nThe paths of my heart are the ones I don't tread.\nI carry your reflection in the depths of my eyes,\nUnder the weight of these vast, lonely skies.\nWe walk in the same wind, we breathe the same air,\nYet the distance between us is more than I bear.\nA touch that was fleeting, a glance that was brief,\nIs the root of my joy and the source of my grief.\nI build you a kingdom in the world of my sleep,\nWith promises made that I’m destined to keep.\nThe world hears my laughter, but never my soul,\nMissing the pieces that once made me whole.\nSo I’ll stay in the shadows, a witness unseen,\nLost in the spaces of what might have been.\nLoving you quietly, without sound or sign,\nKnowing you’re out there, but never quite mine.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Silent Horizons",
-        content: "The sea whispers secrets only the night can hear,\nWaves cradle memories that I hold dear.\nStars flicker stories across the endless sky,\nWhile I count the moments since your last goodbye.\nTime bends softly around the corners of pain,\nYet nothing will bring back what we cannot regain.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Fading Shadows",
-        content: "In the alleyways of memory, shadows fade,\nTraces of laughter and words we never made.\nThe walls remember the steps we once took,\nThe corners still hold the echo of your look.\nI wander alone in the halls of my mind,\nSearching for peace that I may never find.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "The Lonely Path",
-        content: "Footsteps vanish into the fog of dawn,\nA road that stretches, weary and worn.\nEvery choice I make leads me deeper inside,\nWhere silence reigns and dreams often hide.\nThe heart beats quietly, unseen, unheard,\nYet hope lingers softly in a single word.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Whispers of Time",
-        content: "Clocks tick on walls that have long grown cold,\nStories of love and loss quietly told.\nI chase the echoes of what once was mine,\nThrough corridors marked by decay and time.\nThe wind hums lullabies I cannot hold,\nYet in its song, a thousand truths unfold.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Veil of Night",
-        content: "The moon drapes its veil across the land,\nAnd shadows play like thieves with a silent hand.\nI walk beneath stars that know my secret pain,\nEach step a reminder of what remains.\nThe night listens without a word or sigh,\nYet I feel the world shift and quietly cry.",
-        date: "DECEMBER 2025"
-    }
-];
-const JournalContent = [
-    ...JournalContent, // existing content
+    <script>
+        lucide.createIcons();
 
-    {
-        title: "Fragments of Yesterday",
-        content: "Pieces of a time I cannot reclaim,\nWhispers of laughter, shadows without a name.\nI trace the corners of memory’s faint light,\nHoping the dark will yield to something bright.\nYet every dawn reminds me of the cost,\nOf moments and people forever lost.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "The Hollow Heart",
-        content: "A heart once full now beats in a cave,\nEchoing silently, nothing to save.\nEach pulse is a drum of forgotten dreams,\nA river of sorrow flowing in quiet streams.\nThe walls of my chest are lined with despair,\nYet I keep walking, though no one is there.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Rain and Remembrance",
-        content: "Rain taps on my window like a familiar hand,\nCalling back memories of a distant land.\nEvery droplet carries a story untold,\nOf love, of pain, of hearts grown cold.\nI sit and listen, letting it seep inside,\nA river of emotions I can no longer hide.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "The Last Letter",
-        content: "I wrote to you when silence was loud,\nSent my thoughts through clouds and a shroud.\nThe ink may fade but the feelings remain,\nA testament of hope stitched into pain.\nThough words may never reach your hand,\nThey linger, unseen, like footprints in sand.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Shadows of Solitude",
-        content: "I walk alone where the shadows fall,\nHearing the whispers that answer no call.\nThe night wraps around me like a cold embrace,\nYet in its depth, I find my own space.\nSolitude is a friend both cruel and kind,\nA mirror reflecting the state of my mind.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Ephemeral Dreams",
-        content: "Dreams flutter like birds in the morning haze,\nVanishing quickly before I can appraise.\nI chase their wings through valleys of thought,\nCatching only fragments that cannot be caught.\nEach dawn erases the colors I drew,\nLeaving me with whispers of what I knew.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Beneath Silent Skies",
-        content: "Under skies that say nothing at all,\nI wander through memories that rise and fall.\nThe stars observe without judgment or care,\nAs I struggle with burdens I alone bear.\nYet in the silence, I hear a soft song,\nA reminder that even in loss, we belong.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "The Forgotten Path",
-        content: "A path I once walked now disappears,\nLost to the fog of unspoken fears.\nI try to remember the steps I made,\nBut only the shadows of choices stayed.\nTime moves forward while I linger behind,\nSeeking the peace I cannot find.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Tears of the Moon",
-        content: "The moon cries silver upon the night,\nCleansing the world with gentle light.\nI feel its sorrow mirror my own,\nA solitude shared yet fully alone.\nEach tear reflects stories untold,\nOf hearts in winter, of souls grown cold.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Whispers in the Wind",
-        content: "The wind carries voices I cannot see,\nHints of a life that might have been for me.\nIt rustles the leaves like a soft lament,\nA symphony of dreams, broken and spent.\nI listen and let it guide my way,\nThrough nights that swallow the edges of day.",
-        date: "DECEMBER 2025"
-    }
-];
-const JournalContent = [
-    ...JournalContent, // existing content
+        // 50 Background Colors (Reading Modes)
+        const bgColors = [
+            'Ivory', 'AntiqueWhite', 'Linen', 'Seashell', 'Honeydew', 
+            'MintCream', 'Azure', 'AliceBlue', 'GhostWhite', 'WhiteSmoke', 
+            'Beige', 'LightYellow', 'LemonChiffon', 'LightGoldenrodYellow', 'PapayaWhip', 
+            'Moccasin', 'Cornsilk', 'LavenderBlush', 'MistyRose', 'OldLace', 
+            'FloralWhite', 'Snow', 'Gainsboro', 'LightGray', 'Silver', 
+            'LightSteelBlue', 'PowderBlue', 'PaleTurquoise', 'LightCyan', 'PaleGreen', 
+            'Wheat', 'SandyBrown', 'BlanchedAlmond', 'Khaki', 'LightSalmon', 
+            'Salmon', 'LightPink', 'Pink', 'Lavender', 'Thistle', 
+            '#F5F5DC', '#FFFDD0', '#FCFBF4', '#F3E5AB', '#FFDAB9', 
+            '#FFF1CC', '#FAEBD7', '#EADDCA', '#F2F0EF', '#FFFFFF'
+        ];
 
-    {
-        title: "Echoes of Silence",
-        content: "Silence speaks louder than words ever could,\nIt fills the spaces where laughter once stood.\nI listen closely, hearing nothing at all,\nYet its weight is heavier than any fall.\nEach echo reminds me of what’s lost,\nA quiet payment for every cost.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Fading Horizons",
-        content: "The horizon blurs with the coming dusk,\nColors bleed like memories in a husk.\nI watch as the day folds into night,\nSearching for meaning in the fading light.\nThough shadows stretch and time moves on,\nI hold onto the echoes of dawn.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Letters to the Wind",
-        content: "I send my thoughts into the restless air,\nHoping they’ll reach someone who’ll care.\nThe wind carries whispers I cannot keep,\nOver mountains high and oceans deep.\nSomewhere it finds a listening soul,\nCompleting the pieces that make me whole.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Veil of Memories",
-        content: "Memories drape over my mind like a veil,\nSoft but heavy, tender yet frail.\nI try to lift it, to see clear and bright,\nBut shadows linger, hiding the light.\nEvery recollection is a double-edged sword,\nSweet in its warmth, bitter in its accord.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Ashes of Yesterday",
-        content: "Yesterday burns in quiet flames,\nLeaving only ashes of forgotten names.\nI sift through remnants of what once was,\nSeeking meaning, finding only a pause.\nYet even in ruin, a seed can grow,\nFrom the fire, new paths begin to show.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Midnight Solitude",
-        content: "Midnight drapes its cloak over my mind,\nWrapping me in thoughts of every kind.\nThe world sleeps, yet I remain awake,\nCounting every breath that I take.\nSolitude hums its endless tune,\nBeneath the gaze of a silent moon.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "The Forgotten River",
-        content: "A river once full now flows in hush,\nIts waters whisper, soft as a brush.\nI trace its curves with my aching eyes,\nWatching it carry away silent cries.\nThough unseen, its current persists,\nA reminder of life’s subtle twists.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Shattered Reflections",
-        content: "Mirrors break with a soundless cry,\nFractured reflections of days gone by.\nI see pieces of myself scattered wide,\nHiding emotions I cannot confide.\nYet each shard holds a story true,\nA mosaic of pain and moments new.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Winds of Change",
-        content: "Change comes quietly, yet it shakes the soul,\nTurning pieces of life that were once whole.\nI stand amidst the gusts of the unknown,\nFeeling the weight of seeds I have sown.\nThough the path twists and bends anew,\nI move forward with a heart that’s true.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Silent Footsteps",
-        content: "Footsteps echo in empty halls,\nSilent witnesses to unseen walls.\nEach step marks a story untold,\nA journey through memories, both young and old.\nI follow the trail, though faint it may be,\nLeading me to who I’m meant to see.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "The Waiting Sky",
-        content: "Sky waits patiently for the sun to rise,\nHolding colors that soften my sighs.\nClouds drift slowly, carrying my dreams,\nAlong the edges of light’s quiet beams.\nI stand beneath its vast embrace,\nFinding solace in its endless space.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Lanterns of Hope",
-        content: "Small flames flicker in the darkest night,\nLanterns of hope casting gentle light.\nThough shadows loom and fears take hold,\nThese tiny fires burn bright and bold.\nI follow them through the winding way,\nGuided by their unwavering sway.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Veins of the Earth",
-        content: "The earth whispers beneath my feet,\nIts veins pulsing with stories discreet.\nRoots and rivers intertwine in grace,\nCarrying the weight of time’s embrace.\nI kneel and listen, feeling its song,\nA reminder that I too belong.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Fragments of Light",
-        content: "Light breaks through the cracks of despair,\nFilling spaces that were once bare.\nI catch the fragments, delicate and small,\nLetting them guide me through the pall.\nEven in darkness, a glimmer remains,\nA promise of joy amidst the pains.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "The Lonely Tree",
-        content: "A tree stands alone on the hill,\nIts branches stretched, silent and still.\nSeasons pass, yet it remains,\nBearing storms, enduring pains.\nI sit beneath its patient shade,\nFinding wisdom in the life it’s made.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Echoes in the Fog",
-        content: "Fog rolls in like a gentle sigh,\nHiding paths where shadows lie.\nI hear faint echoes of what I seek,\nWhispers of strength though I feel weak.\nStep by step, I move unseen,\nNavigating the space between.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Threads of Memory",
-        content: "Memory weaves its threads through time,\nBinding moments both bitter and sublime.\nI tug gently at the fabric of past,\nHolding pieces that I wish could last.\nThough fragile, these threads remain,\nConnecting joy, sorrow, and pain.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "The Hidden Garden",
-        content: "A garden hidden behind old walls,\nWhere flowers bloom despite the falls.\nI wander through its secret ways,\nFinding peace in the softest rays.\nLife thrives quietly, without acclaim,\nA sanctuary untouched by fame.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Silent Horizons",
-        content: "Horizons stretch in silent grace,\nCarrying dreams across empty space.\nI watch them move, distant and free,\nMirroring the soul I hope to be.\nThough far away, they guide my sight,\nThrough the vastness of day and night.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Veins of Time",
-        content: "Time courses through me like hidden veins,\nBearing both pleasure and unseen pains.\nI trace its flow, feeling each beat,\nMoments I treasure, moments I meet.\nThough fleeting, its pulse remains,\nA rhythm of loss, love, and gains.",
-        date: "DECEMBER 2025"
-    }
-];
+        // 50 Font Colors (Text)
+        const textColors = [
+            'Black', 'DimGray', 'Gray', 'DarkGray', 'Silver', 
+            'SlateGray', 'LightSlateGray', 'DarkSlateGray', 'Navy', 'DarkBlue', 
+            'MediumBlue', 'RoyalBlue', 'CornflowerBlue', 'DodgerBlue', 'DeepSkyBlue', 
+            'SkyBlue', 'LightSkyBlue', 'SteelBlue', 'Teal', 'DarkCyan', 
+            'CadetBlue', 'MediumTurquoise', 'Turquoise', 'LightSeaGreen', 'MediumAquamarine', 
+            'Aquamarine', 'DarkGreen', 'Green', 'ForestGreen', 'SeaGreen', 
+            'MediumSeaGreen', 'LimeGreen', 'Lime', 'OliveDrab', 'DarkOliveGreen', 
+            'YellowGreen', 'Chartreuse', 'SpringGreen', 'LightGreen', 'PaleGreen', 
+            'DarkKhaki', 'Goldenrod', 'DarkGoldenrod', 'Orange', 'DarkOrange', 
+            'Coral', 'Tomato', 'Red', 'FireBrick', 'Maroon'
+        ];
 
-const container = document.getElementById('content-container');
-JournalContent.forEach((item, idx) => {
-    const card = document.createElement('div');
-    card.className = 'a5-card';
-    card.innerHTML = `<span class="poem-num">${idx+1}</span>
-                      <h2 class="article-title">${item.title}</h2>
-                      <div class="article-body">${item.content.replace(/\n/g, '<br>')}</div>
-                      <div class="article-footer">${item.date}</div>`;
-    container.appendChild(card);
-});
-</script>
+        function populateGrids() {
+            const bgGrid = document.getElementById('bg-grid');
+            const textGrid = document.getElementById('text-grid');
 
-<script>
-const clockEl = document.getElementById('live-clock');
-setInterval(() => {
-    const now = new Date();
-    clockEl.innerText = now.toLocaleTimeString();
-}, 1000);
-</script>
+            bgColors.forEach(color => {
+                const div = document.createElement('div');
+                div.className = 'swatch';
+                div.style.backgroundColor = color;
+                div.title = color;
+                div.onclick = () => {
+                    document.documentElement.style.setProperty('--bg', color);
+                    // Update accent to be a darker version of the text if needed
+                };
+                bgGrid.appendChild(div);
+            });
 
-<script>
-document.addEventListener("DOMContentLoaded", () => { lucide.createIcons(); });
-</script>
+            textColors.forEach(color => {
+                const div = document.createElement('div');
+                div.className = 'swatch';
+                div.style.backgroundColor = color;
+                div.title = color;
+                div.onclick = () => {
+                    document.documentElement.style.setProperty('--text', color);
+                    document.documentElement.style.setProperty('--accent', color); // Title color follows text
+                };
+                textGrid.appendChild(div);
+            });
+        }
 
+        function toggleSettings() {
+            document.getElementById('settings').classList.toggle('active');
+        }
+
+        function setFont(num) {
+            document.body.className = 'font-' + num;
+        }
+
+        function setGrain(val) {
+            document.documentElement.style.setProperty('--grain-opacity', val);
+        }
+
+        window.onload = populateGrids;
+
+        window.onscroll = function() {
+            const nav = document.getElementById('navbar');
+            if (window.pageYOffset > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        };
+    </script>
 </body>
 </html>
