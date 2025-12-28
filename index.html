@@ -1,124 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>THE LONELY PATH | Hassan Jatoi Journal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>THE LONELY PATH | Hassan Jatoi Journal</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Outfit:wght@100;300;600&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Outfit:wght@100;300;600&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --bg-deep: #050505;
-            --bg-accent: #0f0f12;
-            --gold: #c5a059;
-            --gold-bright: #e5c385;
-            --text-main: #e0e0e0;
-            --text-dim: #999;
-            --card-glass: rgba(255, 255, 255, 0.03);
-            --border-glass: rgba(197, 160, 89, 0.15);
-            --page-max-width: 780px;
-            --font-serif: 'Lora', serif;
-            --font-display: 'Cinzel', serif;
-            --content-size: 19px;
-            --content-align: center;
-        }
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-        /* Themes */
-        .theme-midnight { --bg-deep: #050505; --bg-accent: #0f0f12; --gold: #c5a059; --text-main: #e0e0e0; }
-        .theme-minimal { --bg-deep: #ffffff; --bg-accent: #f8f8f8; --gold: #1a1a1a; --text-main: #222; --text-dim: #666; --card-glass: #fff; --border-glass: #eee; }
-        .theme-noir { --bg-deep: #000000; --bg-accent: #111; --gold: #ffffff; --text-main: #eee; --text-dim: #888; --card-glass: rgba(255,255,255,0.02); --border-glass: #333; }
-        .theme-ocean { --bg-deep: #001219; --bg-accent: #00212e; --gold: #00b4d8; --text-main: #caf0f8; --border-glass: rgba(0, 180, 216, 0.2); }
-        .theme-emerald { --bg-deep: #06110a; --bg-accent: #0b1f12; --gold: #52b788; --text-main: #d8f3dc; --border-glass: rgba(82, 183, 136, 0.2); }
-        .theme-sunset { --bg-deep: #1a0f0f; --bg-accent: #2d1616; --gold: #ff4e50; --text-main: #f9dcc4; --border-glass: rgba(255, 78, 80, 0.2); }
-        .theme-cyber { --bg-deep: #0a0a0c; --bg-accent: #141417; --gold: #00ff41; --text-main: #00ff41; --border-glass: #00ff41; --card-glass: rgba(0,255,65,0.05); }
+<style>
+:root {
+    --bg-deep: #050505;
+    --bg-accent: #0f0f12;
+    --gold: #c5a059;
+    --gold-bright: #e5c385;
+    --text-main: #e0e0e0;
+    --text-dim: #999;
+    --card-glass: rgba(255, 255, 255, 0.03);
+    --border-glass: rgba(197, 160, 89, 0.15);
+    --page-max-width: 780px;
+    --font-serif: 'Lora', serif;
+    --font-display: 'Cinzel', serif;
+    --content-size: 19px;
+    --content-align: center;
+}
 
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+/* Themes */
+.theme-midnight { --bg-deep: #050505; --bg-accent: #0f0f12; --gold: #c5a059; --text-main: #e0e0e0; }
+.theme-minimal { --bg-deep: #ffffff; --bg-accent: #f8f8f8; --gold: #1a1a1a; --text-main: #222; --text-dim: #666; --card-glass: #fff; --border-glass: #eee; }
+.theme-noir { --bg-deep: #000000; --bg-accent: #111; --gold: #ffffff; --text-main: #eee; --text-dim: #888; --card-glass: rgba(255,255,255,0.02); --border-glass: #333; }
+.theme-ocean { --bg-deep: #001219; --bg-accent: #00212e; --gold: #00b4d8; --text-main: #caf0f8; --border-glass: rgba(0, 180, 216, 0.2); }
+.theme-emerald { --bg-deep: #06110a; --bg-accent: #0b1f12; --gold: #52b788; --text-main: #d8f3dc; --border-glass: rgba(82, 183, 136, 0.2); }
+.theme-sunset { --bg-deep: #1a0f0f; --bg-accent: #2d1616; --gold: #ff4e50; --text-main: #f9dcc4; --border-glass: rgba(255, 78, 80, 0.2); }
+.theme-cyber { --bg-deep: #0a0a0c; --bg-accent: #141417; --gold: #00ff41; --text-main: #00ff41; --border-glass: #00ff41; --card-glass: rgba(0,255,65,0.05); }
 
-        body {
-            margin: 0; padding: 0;
-            background-color: var(--bg-deep);
-            color: var(--text-main);
-            font-family: 'Outfit', sans-serif;
-            transition: background 0.5s ease, color 0.5s ease;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
+* { box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
 
-        .live-status {
-            position: fixed; top: 20px; left: 20px; z-index: 2000;
-            background: var(--card-glass); border: 1px solid var(--border-glass);
-            padding: 8px 12px; border-radius: 8px; backdrop-filter: blur(10px);
-            font-size: 10px; letter-spacing: 2px; color: var(--gold);
-            display: flex; align-items: center; gap: 8px;
-        }
-        .pulse { width: 6px; height: 6px; background: #00ff41; border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+body {
+    margin: 0; padding: 0;
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    font-family: 'Outfit', sans-serif;
+    transition: background 0.5s ease, color 0.5s ease;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
 
-        .nav-dock { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 2000; }
-        .dock-circle {
-            width: 56px; height: 56px; border-radius: 50%; background: var(--bg-accent);
-            border: 1px solid var(--border-glass); color: var(--gold);
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            backdrop-filter: blur(15px);
-        }
-        .dock-circle:hover { transform: scale(1.1); background: var(--gold); color: var(--bg-deep); }
+.live-status {
+    position: fixed; top: 20px; left: 20px; z-index: 2000;
+    background: var(--card-glass); border: 1px solid var(--border-glass);
+    padding: 8px 12px; border-radius: 8px; backdrop-filter: blur(10px);
+    font-size: 10px; letter-spacing: 2px; color: var(--gold);
+    display: flex; align-items: center; gap: 8px;
+}
+.pulse { width: 6px; height: 6px; background: #00ff41; border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-        #studioPanel {
-            position: fixed; top: 0; right: -100%; width: 100%; max-width: 350px; height: 100dvh;
-            background: var(--bg-accent); border-left: 1px solid var(--border-glass);
-            z-index: 2100; padding: 30px 20px; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex; flex-direction: column; gap: 20px; backdrop-filter: blur(30px);
-            overflow-y: auto;
-        }
-        #studioPanel.open { right: 0; }
-        .studio-header { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-display); color: var(--gold); border-bottom: 1px solid var(--border-glass); padding-bottom: 15px; }
+.nav-dock { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 2000; }
+.dock-circle {
+    width: 56px; height: 56px; border-radius: 50%; background: var(--bg-accent);
+    border: 1px solid var(--border-glass); color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    backdrop-filter: blur(15px);
+}
+.dock-circle:hover { transform: scale(1.1); background: var(--gold); color: var(--bg-deep); }
 
-        .option-section { display: flex; flex-direction: column; gap: 10px; }
-        .section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim); }
-        .grid-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        
-        .btn-opt { 
-            background: transparent; border: 1px solid var(--border-glass); color: var(--text-main); 
-            padding: 12px 8px; font-size: 10px; cursor: pointer; border-radius: 6px; 
-            text-transform: uppercase; transition: 0.2s; 
-        }
-        .btn-opt:hover, .btn-opt.active { border-color: var(--gold); background: rgba(197, 160, 89, 0.1); color: var(--gold); }
+#studioPanel {
+    position: fixed; top: 0; right: -100%; width: 100%; max-width: 350px; height: 100dvh;
+    background: var(--bg-accent); border-left: 1px solid var(--border-glass);
+    z-index: 2100; padding: 30px 20px; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; flex-direction: column; gap: 20px; backdrop-filter: blur(30px);
+    overflow-y: auto;
+}
+#studioPanel.open { right: 0; }
+.studio-header { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-display); color: var(--gold); border-bottom: 1px solid var(--border-glass); padding-bottom: 15px; }
 
-        .container { position: relative; z-index: 2; padding: 100px 15px 120px 15px; display: flex; flex-direction: column; align-items: center; }
-        
-        .a5-card {
-            width: 100%; max-width: var(--page-max-width);
-            background: var(--card-glass); border: 1px solid var(--border-glass);
-            padding: 80px 60px; margin-bottom: 60px; border-radius: 4px; 
-            text-align: var(--content-align); transition: all 0.3s ease;
-            page-break-inside: avoid; position: relative;
-        }
+.option-section { display: flex; flex-direction: column; gap: 10px; }
+.section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim); }
+.grid-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
-        .poem-num {
-            display: block; font-family: var(--font-display); color: var(--gold);
-            font-size: 14px; letter-spacing: 4px; margin-bottom: 20px; opacity: 0.8;
-        }
+.btn-opt { 
+    background: transparent; border: 1px solid var(--border-glass); color: var(--text-main); 
+    padding: 12px 8px; font-size: 10px; cursor: pointer; border-radius: 6px; 
+    text-transform: uppercase; transition: 0.2s; 
+}
+.btn-opt:hover, .btn-opt.active { border-color: var(--gold); background: rgba(197, 160, 89, 0.1); color: var(--gold); }
 
-        .hero { border: none; background: transparent; text-align: center; margin-bottom: 100px; padding: 0; box-shadow: none; }
-        .cover-img { width: 200px; height: 300px; object-fit: cover; border: 1px solid var(--gold); border-radius: 8px; box-shadow: 0 30px 60px rgba(0,0,0,0.7); }
+.container { position: relative; z-index: 2; padding: 100px 15px 120px 15px; display: flex; flex-direction: column; align-items: center; }
 
-        .article-title { font-family: var(--font-display); font-size: 32px; color: var(--gold); margin-bottom: 40px; letter-spacing: 3px; line-height: 1.3; }
-        .article-body { font-family: var(--font-serif); font-size: var(--content-size); line-height: 1.9; white-space: pre-line; color: var(--text-main); opacity: 0.9; }
-        .article-footer { margin-top: 60px; font-size: 11px; color: var(--text-dim); letter-spacing: 5px; text-transform: uppercase; border-top: 1px solid var(--border-glass); padding-top: 25px; }
+.a5-card {
+    width: 100%; max-width: var(--page-max-width);
+    background: var(--card-glass); border: 1px solid var(--border-glass);
+    padding: 80px 60px; margin-bottom: 60px; border-radius: 4px; 
+    text-align: var(--content-align); transition: all 0.3s ease;
+    page-break-inside: avoid; position: relative;
+}
 
-        @media screen and (max-width: 650px) {
-            .a5-card { padding: 40px 25px; }
-            .article-title { font-size: 24px; }
-            .container { padding-top: 60px; }
-        }
+.poem-num {
+    display: block; font-family: var(--font-display); color: var(--gold);
+    font-size: 14px; letter-spacing: 4px; margin-bottom: 20px; opacity: 0.8;
+}
 
-        @media print { .no-print { display: none !important; } }
-    </style>
+.hero { border: none; background: transparent; text-align: center; margin-bottom: 100px; padding: 0; box-shadow: none; }
+.cover-img { width: 200px; height: 300px; object-fit: cover; border: 1px solid var(--gold); border-radius: 8px; box-shadow: 0 30px 60px rgba(0,0,0,0.7); }
+
+.article-title { font-family: var(--font-display); font-size: 32px; color: var(--gold); margin-bottom: 40px; letter-spacing: 3px; line-height: 1.3; }
+.article-body { font-family: var(--font-serif); font-size: var(--content-size); line-height: 1.9; white-space: pre-line; color: var(--text-main); opacity: 0.9; }
+.article-footer { margin-top: 60px; font-size: 11px; color: var(--text-dim); letter-spacing: 5px; text-transform: uppercase; border-top: 1px solid var(--border-glass); padding-top: 25px; }
+
+@media screen and (max-width: 650px) {
+    .a5-card { padding: 40px 25px; }
+    .article-title { font-size: 24px; }
+    .container { padding-top: 60px; }
+}
+
+@media print { .no-print { display: none !important; } }
+</style>
 </head>
 <body class="theme-midnight">
 
@@ -195,539 +195,259 @@
 </div>
 
 <script>
-    /**
-     * ROMAN NUMERAL HELPER
-     */
-    function toRoman(num) {
-        const lookup = { M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1 };
-        let roman = '';
-        for (let i in lookup) {
-            while (num >= lookup[i]) {
-                roman += i;
-                num -= lookup[i];
-            }
-        }
-        return roman;
-    }
+function toggleStudio() {
+    document.getElementById('studioPanel').classList.toggle('open');
+}
 
-    /**
-     * WRITING DATA
-     * AI se likhwaye gaye articles/poems niche paste karein.
-     */
-    const Journal = {
-        articles: [
-            {
-                title: "Echoes of Waiting",
-                content: "The clock ticks slowly, a rhythm of pain,\nSearching for footsteps in the pouring rain.\nThe door stays silent, the hallway is cold,\nA story of waiting, forever untold.\nI watch the horizon where the sun meets the sea,\nHoping a breeze brings you back to me.\nThe scent of your spirit still hangs in the hall,\nWhile shadows of memory dance on the wall.\nMy soul is a desert, thirsting for grace,\nLost in the absence of your smiling face.\nEvery sunset is heavy, every dawn is a plea,\nTo break these shackles and set my heart free.\nBut the stars remain silent, the moon turns away,\nAs I drift through the ghosts of another long day.\nThe ink on the pages of our story has dried,\nCarrying the secrets I’ve buried inside.",
-                date: "DECEMBER 2025"
-            },
-            {
-                title: "Unspoken Words",
-                content: "A million words written, but none ever said,\nThe paths of my heart are the ones I don't tread.\nI carry your reflection in the depths of my eyes,\nUnder the weight of these vast, lonely skies.\nWe walk in the same wind, we breathe the same air,\nYet the distance between us is more than I bear.\nA touch that was fleeting, a glance that was brief,\nIs the root of my joy and the source of my grief.\nI build you a kingdom in the world of my sleep,\nWith promises made that I’m destined to keep.\nThe world hears my laughter, but never my soul,\nMissing the pieces that once made me whole.\nSo I’ll stay in the shadows, a witness unseen,\nLost in the spaces of what might have been.\nLoving you quietly, without sound or sign,\nKnowing you’re out there, but never quite mine.",
-                date: "DECEMBER 2025"
-            },
-            {
-                title: "Lost Dreams",
-                content: "Dreams we built now lie in decay,\nScattered fragments of a brighter day.\nI reach for hope but find only dust,\nShattered trust, betrayal, and rust.\nNights echo with silent screams,\nTorn by the loss of what might have been.\nEvery step forward feels the same,\nHaunted by absence, drenched in pain.\nThe moon hides behind a veil of sorrow,\nNo promise shines for the hope of tomorrow.\nTears water the soil of regret,\nHarvesting grief that I cannot forget.\nEach morning arrives like a stone on my chest,\nBreathing feels heavy, sleep gives no rest.\nShadows play on walls of my mind,\nReminding me of the love I cannot find.\nI wander, lost, in a world turned gray,\nSearching for fragments that have slipped away.\nAnd yet, in this brokenness, I remain,\nHolding the dreams that will never sustain.\nSilent echoes of laughter and song,\nRemind me that what was, is forever gone.",
-                date: "DECEMBER 2025"
-            },
-            {
-                title: "Dark Night",
-                content: "The night swallows the last light of day,\nLeaving only darkness to guide my way.\nStars blink faintly, indifferent above,\nWhile my soul searches for a lost love.\nEach shadow stretches across the floor,\nEchoing the pain that I cannot ignore.\nThe wind carries whispers of your name,\nFilling the silence with sorrow and blame.\nI lie awake, haunted and torn,\nRemembering the nights when hope was born.\nThe clock ticks slowly, mocking my despair,\nEvery moment a reminder you’re not there.\nTears trace paths down my weary face,\nEach drop a reminder of your warm embrace.\nThe darkness presses, suffocating my chest,\nOffering no comfort, denying me rest.\nI speak to the night, but it answers with pain,\nA mirror of grief, an endless chain.\nSilence becomes my only friend tonight,\nWrapping me tightly in sorrow’s quiet might.\nAnd as the night deepens, I remain alone,\nHolding memories that are carved in stone.",
-                date: "DECEMBER 2025"
-            },
-            {
-                title: "Lonely Moments",
-                content: "I sit alone where shadows creep,\nThe silence is thick, the memories deep.\nLaughter that once filled these walls is gone,\nOnly whispers linger, soft and drawn.\nThe moon peeks through with a pale cold light,\nGuiding my sorrow through the endless night.\nEach heartbeat echoes your absence near,\nEvery sigh carries a trace of fear.\nI reach for warmth that cannot stay,\nFading like dawn, slipping away.\nThe world moves on, unknowing, unkind,\nWhile I am tethered to what I cannot find.\nTears fall quietly, unnoticed by all,\nAs I answer the grief that answers my call.\nEach passing hour deepens the ache,\nA lonely companion no joy can shake.\nAnd in this stillness, I quietly grieve,\nFor the love I lost and cannot retrieve.",
-                date: "DECEMBER 2025"
-            },
-            {
-                title: "Nameless Sorrow",
-                content: "A sorrow with no name, no face,\nIt drifts through me, leaving no trace.\nSilent as the wind, heavy as stone,\nI carry it everywhere, yet I am alone.\nThe night whispers secrets I cannot bear,\nFilling the dark with despair.\nEach memory burns like a hidden flame,\nReminding me of love and shame.\nI walk through shadows, searching for peace,\nBut the pain lingers, it will not cease.\nThe stars seem distant, indifferent above,\nI long for solace, I long for love.\nTears fall quietly, unseen, unheard,\nEach one a fragment of a lost word.\nAnd in this quiet, endless and deep,\nI cradle the sorrow that refuses to sleep.",
-                date: "DECEMBER 2025"
-            }
-           const poems = [
+function setTheme(theme, btn) {
+    document.body.className = 'theme-' + theme;
+    document.querySelectorAll('.btn-opt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+
+function updateStyle(varName, value, btn) {
+    document.documentElement.style.setProperty(varName, value);
+    document.querySelectorAll(btn.parentNode.children).forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+
+function downloadPDF() {
+    const element = document.getElementById('capture-area');
+    html2pdf().set({ margin: 0.5, filename: 'Hassan-Jatoi-Journal.pdf', html2canvas: { scale: 2 } }).from(element).save();
+}
+
+// Auto inject poems/articles
+const JournalContent = [
     {
-        title: "Journey of Pain",
-        content: "I step along a road unkind,\nLeaving pieces of myself behind.\nEvery mile echoes with a sigh,\nEvery horizon mocks my cry.\nThe wind cuts sharp against my face,\nI search for comfort, I search for grace.\nThe shadows of memory cling to my heels,\nDragging me back to wounds that never heal.\nI speak to the sky, but it remains mute,\nA mirror of sorrow, cold and absolute.\nNights stretch long, the stars seem dim,\nA candle flickers, then grows dim.\nYet still I walk, though weary and torn,\nCarrying the weight of a heart forlorn.\nThis path is cruel, yet I must remain,\nA traveler lost in grief and pain.",
+        title: "Echoes of Waiting",
+        content: "The clock ticks slowly, a rhythm of pain,\nSearching for footsteps in the pouring rain.\nThe door stays silent, the hallway is cold,\nA story of waiting, forever untold.\nI watch the horizon where the sun meets the sea,\nHoping a breeze brings you back to me.\nThe scent of your spirit still hangs in the hall,\nWhile shadows of memory dance on the wall.\nMy soul is a desert, thirsting for grace,\nLost in the absence of your smiling face.\nEvery sunset is heavy, every dawn is a plea,\nTo break these shackles and set my heart free.\nBut the stars remain silent, the moon turns away,\nAs I drift through the ghosts of another long day.\nThe ink on the pages of our story has dried,\nCarrying the secrets I’ve buried inside.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Empty Room",
-        content: "The room is silent, yet it breathes,\nFilled with echoes of what it perceives.\nShadows stretch across the floor,\nWhispering of the one I adore.\nEvery chair holds a memory tight,\nEvery corner shivers with the night.\nI speak, but only the walls reply,\nMurmurs of absence, a soft goodbye.\nThe moonlight touches objects cold,\nReminding me of stories untold.\nTears mark the floor, unseen by all,\nEach one a testament to my fall.\nI wander this room, a ghost in its space,\nHaunted by love I cannot replace.\nAnd as silence settles, heavy and deep,\nI lie awake while the room sleeps.",
+        title: "Unspoken Words",
+        content: "A million words written, but none ever said,\nThe paths of my heart are the ones I don't tread.\nI carry your reflection in the depths of my eyes,\nUnder the weight of these vast, lonely skies.\nWe walk in the same wind, we breathe the same air,\nYet the distance between us is more than I bear.\nA touch that was fleeting, a glance that was brief,\nIs the root of my joy and the source of my grief.\nI build you a kingdom in the world of my sleep,\nWith promises made that I’m destined to keep.\nThe world hears my laughter, but never my soul,\nMissing the pieces that once made me whole.\nSo I’ll stay in the shadows, a witness unseen,\nLost in the spaces of what might have been.\nLoving you quietly, without sound or sign,\nKnowing you’re out there, but never quite mine.",
+        date: "DECEMBER 2025"
+    },
+    // Add more articles/poems here...
+];
+const JournalContent = [
+    {
+        title: "Echoes of Waiting",
+        content: "The clock ticks slowly, a rhythm of pain,\nSearching for footsteps in the pouring rain.\nThe door stays silent, the hallway is cold,\nA story of waiting, forever untold.\nI watch the horizon where the sun meets the sea,\nHoping a breeze brings you back to me.\nThe scent of your spirit still hangs in the hall,\nWhile shadows of memory dance on the wall.\nMy soul is a desert, thirsting for grace,\nLost in the absence of your smiling face.\nEvery sunset is heavy, every dawn is a plea,\nTo break these shackles and set my heart free.\nBut the stars remain silent, the moon turns away,\nAs I drift through the ghosts of another long day.\nThe ink on the pages of our story has dried,\nCarrying the secrets I’ve buried inside.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Complaint of the Heart",
-        content: "My heart whispers complaints to the wind,\nOf love departed, of grief pinned.\nIt aches with burdens too heavy to name,\nTorn by passion, scorched by flame.\nI cry to the sky, but no answer comes,\nOnly the echoes of lost drums.\nMemories pierce like a sharpened blade,\nFilling the night with the shadows they made.\nI reach for solace that cannot be found,\nWandering lost, my soul unbound.\nEven laughter feels distant, a cruel jest,\nEach beat of my heart refuses rest.\nThe weight of absence sits upon my chest,\nAnd in this suffering, I find no rest.",
+        title: "Unspoken Words",
+        content: "A million words written, but none ever said,\nThe paths of my heart are the ones I don't tread.\nI carry your reflection in the depths of my eyes,\nUnder the weight of these vast, lonely skies.\nWe walk in the same wind, we breathe the same air,\nYet the distance between us is more than I bear.\nA touch that was fleeting, a glance that was brief,\nIs the root of my joy and the source of my grief.\nI build you a kingdom in the world of my sleep,\nWith promises made that I’m destined to keep.\nThe world hears my laughter, but never my soul,\nMissing the pieces that once made me whole.\nSo I’ll stay in the shadows, a witness unseen,\nLost in the spaces of what might have been.\nLoving you quietly, without sound or sign,\nKnowing you’re out there, but never quite mine.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Moments of Separation",
-        content: "Each second drags with the pain of you,\nMoments of separation, endless and true.\nI see your face in every fleeting shadow,\nHear your voice in the wind’s quiet flow.\nThe days are long, nights longer still,\nCarrying memories that refuse to heal.\nI reach for your hand, but grasp only air,\nA cruel reminder that you are not there.\nTears fall silently, a river of ache,\nTracing the loss that nothing can take.\nThe stars watch on, cold and bright,\nIndifferent to my heart’s endless night.\nAnd I remain, a soul torn apart,\nCounting the pieces of my broken heart.",
+        title: "Silent Horizons",
+        content: "The sea whispers secrets only the night can hear,\nWaves cradle memories that I hold dear.\nStars flicker stories across the endless sky,\nWhile I count the moments since your last goodbye.\nTime bends softly around the corners of pain,\nYet nothing will bring back what we cannot regain.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Nameless Sorrow",
-        content: "A sorrow with no name, no face,\nIt drifts through me, leaving no trace.\nSilent as the wind, heavy as stone,\nI carry it everywhere, yet I am alone.\nThe night whispers secrets I cannot bear,\nFilling the dark with despair.\nEach memory burns like a hidden flame,\nReminding me of love and shame.\nI walk through shadows, searching for peace,\nBut the pain lingers, it will not cease.\nThe stars seem distant, indifferent above,\nI long for solace, I long for love.\nTears fall quietly, unseen, unheard,\nEach one a fragment of a lost word.\nAnd in this quiet, endless and deep,\nI cradle the sorrow that refuses to sleep.",
+        title: "Fading Shadows",
+        content: "In the alleyways of memory, shadows fade,\nTraces of laughter and words we never made.\nThe walls remember the steps we once took,\nThe corners still hold the echo of your look.\nI wander alone in the halls of my mind,\nSearching for peace that I may never find.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Ruin of the Heart",
-        content: "The heart trusted love, and love answered with betrayal.\nEvery beat now carries the echo of what was broken.\nI tried to rebuild myself from memories that kept collapsing.\nYour absence became heavier than your presence ever was.\nSome wounds do not bleed, they quietly destroy the soul.\nI loved honestly, and that honesty ruined me completely.",
+        title: "The Lonely Path",
+        content: "Footsteps vanish into the fog of dawn,\nA road that stretches, weary and worn.\nEvery choice I make leads me deeper inside,\nWhere silence reigns and dreams often hide.\nThe heart beats quietly, unseen, unheard,\nYet hope lingers softly in a single word.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Dark Memories",
-        content: "The past returns at night without asking permission.\nMemories knock softly, but break everything inside.\nFaces smile in memory, yet leave pain behind.\nI drown in moments that were never meant to last.\nEven sleep refuses to protect me from yesterday.\nDark memories do not fade, they wait patiently.",
+        title: "Whispers of Time",
+        content: "Clocks tick on walls that have long grown cold,\nStories of love and loss quietly told.\nI chase the echoes of what once was mine,\nThrough corridors marked by decay and time.\nThe wind hums lullabies I cannot hold,\nYet in its song, a thousand truths unfold.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Veil of Night",
+        content: "The moon drapes its veil across the land,\nAnd shadows play like thieves with a silent hand.\nI walk beneath stars that know my secret pain,\nEach step a reminder of what remains.\nThe night listens without a word or sigh,\nYet I feel the world shift and quietly cry.",
         date: "DECEMBER 2025"
     }
 ];
-const poems = [
+const JournalContent = [
+    ...JournalContent, // existing content
+
     {
-        title: "Silent Whisper",
-        content: "Silence carries your voice better than words ever did.\nMy heart listens to whispers no one else can hear.\nPain speaks quietly, yet it never lies.\nI scream inside, while the world hears nothing.\nYour betrayal lives in the quiet spaces of my soul.\nSilence became my loudest confession.",
+        title: "Fragments of Yesterday",
+        content: "Pieces of a time I cannot reclaim,\nWhispers of laughter, shadows without a name.\nI trace the corners of memory’s faint light,\nHoping the dark will yield to something bright.\nYet every dawn reminds me of the cost,\nOf moments and people forever lost.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Moment of Parting",
-        content: "Goodbyes happen once, but their pain repeats forever.\nYour eyes left before your body did.\nI held the moment, but it slipped away bleeding.\nParting is the slow death of shared dreams.\nI watched you leave, and something inside me followed.",
+        title: "The Hollow Heart",
+        content: "A heart once full now beats in a cave,\nEchoing silently, nothing to save.\nEach pulse is a drum of forgotten dreams,\nA river of sorrow flowing in quiet streams.\nThe walls of my chest are lined with despair,\nYet I keep walking, though no one is there.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Empty House",
-        content: "The house remembers voices my heart still searches for.\nEvery wall echoes a love that no longer lives here.\nRooms feel wider when they are filled with absence.\nI walk through silence wearing memories like chains.\nThis house is not empty, it is grieving.",
+        title: "Rain and Remembrance",
+        content: "Rain taps on my window like a familiar hand,\nCalling back memories of a distant land.\nEvery droplet carries a story untold,\nOf love, of pain, of hearts grown cold.\nI sit and listen, letting it seep inside,\nA river of emotions I can no longer hide.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Incomplete Happiness",
-        content: "Happiness visited briefly, then forgot my address.\nSmiles felt real until reality interrupted.\nEvery joy carried the warning of loss.\nI learned happiness can exist without staying.\nSome lives are written with unfinished joy.",
+        title: "The Last Letter",
+        content: "I wrote to you when silence was loud,\nSent my thoughts through clouds and a shroud.\nThe ink may fade but the feelings remain,\nA testament of hope stitched into pain.\nThough words may never reach your hand,\nThey linger, unseen, like footprints in sand.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Wet Eyes",
-        content: "My eyes are tired of carrying unshed storms.\nTears pause at the edge, afraid to fall.\nPain hides behind every blink.\nI look normal, but my gaze is broken.\nWet eyes remember what lips refuse to say.\nThey hold names I no longer speak.\nEvery glance trembles with old wounds.\nEven light feels heavy when it touches them.\nI smile, yet my eyes betray me.\nThey reflect nights full of silent crying.\nSome tears do not fall, they settle deep.\nMy eyes have learned sorrow by heart.\nThey have seen love leave slowly.\nThey have watched promises disappear.\nWet eyes age faster than time.\nThey carry grief like a permanent shadow.\nI look ahead, but see the past.\nMy eyes ask for rest, not sympathy.\nThey are wet, not weak.\nThey are alive with pain.",
+        title: "Shadows of Solitude",
+        content: "I walk alone where the shadows fall,\nHearing the whispers that answer no call.\nThe night wraps around me like a cold embrace,\nYet in its depth, I find my own space.\nSolitude is a friend both cruel and kind,\nA mirror reflecting the state of my mind.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Tales of a Broken Heart",
-        content: "This heart speaks only in cracked sentences.\nEvery beat tells a story of loss.\nLove entered like light and left like a storm.\nPromises were written, never fulfilled.\nTrust broke quietly, without noise.\nThe heart remembers everything too clearly.\nSome tales are written with tears, not ink.\nI loved deeply, and paid fully.\nThe broken heart narrates without a voice.\nIt repeats moments it cannot forget.\nEach scar holds a chapter.\nEach silence hides a scream.\nThe heart still hopes, foolishly.\nIt still waits, painfully.\nBroken does not mean empty.\nIt means used until pain remained.\nThese tales have no happy ending.\nOnly lessons wrapped in grief.\nThe heart survives, but never heals completely.\nIt keeps telling its story in silence.",
+        title: "Ephemeral Dreams",
+        content: "Dreams flutter like birds in the morning haze,\nVanishing quickly before I can appraise.\nI chase their wings through valleys of thought,\nCatching only fragments that cannot be caught.\nEach dawn erases the colors I drew,\nLeaving me with whispers of what I knew.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Sorrowful Evening",
-        content: "Evening arrives carrying a familiar sadness.\nThe sky dims, matching my heart.\nSunlight fades like forgotten promises.\nSilence grows heavier with every minute.\nLoneliness sits beside me quietly.\nThe air feels slower, heavier.\nShadows stretch like tired memories.\nI wait for nothing, yet still wait.\nThis evening remembers my pain.\nIt knows my routine of grief.\nTea grows cold, like conversations once warm.\nBirds return home, I return inward.\nThe world slows, my thoughts race.\nSorrow fits evenings perfectly.\nNight prepares to take over.\nI remain unfinished between light and dark.\nThis evening asks nothing, gives nothing.\nIt only stays.\nAnd that is enough to hurt.",
+        title: "Beneath Silent Skies",
+        content: "Under skies that say nothing at all,\nI wander through memories that rise and fall.\nThe stars observe without judgment or care,\nAs I struggle with burdens I alone bear.\nYet in the silence, I hear a soft song,\nA reminder that even in loss, we belong.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "The Forgotten Path",
+        content: "A path I once walked now disappears,\nLost to the fog of unspoken fears.\nI try to remember the steps I made,\nBut only the shadows of choices stayed.\nTime moves forward while I linger behind,\nSeeking the peace I cannot find.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Tears of the Moon",
+        content: "The moon cries silver upon the night,\nCleansing the world with gentle light.\nI feel its sorrow mirror my own,\nA solitude shared yet fully alone.\nEach tear reflects stories untold,\nOf hearts in winter, of souls grown cold.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Whispers in the Wind",
+        content: "The wind carries voices I cannot see,\nHints of a life that might have been for me.\nIt rustles the leaves like a soft lament,\nA symphony of dreams, broken and spent.\nI listen and let it guide my way,\nThrough nights that swallow the edges of day.",
         date: "DECEMBER 2025"
     }
 ];
-const poems = [
+const JournalContent = [
+    ...JournalContent, // existing content
+
     {
-        title: "Silent Moment",
-        content: "A moment passes without sound.\nYet it changes everything inside.\nSilence presses against my chest.\nWords fail before they begin.\nBreathing feels loud in this quiet.\nTruth stands naked in silence.\nI face myself without escape.\nMemories surface uninvited.\nPain reveals its true weight.\nThis moment refuses distraction.\nIt demands feeling.\nSilence becomes unbearable.\nI realize what I lost.\nI realize what I became.\nTime pauses, emotions don’t.\nThis moment scars gently.\nNo one notices.\nBut I do.\nAnd I will forever.",
+        title: "Echoes of Silence",
+        content: "Silence speaks louder than words ever could,\nIt fills the spaces where laughter once stood.\nI listen closely, hearing nothing at all,\nYet its weight is heavier than any fall.\nEach echo reminds me of what’s lost,\nA quiet payment for every cost.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Sunlight of Memories",
-        content: "Sunlight enters carrying your shadow.\nIt warms me briefly then hurts.\nMemories shine brighter than reality.\nLight touches wounds gently painfully.\nI close my eyes still see you.\nSunlight reminds me of warmth lost.\nIt reveals dust on forgotten moments.\nEven brightness can ache.\nMemories glow without permission.\nThey arrive dressed as comfort.\nThey leave as pain.\nSunlight fades memories stay.\nI chase warmth that no longer exists.\nThis light teaches longing.\nIt does not heal.\nIt only reminds.\nI sit still surrounded by light and loss.\nSunlight leaves slowly.\nMy memories do not.",
+        title: "Fading Horizons",
+        content: "The horizon blurs with the coming dusk,\nColors bleed like memories in a husk.\nI watch as the day folds into night,\nSearching for meaning in the fading light.\nThough shadows stretch and time moves on,\nI hold onto the echoes of dawn.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Night of Loneliness",
-        content: "Night arrives without asking.\nLoneliness welcomes it warmly.\nDarkness feels familiar now.\nStars watch silently.\nSleep avoids my mind.\nThoughts grow louder after midnight.\nThe room feels wider, emptier.\nSilence breathes with me.\nLoneliness becomes physical.\nI feel it sitting beside me.\nNight stretches endlessly.\nTime loses meaning.\nI replay words that never mattered.\nI miss people who left long ago.\nNight listens patiently.\nIt does not judge.\nIt stays until I break.\nLoneliness and night understand each other.\nAnd they understand me too.",
+        title: "Letters to the Wind",
+        content: "I send my thoughts into the restless air,\nHoping they’ll reach someone who’ll care.\nThe wind carries whispers I cannot keep,\nOver mountains high and oceans deep.\nSomewhere it finds a listening soul,\nCompleting the pieces that make me whole.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Shattered Moments",
-        content: "Some moments do not pass they shatter.\nThey break quietly inside the chest.\nTime stops where pain begins.\nI revisit those seconds unwillingly.\nSmiles collapse into silence.\nWords lose their meaning.\nI stand frozen in memory.\nThose moments stole my calm.\nThey return without warning.\nEvery fragment cuts again.\nI try to move on.\nBut moments pull me back.\nThey remind me of loss.\nThey remind me of trust.\nShattered moments never heal.\nThey only change shape.\nI carry them everywhere.\nLike glass in my soul.\nInvisible.\nBut painful.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Troubled Heart",
-        content: "My heart knows no rest.\nIt beats with confusion.\nLove disturbed its peace.\nHope made it fragile.\nPromises unsettled it deeply.\nNow it trembles silently.\nTrust weighs heavy.\nMemories disturb its rhythm.\nThis heart learned pain early.\nIt questions everything now.\nEven happiness feels suspicious.\nIt listens but doubts.\nIt loves but fears.\nTrouble became its nature.\nStill it beats honestly.\nStill it feels deeply.\nA troubled heart survives.\nNot peacefully.\nBut faithfully.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Empty Roads",
-        content: "Roads stretch endlessly before me.\nYet none lead home.\nFootsteps echo alone.\nMemories walk beside me.\nEvery turn feels unfamiliar.\nThe roads forgot laughter.\nSilence guides my path.\nNo destination comforts me.\nEmpty roads understand loss.\nThey accept my pace.\nI walk without urgency.\nWithout hope.\nWithout fear.\nJust movement.\nJust existence.\nThese roads mirror my heart.\nWide.\nSilent.\nEmpty.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Echo of Pain",
-        content: "Pain never stays silent.\nIt echoes within walls of memory.\nEvery thought repeats it.\nEvery breath carries it.\nI try to ignore it.\nBut echoes return louder.\nPain remembers everything.\nIt refuses to fade.\nVoices from the past repeat.\nRegret answers them.\nMy chest fills with soundless cries.\nThis echo never rests.\nIt grows in quiet.\nIt sharpens in loneliness.\nPain becomes familiar.\nAlmost comforting.\nBecause it stays.\nWhen others didn’t.",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Scattered Emotions",
-        content: "My emotions lie everywhere.\nUnorganized.\nUncontrolled.\nLove sits beside anger.\nHope beside despair.\nTears interrupt smiles.\nI cannot gather myself.\nFeelings refuse order.\nThey rise unexpectedly.\nThey fall without warning.\nI feel too much.\nThen nothing.\nScattered emotions exhaust me.\nYet define me.\nThey prove I cared.\nThey prove I felt.\nEven when broken.\nI was alive.",
-        date: "DECEMBER 2025"
-    }
-];
-const poems = [
-    {
-        title: "Incomplete Dreams",
-        content: "Dreams visited briefly\nThen left unfinished\nI planned futures alone\nReality erased them quietly\nHope faded mid-sentence\nDreams collapsed without sound\nI still remember their shape\nTheir warmth\nTheir promise\nIncomplete dreams hurt differently\nThey tease possibility\nThey haunt sleep\nI mourn what never happened\nWhat never began fully\nDreams remain suspended\nBetween desire and loss\nI carry them silently\nLike unfinished prayers",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Silence of Silence",
-        content: "Silence has many layers\nThis one suffocates\nIt speaks without words\nIt answers without comfort\nSilence watches me break\nThen stays\nNo interruption\nNo mercy\nThoughts become louder here\nMemories grow heavier\nI fear this silence\nYet depend on it\nIt understands pain\nBetter than people\nSilence holds me together\nWhile tearing me apart\nIt is cruel\nAnd honest",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Burden of Memories",
-        content: "Memories rest heavy on my chest\nThey demand attention\nThey refuse sleep\nEach memory carries weight\nSome sweet\nMost painful\nI carry them daily\nWithout complaint\nWithout choice\nThey slow my steps\nThey bend my posture\nYet I hold them\nBecause they prove love existed\nThey prove I lived\nThe burden never lifts\nIt only settles deeper\nMemories age with me\nFaithful\nUnforgiving",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Deserted Memories",
-        content: "Some memories feel abandoned\nLeft without closure\nThey wander my mind\nLost\nConfused\nUnfinished\nI try to revisit them\nThey resist clarity\nFaces blur\nVoices fade\nFeelings remain sharp\nDeserted memories ache\nThey search for meaning\nI have none to give\nThey stay anyway\nUnwanted\nUnresolved\nStill alive",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Journey of Loneliness",
-        content: "Loneliness began quietly\nIt grew slowly\nStep by step\nI didn’t notice at first\nNow it walks with me\nEverywhere\nIt knows my routine\nMy weaknesses\nMy nights\nLoneliness does not rush\nIt waits patiently\nIt listens\nIt stays\nThis journey has no map\nNo destination\nOnly movement\nOnly endurance\nOnly me",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Silence of the Heart",
-        content: "My heart speaks silently\nNo one hears it\nIt whispers pain carefully\nProtectively\nIt learned silence from loss\nFrom betrayal\nFrom disappointment\nThis silence holds truth\nIt guards vulnerability\nI trust it now\nMore than words\nMore than promises\nThe heart remains quiet\nBut never empty\nIts silence is survival\nIts quiet is strength\nStill beating\nStill feeling",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Witness of Tears",
-        content: "Tears know my story\nThey fall honestly\nWithout explanation\nThey witness my nights\nMy prayers\nMy breaking points\nNo one else stays\nTears do\nThey carry relief\nThen leave exhaustion\nThey never judge\nNever question\nThey only fall\nAgain\nAnd again\nWitnesses to pain\nProof of endurance\nProof of heart",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Broken Shadow",
-        content: "My shadow looks different now\nIt walks heavier\nSlower\nIt knows loss\nIt mirrors my damage\nEven in light\nI remain broken\nThe shadow doesn’t lie\nIt follows honestly\nIt never leaves\nBroken shadows remember\nThey stretch with pain\nThey shrink with fear\nYet stay\nLoyal\nFaithful\nLike sorrow itself",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Incomplete Voice of Separation",
-        content: "My voice failed during goodbye\nWords stopped halfway\nSeparation stole my breath\nI wanted to explain\nTo hold\nTo fix\nBut silence answered\nMy voice trembled\nThen disappeared\nSeparation needs no language\nIt understands pain naturally\nI speak now alone\nTo memories\nTo walls\nTo night\nMy voice remains incomplete\nLike the ending we never had\nUnspoken\nUnhealed",
-        date: "DECEMBER 2025"
-    }
-];
-const poems = [
-    {
-        title: "Shattered Moments",
-        content: "Some moments don’t end they explode inside you\nThey break your breath before tears arrive\nI replay them until my chest feels torn\nThose seconds changed the shape of my soul\nI remember every detail painfully\nThe silence before the damage\nThe look before the loss\nI was still smiling when I shattered\nNo one noticed the crack forming\nMoments don’t warn you\nThey strike suddenly\nI tried to forget them\nBut forgetting hurts more\nBecause memory is all I have left\nThese moments live inside my eyes\nThey fall as tears without permission\nI cry for what happened\nI cry for what didn’t\nShattered moments don’t heal\nThey only grow quieter\nAnd deeper",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Witness of Tears",
-        content: "My tears know my truth\nThey fall honestly\nWithout permission\nThey witness every breakdown\nEvery sleepless night\nNo one else stays\nTears do\nThey wash my face nightly\nThen leave exhaustion\nThey never judge\nNever question\nThey fall again\nAnd again\nProof of pain\nProof of endurance\nProof of heart\nTears remember everything",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Broken Shadow",
-        content: "My shadow looks tired now\nIt follows slowly\nHeavier than before\nEven light can’t fix it\nIt mirrors my damage honestly\nIt stretches when I break\nShrinks when I cry\nMy shadow knows loss\nIt never leaves\nEven when others did\nIt walks with me silently\nThrough dark days\nThrough lonely nights\nBroken shadows stay faithful\nLike sorrow itself",
-        date: "DECEMBER 2025"
-    },
-    {
-        title: "Incomplete Voice of Separation",
-        content: "My voice failed during goodbye\nWords drowned in tears\nSeparation stole my strength\nI wanted to explain everything\nBut silence answered\nMy voice trembled\nThen disappeared\nSeparation needs no language\nIt understands pain naturally\nI speak now to memories\nTo walls\nTo nights\nMy goodbye remains unfinished\nLike the ending we never had\nUnspoken\nUnhealed\nStill bleeding inside me",
+        title: "Veil of Memories",
+        content: "Memories drape over my mind like a veil,\nSoft but heavy, tender yet frail.\nI try to lift it, to see clear and bright,\nBut shadows linger, hiding the light.\nEvery recollection is a double-edged sword,\nSweet in its warmth, bitter in its accord.",
         date: "DECEMBER 2025"
     },
     {
         title: "Ashes of Yesterday",
-        content: "Yesterday did not leave gently\nIt burned everything it touched\nI wake up smelling loss in the air\nMemories rise like smoke in my chest\nI try to breathe but it hurts\nWhat once warmed me now suffocates me\nI hold pieces of moments already dead\nThey crumble when I touch them\nYesterday promised healing\nInstead it left ashes\nI cry over things that no longer exist\nYet they refuse to leave me\nPain settles deeper with every memory\nTime does not erase it\nIt only teaches silence\nI sit with ashes in my hands\nWondering how love turned into dust\nWondering why I am still here\nYesterday watches me quietly\nUnapologetic\nUnfinished",
+        content: "Yesterday burns in quiet flames,\nLeaving only ashes of forgotten names.\nI sift through remnants of what once was,\nSeeking meaning, finding only a pause.\nYet even in ruin, a seed can grow,\nFrom the fire, new paths begin to show.",
         date: "DECEMBER 2025"
     },
     {
-        title: "When the Heart Stops Explaining",
-        content: "My heart is tired of justifying its pain\nIt stopped explaining long ago\nWords never saved it\nPeople never stayed\nIt learned quiet survival\nEach beat carries exhaustion\nI feel pain without language now\nEven tears hesitate\nThe heart closes its doors gently\nNot out of pride\nOut of protection\nIt remembers being misunderstood\nIt remembers begging silently\nNow it speaks only to itself\nLove knocked again\nThe heart did not answer\nNot because it didn’t care\nBut because it was tired of breaking\nSilence became safety\nAnd loneliness became familiar",
+        title: "Midnight Solitude",
+        content: "Midnight drapes its cloak over my mind,\nWrapping me in thoughts of every kind.\nThe world sleeps, yet I remain awake,\nCounting every breath that I take.\nSolitude hums its endless tune,\nBeneath the gaze of a silent moon.",
         date: "DECEMBER 2025"
     },
     {
-        title: "Grief Has My Name",
-        content: "Grief knows me personally\nIt calls me by name at night\nIt sits beside my bed patiently\nWaiting for weakness\nI try to resist\nBut grief always wins\nIt reminds me of what I lost\nOf who I trusted\nOf who never returned\nMy chest tightens without warning\nBreathing feels like work\nTears arrive without invitation\nGrief never explains itself\nIt doesn’t need permission\nIt lives inside my routine now\nI carry it to work\nTo sleep\nTo prayer\nGrief follows faithfully\nAs if I belong to it",
+        title: "The Forgotten River",
+        content: "A river once full now flows in hush,\nIts waters whisper, soft as a brush.\nI trace its curves with my aching eyes,\nWatching it carry away silent cries.\nThough unseen, its current persists,\nA reminder of life’s subtle twists.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Shattered Reflections",
+        content: "Mirrors break with a soundless cry,\nFractured reflections of days gone by.\nI see pieces of myself scattered wide,\nHiding emotions I cannot confide.\nYet each shard holds a story true,\nA mosaic of pain and moments new.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Winds of Change",
+        content: "Change comes quietly, yet it shakes the soul,\nTurning pieces of life that were once whole.\nI stand amidst the gusts of the unknown,\nFeeling the weight of seeds I have sown.\nThough the path twists and bends anew,\nI move forward with a heart that’s true.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Silent Footsteps",
+        content: "Footsteps echo in empty halls,\nSilent witnesses to unseen walls.\nEach step marks a story untold,\nA journey through memories, both young and old.\nI follow the trail, though faint it may be,\nLeading me to who I’m meant to see.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "The Waiting Sky",
+        content: "Sky waits patiently for the sun to rise,\nHolding colors that soften my sighs.\nClouds drift slowly, carrying my dreams,\nAlong the edges of light’s quiet beams.\nI stand beneath its vast embrace,\nFinding solace in its endless space.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Lanterns of Hope",
+        content: "Small flames flicker in the darkest night,\nLanterns of hope casting gentle light.\nThough shadows loom and fears take hold,\nThese tiny fires burn bright and bold.\nI follow them through the winding way,\nGuided by their unwavering sway.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Veins of the Earth",
+        content: "The earth whispers beneath my feet,\nIts veins pulsing with stories discreet.\nRoots and rivers intertwine in grace,\nCarrying the weight of time’s embrace.\nI kneel and listen, feeling its song,\nA reminder that I too belong.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Fragments of Light",
+        content: "Light breaks through the cracks of despair,\nFilling spaces that were once bare.\nI catch the fragments, delicate and small,\nLetting them guide me through the pall.\nEven in darkness, a glimmer remains,\nA promise of joy amidst the pains.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "The Lonely Tree",
+        content: "A tree stands alone on the hill,\nIts branches stretched, silent and still.\nSeasons pass, yet it remains,\nBearing storms, enduring pains.\nI sit beneath its patient shade,\nFinding wisdom in the life it’s made.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Echoes in the Fog",
+        content: "Fog rolls in like a gentle sigh,\nHiding paths where shadows lie.\nI hear faint echoes of what I seek,\nWhispers of strength though I feel weak.\nStep by step, I move unseen,\nNavigating the space between.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Threads of Memory",
+        content: "Memory weaves its threads through time,\nBinding moments both bitter and sublime.\nI tug gently at the fabric of past,\nHolding pieces that I wish could last.\nThough fragile, these threads remain,\nConnecting joy, sorrow, and pain.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "The Hidden Garden",
+        content: "A garden hidden behind old walls,\nWhere flowers bloom despite the falls.\nI wander through its secret ways,\nFinding peace in the softest rays.\nLife thrives quietly, without acclaim,\nA sanctuary untouched by fame.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Silent Horizons",
+        content: "Horizons stretch in silent grace,\nCarrying dreams across empty space.\nI watch them move, distant and free,\nMirroring the soul I hope to be.\nThough far away, they guide my sight,\nThrough the vastness of day and night.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Veins of Time",
+        content: "Time courses through me like hidden veins,\nBearing both pleasure and unseen pains.\nI trace its flow, feeling each beat,\nMoments I treasure, moments I meet.\nThough fleeting, its pulse remains,\nA rhythm of loss, love, and gains.",
         date: "DECEMBER 2025"
     }
 ];
-{
-    title: "The Cry I Never Shared",
-    content: "There is a cry trapped inside me\nIt never reached the world\nI swallowed it for years\nAfraid of being weak\nAfraid of being ignored\nThat cry learned silence early\nIt shakes my chest at night\nBegging to be released\nBut my lips stay closed\nPeople see calm\nThey don’t hear collapse\nThat cry carries names\nFaces\nPromises\nIt aches for expression\nYet remains imprisoned\nI cry without sound\nWithout witnesses\nThis hidden cry is my deepest wound\nAnd my most honest truth",
-    date: "DECEMBER 2025"
-},
-{
-    title: "A Place Where Love Died",
-    content: "There is a place inside me\nWhere love stopped breathing\nI visit it unintentionally\nMemories wait there quietly\nHope lies unfinished\nTrust lies broken\nI remember how it felt to believe\nHow dangerous that was\nLove once lived loudly here\nNow silence owns it\nI sit there often\nFeeling absence deeply\nNo anger remains\nOnly sadness\nOnly fatigue\nThis place does not heal\nIt only remembers\nI leave it slowly each time\nCarrying more weight than before\nLove died here\nAnd took something with it",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Tears After Everyone Left",
-    content: "I did not cry immediately\nI stayed strong too long\nI waited until everyone left\nUntil silence felt safe\nThen tears came violently\nThey shook my body\nThey emptied my chest\nNo one heard them\nNo one saw them\nThat hurt the most\nI cried for hours\nFor people who moved on\nFor words never spoken\nFor endings I didn’t choose\nTears fell honestly\nWithout performance\nWithout comfort\nI wiped my face alone\nAnd stood up quietly\nCarrying pain like nothing happened",
-    date: "DECEMBER 2025"
-},
-{
-    title: "The Night I Couldn’t Breathe",
-    content: "That night pressed its hands on my chest\nBreathing felt like punishment\nThe room was silent but my heart wasn’t\nTears fell without warning\nI tried to stop them\nThey refused\nMemories attacked together\nEvery regret spoke at once\nI sat on the floor shaking\nAsking myself what I did wrong\nNo answer came\nOnly pain stayed\nI whispered names into darkness\nDarkness did not reply\nMy chest burned with loss\nMy hands felt empty\nThat night watched me collapse\nIt did not comfort me\nIt only stayed longer\nI survived somehow\nBut I left a part of myself there",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Grave of Unsaid Words",
-    content: "There are words buried inside me\nI never said them\nI never dared\nThey died quietly\nEach word wanted to heal something\nEach word arrived too late\nNow they rest heavily in my chest\nI feel them when I breathe\nWhen I cry\nWhen I remember\nI replay conversations endlessly\nChanging my silence\nImagining courage\nBut time does not listen\nThose words remain buried\nNo forgiveness reached them\nNo closure touched them\nI mourn sentences\nI mourn honesty\nI mourn the voice I never used\nThis grave belongs to me alone",
-    date: "DECEMBER 2025"
-},
-{
-    title: "I Stayed Until I Disappeared",
-    content: "I stayed longer than I should have\nI stayed when love was gone\nI stayed when respect faded\nI stayed hoping things would change\nThey didn’t\nInstead I changed\nI grew quieter\nSmaller\nInvisible\nI stopped asking questions\nStopped expecting kindness\nStopped recognizing myself\nPeople say I was strong\nThey don’t know I was fading\nI gave everything gently\nUntil nothing remained\nOne day I looked at myself\nAnd didn’t recognize who stayed\nI left eventually\nBut I left empty",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Tears That Had No Witness",
-    content: "I cried when no one was watching\nNot because I wanted privacy\nBecause no one stayed\nMy tears soaked pillows\nSleeves\nHands\nThey fell honestly\nUnfiltered\nUgly\nReal\nI cried for hours\nThen wiped my face quietly\nAnswered messages like nothing happened\nSmiled carefully\nLaughed on command\nNo one asked about my eyes\nNo one noticed my voice shaking\nThat hurt more than crying alone\nThese tears had no witness\nBut they knew the truth",
-    date: "DECEMBER 2025"
-},
-{
-    title: "The Part of Me That Never Returned",
-    content: "Something left me that day\nNot you\nMe\nI laughed later\nWorked later\nLived later\nBut something was missing\nI searched for it in memories\nIn people\nIn prayers\nIt never came back\nThat part trusted deeply\nLoved honestly\nBelieved easily\nPain took it silently\nNow I live carefully\nWith limits\nWith walls\nPeople think I healed\nThey don’t see what never returned",
-    date: "DECEMBER 2025"
-}
-{
-    title: "When Even Tears Give Up",
-    content: "I cried until my eyes forgot how to beg\nTears slowed not from healing but exhaustion\nMy face stayed wet my heart stayed dry\nI stared at the ceiling counting breaths\nEach one felt borrowed\nPain sat quietly confident it would stay\nI tried remembering joy\nMy mind returned emptiness\nNames passed through me without warmth\nPromises sounded foreign\nI wiped my cheeks out of habit\nNothing changed\nSilence grew comfortable with my breaking\nNight leaned closer listening\nI whispered prayers without faith\nFaith did not answer\nMy chest hurt in places words can’t reach\nI felt smaller than my sorrow\nEven tears stepped back\nAnd left me alone with everything else",
-    date: "DECEMBER 2025"
-},
-{
-    title: "The Day I Buried Myself Alive",
-    content: "I smiled that day\nPeople thought I was fine\nInside I was digging carefully\nLayer by layer\nHope went first\nThen trust\nThen my voice\nI buried reactions\nBuried expectations\nBuried my need to be seen\nI learned how to nod politely\nHow to say “it’s okay”\nHow to disappear without leaving\nNo one attended the burial\nNo one noticed the grave\nI stood above it breathing\nLiving above what I lost\nSometimes I feel movement below\nA memory knocking\nI don’t answer\nI buried myself to survive",
-    date: "DECEMBER 2025"
-},
-{
-    title: "After the Last Goodbye Failed",
-    content: "I practiced goodbye for days\nWords lined up carefully\nCourage waited at the door\nThen the moment arrived\nMy voice collapsed\nTears interrupted every sentence\nYou looked away\nI looked down\nGoodbye lost its meaning\nIt turned into silence\nSilence turned into distance\nDistance turned into forever\nI replay that moment nightly\nTrying different endings\nNone work\nGoodbyes require two hearts\nMine stayed open\nYours already left\nNow I say goodbye alone\nTo memories\nTo expectations\nTo who I was before you",
-    date: "DECEMBER 2025"
-},
-{
-    title: "I Am Still Here, Somehow",
-    content: "I don’t know how I survived\nI just did\nDays passed without permission\nNights dragged me through myself\nI learned to function broken\nTo laugh lightly\nTo speak carefully\nPain learned my routine\nIt stopped surprising me\nI stopped fighting it\nPeople say time heals\nTime only taught me endurance\nI carry loss like a second spine\nInvisible but heavy\nI don’t chase happiness anymore\nI accept quiet moments\nMoments without hurting\nIf that is healing\nThen this is it\nI am still here\nSomehow",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Final Words",
-    content: "I reached the end without reaching peace\nSome wounds chose to stay unnamed\nSome memories refused forgiveness\nI no longer search for what was lost\nI only carry what remains\nPain changed its shape not its place\nI learned how to breathe around it\nHow to live without answers\nIf you found yourself in these pages\nKnow this — you were never weak\nYou were feeling\nAnd feeling deeply is survival",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Last Lines",
-    content: "This book does not end with healing\nIt ends with truth\nSome hearts do not mend\nThey only grow quieter\nSome stories do not close\nThey learn silence instead\nI leave these words here\nNot as closure\nBut as proof that pain was real",
-    date: "DECEMBER 2025"
-}
-{
-    title: "Dedication",
-    content: "To the nights that broke me quietly\nTo the tears that had no witness\nTo the love that left without explanation\nTo the version of me that did not survive\nAnd to anyone who kept going\nWhile falling apart inside",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Author’s Note",
-    content: "I did not write to impress\nI wrote to release\nThese pages carry what I could not say aloud\nIf they hurt you\nIt means you understood\n— Hassan Jatoi",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Copyright Page",
-    content: "© 2025 Hassan Jatoi\nAll rights reserved\nNo part of this book may be reproduced stored or transmitted\nin any form or by any means without written permission\nfrom the author except for brief quotations in reviews\n\nThe End\nNot everything ends loudly\nSome things end by becoming quiet\nThis is one of them 🖤",
-    date: "DECEMBER 2025"
-}
-{
-    title: "Veil of Loneliness",
-    content: "The night hides my whispers\nEven shadows refuse company\nI speak to walls\nThey answer only silence\nLoneliness wears a crown on my chest\nNo one sees the throne I sit upon\nPain is my companion\nAnd betrayal my old friend\nI learned to smile while dying inside",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Philosophy of Broken Hearts",
-    content: "Love is a teacher I could not afford\nIt gave lessons in absence and deceit\nEvery promise carried poison\nEvery touch contained farewell\nI studied the weight of emptiness\nThe anatomy of grief\nAnd realized happiness was a story someone else wrote\nMy heart remains a classroom of lost trust",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Shadows of Betrayal",
-    content: "I trusted blindly\nAnd the night laughed\nYour words were daggers hidden in silk\nYour eyes promised warmth but delivered frost\nI carry the echo of your lies\nIt clings to my ribs like smoke\nEven love becomes a haunted house\nAnd I walk inside, afraid of myself",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Silent Abyss",
-    content: "There is an abyss in my chest\nNo one knows how deep it is\nIt swallows joy before I can hold it\nEvery memory drips like acid\nSilence screams\nAnd I answer with nothing\nI float in a void of forgotten names\nEven grief feels temporary here\nBut pain remains eternal",
-    date: "DECEMBER 2025"
-},
-{
-    title: "The Last Trust",
-    content: "I offered my heart one last time\nHoping it would not be broken\nBut betrayal has a language of its own\nIt writes itself across faces\nAnd laughs in familiar voices\nI learned that trust is a fragile flame\nAnd some hearts are meant to burn\nMine burned quietly, leaving ashes behind",
-    date: "DECEMBER 2025"
-}
-{
-    title: "Whispers of Abandoned Hope",
-    content: "Hope whispered softly once\nI listened too late\nPromises vanished like smoke\nDreams turned to dust in my hands\nI walk carefully avoiding joy\nEvery step echoes what could have been\nLoneliness greets me like an old friend\nBetrayal follows silently\nI learned that hope is a fragile lie",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Echoes in the Empty Room",
-    content: "The walls remember what I forgot\nVoices of the past haunt my nights\nEvery laugh once shared now a dagger\nMemories crawl through the cracks of my mind\nI speak to shadows\nThey respond with absence\nGrief writes letters I cannot read\nEven silence feels heavy here\nPain has made this room its home",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Masks of Love",
-    content: "Love wore a mask\nI adored it blindly\nEvery touch hid a secret\nEvery word carried a sting\nI learned to smile through thorns\nTo trust through betrayal\nEven joy became suspect\nEven hearts carry lies\nMine still beats quietly beneath the weight",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Night of Unanswered Questions",
-    content: "Questions pile in my chest\nAnswers never arrive\nI reach into darkness hoping for light\nOnly shadows stretch their fingers toward me\nEach thought pierces softly\nEach memory whispers betrayal\nPhilosophy teaches endurance\nPain teaches survival\nI sleep without comfort, awake without relief",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Fragments of a Broken Soul",
-    content: "Pieces of me scattered across years\nEach fragment stained with grief\nTrust shattered, love betrayed\nJoy became a stranger\nI pick up what I can carry\nThe rest drifts into nothing\nEven memories hurt\nEven silence screams\nI survive in fragments, never whole",
-    date: "DECEMBER 2025"
-},
-{
-    title: "The Shadow That Knew Me",
-    content: "My shadow stayed when everyone left\nIt followed my mistakes silently\nWitnessed my betrayals, my lost loves\nIt never judged, never whispered\nEven in laughter it hung heavy\nEven in hope it reminded me of loss\nI learned loyalty from sorrow itself\nThe shadow is my teacher, my companion\nIt knows the weight of living unseen",
-    date: "DECEMBER 2025"
-}
-{
-    title: "Veins of Sorrow",
-    content: "Sorrow runs like rivers in my veins\nIt carries whispers of what I lost\nEvery heartbeat aches quietly\nEvery breath tastes of absence\nI have grown used to the weight\nEven joy trembles before it\nPain became a teacher\nGrief became my companion\nI move slowly through the shadows of myself",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Labyrinth of Memories",
-    content: "Memories twist like corridors\nI wander endlessly searching for light\nFaces fade, voices distort\nEven laughter carries a sting\nI stumble on shadows of past love\nEvery turn brings betrayal\nHope is a door I cannot open\nEvery exit leads back to myself\nThe labyrinth knows me better than I know me",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Ashes of Trust",
-    content: "I offered my heart in pieces\nEach piece burned quietly\nPromises turned to smoke\nSmiles became mirrors of lies\nEven my tears betrayed me\nI learned that trust is fragile\nThat love is a pyre\nMine still smolders silently\nI carry the ashes in my chest",
-    date: "DECEMBER 2025"
-},
-{
-    title: "The Silence Between Us",
-    content: "Words failed long before our goodbye\nSilence grew like a wall between us\nEvery glance carried unspoken regret\nEvery touch remembered pain\nI speak to the air\nIt answers with absence\nLove died in quiet\nBetrayal whispered softly\nI remain here, listening to the void",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Midnight of Forgotten Names",
-    content: "Night swallows everything I remember\nFaces vanish like smoke\nNames dissolve in my chest\nEven hope seems unreal\nLoneliness wraps around me\nBetrayal hums a familiar tune\nI speak to ghosts\nThey answer in echoes\nTime became my enemy, memory my tormentor",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Eclipsed Heart",
-    content: "My heart hides behind shadows\nLight touches it reluctantly\nEvery beat questions itself\nEvery pulse feels borrowed\nLove appeared once, then vanished\nTrust shattered like glass\nI walk carefully through the ruins\nPain guides my steps\nEven hope trembles before my heart",
-    date: "DECEMBER 2025"
-}
-{
-    title: "Fragments of a Broken Soul",
-    content: "I carry pieces of myself\nShattered by hands I trusted\nEvery fragment whispers pain\nEvery reflection shows absence\nEven laughter feels borrowed\nEven tears arrive too late\nI walk among my ruins\nInvisible to the world\nYet painfully visible to myself",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Echoes of Forgotten Promises",
-    content: "Promises once spoken\nNow echo in empty rooms\nEach word haunts my chest\nEvery vow is a ghost\nI chase what never existed\nI touch what cannot be held\nEven hope seems a stranger\nBetrayal dances quietly\nAnd I remain silently listening",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Labyrinth of Solitude",
-    content: "I wander through corridors of my mind\nWalls close with memories\nLight flickers and disappears\nEvery turn reminds me of absence\nEven joy hides here\nEven laughter echoes with sorrow\nI meet myself in the shadows\nAnd barely recognize the stranger I became",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Thorns of Memory",
-    content: "Memories pierce silently\nI bleed quietly inside\nEvery thought carries a sting\nEvery smile is a wound\nEven dreams tremble\nEven sleep refuses comfort\nI cradle my pain\nIt grows roots in my chest\nAnd refuses to let go",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Veins of Betrayal",
-    content: "Betrayal runs through me like blood\nEvery pulse whispers distrust\nEvery beat trembles with loss\nEven love seems suspicious\nEven trust feels fragile\nI learned caution too early\nI walk carefully among shadows\nEvery step questions loyalty\nAnd still I move forward, wounded",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Shadows of Forgotten Love",
-    content: "Love once bright now hides in shadows\nIt lingers like smoke in empty rooms\nI search for warmth\nOnly to touch emptiness\nEven joy remembers pain\nEven hope fears betrayal\nI walk with echoes of love lost\nHaunted by what cannot return\nAnd I remain, quietly aching",
-    date: "DECEMBER 2025"
-},
-{
-    title: "The Weight of Silence",
-    content: "Silence presses against my chest\nWords cannot escape\nThoughts collapse quietly\nEven tears hesitate\nEvery unspoken truth lingers\nEvery hidden sorrow grows\nI breathe carefully\nNot to disturb the pain\nAnd live among the echoes of my own heart",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Frost on the Heart",
-    content: "My heart learned cold early\nLove touched and froze it\nTrust melted slowly, then vanished\nPain crystallized inside\nEvery beat feels brittle\nEvery hope shivers\nEven warmth seems foreign\nEven light hesitates\nAnd I walk, careful not to break",
-    date: "DECEMBER 2025"
-},
-{
-    title: "Chamber of Lost Dreams",
-    content: "Dreams entered quietly\nThen vanished before dawn\nI held their shapes\nBut they dissolved in my hands\nEven hope was fragile\nEven joy too brief\nI sit in empty rooms\nListening to echoes of might-have-beens\nAnd learn to live among the ghosts",
-    date: "DECEMBER 2025"
-},
-{
-    title: "The Invisible Scars",
-    content: "Scars live beneath my skin\nNo one sees their depth\nEvery smile conceals them\nEvery word hides them\nEven laughter trembles\nEven silence remembers\nI move carefully\nCarrying the weight of pain\nAnd pretending the world does not notice",
-    date: "DECEMBER 2025"
-}
-    ]
-    };
 
-    function renderJournal() {
-        const container = document.getElementById('content-container');
-        container.innerHTML = Journal.articles.map((article, index) => `
-            <article class="a5-card">
-                <span class="poem-num">${toRoman(index + 1)}</span>
-                <h2 class="article-title">${article.title}</h2>
-                <div class="article-body">${article.content}</div>
-                <div class="article-footer">${article.date}</div>
-            </article>
-        `).join('');
-        lucide.createIcons();
-    }
+const container = document.getElementById('content-container');
+JournalContent.forEach((item, idx) => {
+    const card = document.createElement('div');
+    card.className = 'a5-card';
+    card.innerHTML = `<span class="poem-num">${idx+1}</span>
+                      <h2 class="article-title">${item.title}</h2>
+                      <div class="article-body">${item.content.replace(/\n/g, '<br>')}</div>
+                      <div class="article-footer">${item.date}</div>`;
+    container.appendChild(card);
+});
+</script>
 
-    function toggleStudio() {
-        document.getElementById('studioPanel').classList.toggle('open');
-    }
+<script>
+const clockEl = document.getElementById('live-clock');
+setInterval(() => {
+    const now = new Date();
+    clockEl.innerText = now.toLocaleTimeString();
+}, 1000);
+</script>
 
-    function setTheme(t, btn) {
-        document.body.className = 'theme-' + t;
-        setActive(btn);
-    }
-
-    function updateStyle(variable, value, btn) {
-        document.documentElement.style.setProperty(variable, value);
-        setActive(btn);
-    }
-
-    function setActive(btn) {
-        if(!btn) return;
-        const parent = btn.parentElement;
-        parent.querySelectorAll('.btn-opt').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-    }
-
-    function updateClock() {
-        const now = new Date();
-        const options = { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
-        const timeStr = now.toLocaleString('en-US', options).toUpperCase().replace(',', ' •');
-        document.getElementById('live-clock').textContent = timeStr;
-    }
-
-    async function downloadPDF() {
-        const element = document.getElementById('capture-area');
-        const opt = {
-            margin: 10,
-            filename: 'Hassan_Jatoi_Archives.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
-        await html2pdf().set(opt).from(element).save();
-    }
-
-    window.onload = () => {
-        renderJournal();
-        setInterval(updateClock, 1000);
-        updateClock();
-        lucide.createIcons();
-    };
+<script>
+document.addEventListener("DOMContentLoaded", () => { lucide.createIcons(); });
 </script>
 
 </body>
