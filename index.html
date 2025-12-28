@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>THE LONELY PATH | Hassan Jatoi</title>
+    <title>THE LONELY PATH | Hassan Jatoi Journal</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Tenor+Sans&family=Playfair+Display:ital,wght@0,400;1,700&family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@200;400;700&family=Forum&family=Outfit:wght@100;300;600&family=Lato:wght@300;400;700&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Outfit:wght@100;300;600&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -20,15 +20,15 @@
             --text-dim: #999;
             --card-glass: rgba(255, 255, 255, 0.03);
             --border-glass: rgba(197, 160, 89, 0.15);
-            --page-max-width: 600px;
-            --font-serif: 'Cormorant Garamond', serif;
+            --page-max-width: 780px;
+            --font-serif: 'Lora', serif;
             --font-display: 'Cinzel', serif;
-            --safe-area-inset-bottom: env(safe-area-inset-bottom, 20px);
-            --poem-size: 20px;
-            --poem-align: center;
+            --content-size: 19px;
+            --content-align: center;
         }
 
         /* Themes */
+        .theme-midnight { --bg-deep: #050505; --bg-accent: #0f0f12; --gold: #c5a059; --text-main: #e0e0e0; }
         .theme-minimal { --bg-deep: #ffffff; --bg-accent: #f8f8f8; --gold: #1a1a1a; --text-main: #222; --text-dim: #666; --card-glass: #fff; --border-glass: #eee; }
         .theme-noir { --bg-deep: #000000; --bg-accent: #111; --gold: #ffffff; --text-main: #eee; --text-dim: #888; --card-glass: rgba(255,255,255,0.02); --border-glass: #333; }
         .theme-ocean { --bg-deep: #001219; --bg-accent: #00212e; --gold: #00b4d8; --text-main: #caf0f8; --border-glass: rgba(0, 180, 216, 0.2); }
@@ -43,7 +43,7 @@
             background-color: var(--bg-deep);
             color: var(--text-main);
             font-family: 'Outfit', sans-serif;
-            transition: all 0.5s ease;
+            transition: background 0.5s ease, color 0.5s ease;
             overflow-x: hidden;
             min-height: 100vh;
         }
@@ -58,7 +58,7 @@
         .pulse { width: 6px; height: 6px; background: #00ff41; border-radius: 50%; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-        .nav-dock { position: fixed; bottom: var(--safe-area-inset-bottom); right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 2000; }
+        .nav-dock { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 2000; }
         .dock-circle {
             width: 56px; height: 56px; border-radius: 50%; background: var(--bg-accent);
             border: 1px solid var(--border-glass); color: var(--gold);
@@ -90,20 +90,32 @@
         .btn-opt:hover, .btn-opt.active { border-color: var(--gold); background: rgba(197, 160, 89, 0.1); color: var(--gold); }
 
         .container { position: relative; z-index: 2; padding: 100px 15px 120px 15px; display: flex; flex-direction: column; align-items: center; }
+        
         .a5-card {
             width: 100%; max-width: var(--page-max-width);
             background: var(--card-glass); border: 1px solid var(--border-glass);
-            padding: 60px 30px; margin-bottom: 30px; border-radius: 4px; 
-            text-align: var(--poem-align); transition: all 0.3s ease;
-            page-break-inside: avoid;
+            padding: 80px 60px; margin-bottom: 60px; border-radius: 4px; 
+            text-align: var(--content-align); transition: all 0.3s ease;
+            page-break-inside: avoid; position: relative;
         }
 
-        .hero { border: none; background: transparent; text-align: center; }
-        .cover-img { width: 180px; height: 270px; object-fit: cover; border: 1px solid var(--gold); border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.8); }
+        .poem-num {
+            display: block; font-family: var(--font-display); color: var(--gold);
+            font-size: 14px; letter-spacing: 4px; margin-bottom: 20px; opacity: 0.8;
+        }
 
-        .poem-title { font-family: var(--font-display); font-size: 22px; color: var(--gold); margin-bottom: 25px; letter-spacing: 3px; }
-        .poem-body { font-family: var(--font-serif); font-size: var(--poem-size); line-height: 1.8; white-space: pre-line; color: var(--text-main); }
-        .poem-footer { margin-top: 40px; font-size: 10px; color: var(--text-dim); letter-spacing: 3px; text-transform: uppercase; }
+        .hero { border: none; background: transparent; text-align: center; margin-bottom: 100px; padding: 0; box-shadow: none; }
+        .cover-img { width: 200px; height: 300px; object-fit: cover; border: 1px solid var(--gold); border-radius: 8px; box-shadow: 0 30px 60px rgba(0,0,0,0.7); }
+
+        .article-title { font-family: var(--font-display); font-size: 32px; color: var(--gold); margin-bottom: 40px; letter-spacing: 3px; line-height: 1.3; }
+        .article-body { font-family: var(--font-serif); font-size: var(--content-size); line-height: 1.9; white-space: pre-line; color: var(--text-main); opacity: 0.9; }
+        .article-footer { margin-top: 60px; font-size: 11px; color: var(--text-dim); letter-spacing: 5px; text-transform: uppercase; border-top: 1px solid var(--border-glass); padding-top: 25px; }
+
+        @media screen and (max-width: 650px) {
+            .a5-card { padding: 40px 25px; }
+            .article-title { font-size: 24px; }
+            .container { padding-top: 60px; }
+        }
 
         @media print { .no-print { display: none !important; } }
     </style>
@@ -112,29 +124,29 @@
 
 <div class="live-status no-print">
     <div class="pulse"></div>
-    <span id="live-clock">LOADING...</span>
+    <span id="live-clock">SYNCING...</span>
 </div>
 
 <nav class="nav-dock no-print">
-    <div class="dock-circle" onclick="toggleStudio()">
+    <div class="dock-circle" title="Studio" onclick="toggleStudio()">
         <i data-lucide="palette"></i>
     </div>
-    <div class="dock-circle" onclick="downloadPDF()">
-        <i data-lucide="file-down"></i>
+    <div class="dock-circle" title="Download" onclick="downloadPDF()">
+        <i data-lucide="printer"></i>
     </div>
-    <div class="dock-circle" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <div class="dock-circle" title="Top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
         <i data-lucide="arrow-up"></i>
     </div>
 </nav>
 
 <aside id="studioPanel" class="no-print">
     <div class="studio-header">
-        <span>STUDIO PANEL</span>
+        <span>WRITER'S LAB</span>
         <i data-lucide="x" style="cursor: pointer;" onclick="toggleStudio()"></i>
     </div>
 
     <div class="option-section">
-        <span class="section-label">Atmosphere</span>
+        <span class="section-label">Journal Theme</span>
         <div class="grid-opts">
             <button class="btn-opt active" onclick="setTheme('midnight', this)">Midnight</button>
             <button class="btn-opt" onclick="setTheme('minimal', this)">Minimal</button>
@@ -147,82 +159,525 @@
     </div>
 
     <div class="option-section">
-        <span class="section-label">Text Size</span>
+        <span class="section-label">Reading Size</span>
         <div class="grid-opts">
-            <button class="btn-opt" onclick="updateStyle('--poem-size', '16px', this)">Small</button>
-            <button class="btn-opt active" onclick="updateStyle('--poem-size', '20px', this)">Normal</button>
-            <button class="btn-opt" onclick="updateStyle('--poem-size', '24px', this)">Large</button>
+            <button class="btn-opt" onclick="updateStyle('--content-size', '16px', this)">Compact</button>
+            <button class="btn-opt active" onclick="updateStyle('--content-size', '19px', this)">Reading</button>
+            <button class="btn-opt" onclick="updateStyle('--content-size', '23px', this)">Focus</button>
         </div>
     </div>
 
     <div class="option-section">
         <span class="section-label">Alignment</span>
         <div class="grid-opts">
-            <button class="btn-opt active" onclick="updateStyle('--poem-align', 'center', this)">Center</button>
-            <button class="btn-opt" onclick="updateStyle('--poem-align', 'left', this)">Left</button>
+            <button class="btn-opt active" onclick="updateStyle('--content-align', 'center', this)">Center</button>
+            <button class="btn-opt" onclick="updateStyle('--content-align', 'left', this)">Left</button>
         </div>
     </div>
 
     <button class="btn-opt" style="margin-top: auto; border-color: var(--gold); color: var(--gold);" onclick="toggleStudio()">
-        APPLY & CLOSE
+        CLOSE STUDIO
     </button>
 </aside>
 
 <div class="container" id="capture-area">
-    <header class="a5-card hero">
-        <div class="cover-wrap">
-            <img src="https://i.ibb.co/pjzBSrCH/1000203080.jpg" alt="Cover" class="cover-img">
-        </div>
-        <p style="text-transform: uppercase; letter-spacing: 4px; font-size: 11px; color: var(--text-dim); margin-top: 20px;">Collected Works of</p>
-        <h1 style="font-family: var(--font-display); font-size: clamp(32px, 10vw, 48px); color: var(--gold); margin: 10px 0;">HASSAN JATOI</h1>
-        <div style="height: 1px; width: 50px; background: var(--gold); margin: 20px auto; opacity: 0.5;"></div>
-        <p style="text-transform: uppercase; letter-spacing: 6px; font-size: 14px; color: var(--gold-bright);">THE LONELY PATH</p>
+    <header class="hero">
+        <img src="https://i.ibb.co/pjzBSrCH/1000203080.jpg" alt="Journal Cover" class="cover-img">
+        <p style="text-transform: uppercase; letter-spacing: 6px; font-size: 13px; color: var(--text-dim); margin-top: 40px;">The Digital Archives of</p>
+        <h1 style="font-family: var(--font-display); font-size: clamp(32px, 10vw, 60px); color: var(--gold); margin: 15px 0;">HASSAN JATOI</h1>
+        <div style="height: 1px; width: 80px; background: var(--gold); margin: 30px auto; opacity: 0.6;"></div>
+        <p style="text-transform: uppercase; letter-spacing: 10px; font-size: 18px; color: var(--gold-bright);">JOURNAL MMXXV</p>
     </header>
 
-    <main id="poetry-list" style="display: contents;">
-        <!-- Injecting via JS -->
+    <main id="content-container" style="display: contents;">
+        <!-- Articles injected here -->
     </main>
 </div>
 
 <script>
     /**
-     * POETRY DATA
-     * Naya code lagane ke liye 'HASSAN' wali jagha par paste karein.
+     * ROMAN NUMERAL HELPER
      */
-    const poems = [
-        {
-            title: "THE FIRST STEP",
-            content: "The dust of yesterday\nSettles on a road unknown.\nOne foot before the other,\nI walk this path alone.",
-            date: "JAN 2025"
-        },
-        {
-            title: "BROKEN HEART",
-            content: "My heart lies shattered across cold stone,\nEach fragment whispers I am alone.\nLove once burned like fire in the night,\nNow embers fade, leaving only fright.",
-            date: "FEB 2025"
-        },
-        {
-            title: "SHADOW OF MEMORIES",
-            content: "Shadows linger where you used to stand,\nMemories slipping like grains of sand.\nI touch the air, hoping for a trace,\nOnly emptiness greets my embrace.",
-            date: "MAR 2025"
-        },
-        {
-  "poem": {
-    "title": "Echoes of the Night",
-    "theme": "Melancholy / Romantic",
-    "content": "The night swallows the last light of day,\nLeaving only darkness to guide my way.\nStars blink faintly, indifferent above,\nWhile my soul searches for a lost love.\n\nEach shadow stretches across the floor,\nEchoing the pain that I cannot ignore.\nThe wind carries whispers of your name,\nFilling the silence with sorrow and blame.\n\nI lie awake, haunted and torn,\nRemembering the nights when hope was born.\nThe clock ticks slowly, mocking my despair,\nEvery moment a reminder you’re not there."
-  }
-}
-        
-        // HASSAN
-    ];
+    function toRoman(num) {
+        const lookup = { M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1 };
+        let roman = '';
+        for (let i in lookup) {
+            while (num >= lookup[i]) {
+                roman += i;
+                num -= lookup[i];
+            }
+        }
+        return roman;
+    }
 
-    function renderPoetry() {
-        const list = document.getElementById('poetry-list');
-        list.innerHTML = poems.map(p => `
+    /**
+     * WRITING DATA
+     * AI se likhwaye gaye articles/poems niche paste karein.
+     */
+    const Journal = {
+        articles: [
+            {
+                title: "Echoes of Waiting",
+                content: "The clock ticks slowly, a rhythm of pain,\nSearching for footsteps in the pouring rain.\nThe door stays silent, the hallway is cold,\nA story of waiting, forever untold.\nI watch the horizon where the sun meets the sea,\nHoping a breeze brings you back to me.\nThe scent of your spirit still hangs in the hall,\nWhile shadows of memory dance on the wall.\nMy soul is a desert, thirsting for grace,\nLost in the absence of your smiling face.\nEvery sunset is heavy, every dawn is a plea,\nTo break these shackles and set my heart free.\nBut the stars remain silent, the moon turns away,\nAs I drift through the ghosts of another long day.\nThe ink on the pages of our story has dried,\nCarrying the secrets I’ve buried inside.",
+                date: "DECEMBER 2025"
+            },
+            {
+                title: "Unspoken Words",
+                content: "A million words written, but none ever said,\nThe paths of my heart are the ones I don't tread.\nI carry your reflection in the depths of my eyes,\nUnder the weight of these vast, lonely skies.\nWe walk in the same wind, we breathe the same air,\nYet the distance between us is more than I bear.\nA touch that was fleeting, a glance that was brief,\nIs the root of my joy and the source of my grief.\nI build you a kingdom in the world of my sleep,\nWith promises made that I’m destined to keep.\nThe world hears my laughter, but never my soul,\nMissing the pieces that once made me whole.\nSo I’ll stay in the shadows, a witness unseen,\nLost in the spaces of what might have been.\nLoving you quietly, without sound or sign,\nKnowing you’re out there, but never quite mine.",
+                date: "DECEMBER 2025"
+            },
+            {
+                title: "Lost Dreams",
+                content: "Dreams we built now lie in decay,\nScattered fragments of a brighter day.\nI reach for hope but find only dust,\nShattered trust, betrayal, and rust.\nNights echo with silent screams,\nTorn by the loss of what might have been.\nEvery step forward feels the same,\nHaunted by absence, drenched in pain.\nThe moon hides behind a veil of sorrow,\nNo promise shines for the hope of tomorrow.\nTears water the soil of regret,\nHarvesting grief that I cannot forget.\nEach morning arrives like a stone on my chest,\nBreathing feels heavy, sleep gives no rest.\nShadows play on walls of my mind,\nReminding me of the love I cannot find.\nI wander, lost, in a world turned gray,\nSearching for fragments that have slipped away.\nAnd yet, in this brokenness, I remain,\nHolding the dreams that will never sustain.\nSilent echoes of laughter and song,\nRemind me that what was, is forever gone.",
+                date: "DECEMBER 2025"
+            },
+            {
+                title: "Dark Night",
+                content: "The night swallows the last light of day,\nLeaving only darkness to guide my way.\nStars blink faintly, indifferent above,\nWhile my soul searches for a lost love.\nEach shadow stretches across the floor,\nEchoing the pain that I cannot ignore.\nThe wind carries whispers of your name,\nFilling the silence with sorrow and blame.\nI lie awake, haunted and torn,\nRemembering the nights when hope was born.\nThe clock ticks slowly, mocking my despair,\nEvery moment a reminder you’re not there.\nTears trace paths down my weary face,\nEach drop a reminder of your warm embrace.\nThe darkness presses, suffocating my chest,\nOffering no comfort, denying me rest.\nI speak to the night, but it answers with pain,\nA mirror of grief, an endless chain.\nSilence becomes my only friend tonight,\nWrapping me tightly in sorrow’s quiet might.\nAnd as the night deepens, I remain alone,\nHolding memories that are carved in stone.",
+                date: "DECEMBER 2025"
+            },
+            {
+                title: "Lonely Moments",
+                content: "I sit alone where shadows creep,\nThe silence is thick, the memories deep.\nLaughter that once filled these walls is gone,\nOnly whispers linger, soft and drawn.\nThe moon peeks through with a pale cold light,\nGuiding my sorrow through the endless night.\nEach heartbeat echoes your absence near,\nEvery sigh carries a trace of fear.\nI reach for warmth that cannot stay,\nFading like dawn, slipping away.\nThe world moves on, unknowing, unkind,\nWhile I am tethered to what I cannot find.\nTears fall quietly, unnoticed by all,\nAs I answer the grief that answers my call.\nEach passing hour deepens the ache,\nA lonely companion no joy can shake.\nAnd in this stillness, I quietly grieve,\nFor the love I lost and cannot retrieve.",
+                date: "DECEMBER 2025"
+            },
+            {
+                title: "Nameless Sorrow",
+                content: "A sorrow with no name, no face,\nIt drifts through me, leaving no trace.\nSilent as the wind, heavy as stone,\nI carry it everywhere, yet I am alone.\nThe night whispers secrets I cannot bear,\nFilling the dark with despair.\nEach memory burns like a hidden flame,\nReminding me of love and shame.\nI walk through shadows, searching for peace,\nBut the pain lingers, it will not cease.\nThe stars seem distant, indifferent above,\nI long for solace, I long for love.\nTears fall quietly, unseen, unheard,\nEach one a fragment of a lost word.\nAnd in this quiet, endless and deep,\nI cradle the sorrow that refuses to sleep.",
+                date: "DECEMBER 2025"
+            }
+           const poems = [
+    {
+        title: "Journey of Pain",
+        content: "I step along a road unkind,\nLeaving pieces of myself behind.\nEvery mile echoes with a sigh,\nEvery horizon mocks my cry.\nThe wind cuts sharp against my face,\nI search for comfort, I search for grace.\nThe shadows of memory cling to my heels,\nDragging me back to wounds that never heal.\nI speak to the sky, but it remains mute,\nA mirror of sorrow, cold and absolute.\nNights stretch long, the stars seem dim,\nA candle flickers, then grows dim.\nYet still I walk, though weary and torn,\nCarrying the weight of a heart forlorn.\nThis path is cruel, yet I must remain,\nA traveler lost in grief and pain.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Empty Room",
+        content: "The room is silent, yet it breathes,\nFilled with echoes of what it perceives.\nShadows stretch across the floor,\nWhispering of the one I adore.\nEvery chair holds a memory tight,\nEvery corner shivers with the night.\nI speak, but only the walls reply,\nMurmurs of absence, a soft goodbye.\nThe moonlight touches objects cold,\nReminding me of stories untold.\nTears mark the floor, unseen by all,\nEach one a testament to my fall.\nI wander this room, a ghost in its space,\nHaunted by love I cannot replace.\nAnd as silence settles, heavy and deep,\nI lie awake while the room sleeps.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Complaint of the Heart",
+        content: "My heart whispers complaints to the wind,\nOf love departed, of grief pinned.\nIt aches with burdens too heavy to name,\nTorn by passion, scorched by flame.\nI cry to the sky, but no answer comes,\nOnly the echoes of lost drums.\nMemories pierce like a sharpened blade,\nFilling the night with the shadows they made.\nI reach for solace that cannot be found,\nWandering lost, my soul unbound.\nEven laughter feels distant, a cruel jest,\nEach beat of my heart refuses rest.\nThe weight of absence sits upon my chest,\nAnd in this suffering, I find no rest.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Moments of Separation",
+        content: "Each second drags with the pain of you,\nMoments of separation, endless and true.\nI see your face in every fleeting shadow,\nHear your voice in the wind’s quiet flow.\nThe days are long, nights longer still,\nCarrying memories that refuse to heal.\nI reach for your hand, but grasp only air,\nA cruel reminder that you are not there.\nTears fall silently, a river of ache,\nTracing the loss that nothing can take.\nThe stars watch on, cold and bright,\nIndifferent to my heart’s endless night.\nAnd I remain, a soul torn apart,\nCounting the pieces of my broken heart.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Nameless Sorrow",
+        content: "A sorrow with no name, no face,\nIt drifts through me, leaving no trace.\nSilent as the wind, heavy as stone,\nI carry it everywhere, yet I am alone.\nThe night whispers secrets I cannot bear,\nFilling the dark with despair.\nEach memory burns like a hidden flame,\nReminding me of love and shame.\nI walk through shadows, searching for peace,\nBut the pain lingers, it will not cease.\nThe stars seem distant, indifferent above,\nI long for solace, I long for love.\nTears fall quietly, unseen, unheard,\nEach one a fragment of a lost word.\nAnd in this quiet, endless and deep,\nI cradle the sorrow that refuses to sleep.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Ruin of the Heart",
+        content: "The heart trusted love, and love answered with betrayal.\nEvery beat now carries the echo of what was broken.\nI tried to rebuild myself from memories that kept collapsing.\nYour absence became heavier than your presence ever was.\nSome wounds do not bleed, they quietly destroy the soul.\nI loved honestly, and that honesty ruined me completely.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Dark Memories",
+        content: "The past returns at night without asking permission.\nMemories knock softly, but break everything inside.\nFaces smile in memory, yet leave pain behind.\nI drown in moments that were never meant to last.\nEven sleep refuses to protect me from yesterday.\nDark memories do not fade, they wait patiently.",
+        date: "DECEMBER 2025"
+    }
+];
+const poems = [
+    {
+        title: "Silent Whisper",
+        content: "Silence carries your voice better than words ever did.\nMy heart listens to whispers no one else can hear.\nPain speaks quietly, yet it never lies.\nI scream inside, while the world hears nothing.\nYour betrayal lives in the quiet spaces of my soul.\nSilence became my loudest confession.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Moment of Parting",
+        content: "Goodbyes happen once, but their pain repeats forever.\nYour eyes left before your body did.\nI held the moment, but it slipped away bleeding.\nParting is the slow death of shared dreams.\nI watched you leave, and something inside me followed.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Empty House",
+        content: "The house remembers voices my heart still searches for.\nEvery wall echoes a love that no longer lives here.\nRooms feel wider when they are filled with absence.\nI walk through silence wearing memories like chains.\nThis house is not empty, it is grieving.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Incomplete Happiness",
+        content: "Happiness visited briefly, then forgot my address.\nSmiles felt real until reality interrupted.\nEvery joy carried the warning of loss.\nI learned happiness can exist without staying.\nSome lives are written with unfinished joy.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Wet Eyes",
+        content: "My eyes are tired of carrying unshed storms.\nTears pause at the edge, afraid to fall.\nPain hides behind every blink.\nI look normal, but my gaze is broken.\nWet eyes remember what lips refuse to say.\nThey hold names I no longer speak.\nEvery glance trembles with old wounds.\nEven light feels heavy when it touches them.\nI smile, yet my eyes betray me.\nThey reflect nights full of silent crying.\nSome tears do not fall, they settle deep.\nMy eyes have learned sorrow by heart.\nThey have seen love leave slowly.\nThey have watched promises disappear.\nWet eyes age faster than time.\nThey carry grief like a permanent shadow.\nI look ahead, but see the past.\nMy eyes ask for rest, not sympathy.\nThey are wet, not weak.\nThey are alive with pain.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Tales of a Broken Heart",
+        content: "This heart speaks only in cracked sentences.\nEvery beat tells a story of loss.\nLove entered like light and left like a storm.\nPromises were written, never fulfilled.\nTrust broke quietly, without noise.\nThe heart remembers everything too clearly.\nSome tales are written with tears, not ink.\nI loved deeply, and paid fully.\nThe broken heart narrates without a voice.\nIt repeats moments it cannot forget.\nEach scar holds a chapter.\nEach silence hides a scream.\nThe heart still hopes, foolishly.\nIt still waits, painfully.\nBroken does not mean empty.\nIt means used until pain remained.\nThese tales have no happy ending.\nOnly lessons wrapped in grief.\nThe heart survives, but never heals completely.\nIt keeps telling its story in silence.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Sorrowful Evening",
+        content: "Evening arrives carrying a familiar sadness.\nThe sky dims, matching my heart.\nSunlight fades like forgotten promises.\nSilence grows heavier with every minute.\nLoneliness sits beside me quietly.\nThe air feels slower, heavier.\nShadows stretch like tired memories.\nI wait for nothing, yet still wait.\nThis evening remembers my pain.\nIt knows my routine of grief.\nTea grows cold, like conversations once warm.\nBirds return home, I return inward.\nThe world slows, my thoughts race.\nSorrow fits evenings perfectly.\nNight prepares to take over.\nI remain unfinished between light and dark.\nThis evening asks nothing, gives nothing.\nIt only stays.\nAnd that is enough to hurt.",
+        date: "DECEMBER 2025"
+    }
+];
+const poems = [
+    {
+        title: "Silent Moment",
+        content: "A moment passes without sound.\nYet it changes everything inside.\nSilence presses against my chest.\nWords fail before they begin.\nBreathing feels loud in this quiet.\nTruth stands naked in silence.\nI face myself without escape.\nMemories surface uninvited.\nPain reveals its true weight.\nThis moment refuses distraction.\nIt demands feeling.\nSilence becomes unbearable.\nI realize what I lost.\nI realize what I became.\nTime pauses, emotions don’t.\nThis moment scars gently.\nNo one notices.\nBut I do.\nAnd I will forever.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Sunlight of Memories",
+        content: "Sunlight enters carrying your shadow.\nIt warms me briefly then hurts.\nMemories shine brighter than reality.\nLight touches wounds gently painfully.\nI close my eyes still see you.\nSunlight reminds me of warmth lost.\nIt reveals dust on forgotten moments.\nEven brightness can ache.\nMemories glow without permission.\nThey arrive dressed as comfort.\nThey leave as pain.\nSunlight fades memories stay.\nI chase warmth that no longer exists.\nThis light teaches longing.\nIt does not heal.\nIt only reminds.\nI sit still surrounded by light and loss.\nSunlight leaves slowly.\nMy memories do not.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Night of Loneliness",
+        content: "Night arrives without asking.\nLoneliness welcomes it warmly.\nDarkness feels familiar now.\nStars watch silently.\nSleep avoids my mind.\nThoughts grow louder after midnight.\nThe room feels wider, emptier.\nSilence breathes with me.\nLoneliness becomes physical.\nI feel it sitting beside me.\nNight stretches endlessly.\nTime loses meaning.\nI replay words that never mattered.\nI miss people who left long ago.\nNight listens patiently.\nIt does not judge.\nIt stays until I break.\nLoneliness and night understand each other.\nAnd they understand me too.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Shattered Moments",
+        content: "Some moments do not pass they shatter.\nThey break quietly inside the chest.\nTime stops where pain begins.\nI revisit those seconds unwillingly.\nSmiles collapse into silence.\nWords lose their meaning.\nI stand frozen in memory.\nThose moments stole my calm.\nThey return without warning.\nEvery fragment cuts again.\nI try to move on.\nBut moments pull me back.\nThey remind me of loss.\nThey remind me of trust.\nShattered moments never heal.\nThey only change shape.\nI carry them everywhere.\nLike glass in my soul.\nInvisible.\nBut painful.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Troubled Heart",
+        content: "My heart knows no rest.\nIt beats with confusion.\nLove disturbed its peace.\nHope made it fragile.\nPromises unsettled it deeply.\nNow it trembles silently.\nTrust weighs heavy.\nMemories disturb its rhythm.\nThis heart learned pain early.\nIt questions everything now.\nEven happiness feels suspicious.\nIt listens but doubts.\nIt loves but fears.\nTrouble became its nature.\nStill it beats honestly.\nStill it feels deeply.\nA troubled heart survives.\nNot peacefully.\nBut faithfully.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Empty Roads",
+        content: "Roads stretch endlessly before me.\nYet none lead home.\nFootsteps echo alone.\nMemories walk beside me.\nEvery turn feels unfamiliar.\nThe roads forgot laughter.\nSilence guides my path.\nNo destination comforts me.\nEmpty roads understand loss.\nThey accept my pace.\nI walk without urgency.\nWithout hope.\nWithout fear.\nJust movement.\nJust existence.\nThese roads mirror my heart.\nWide.\nSilent.\nEmpty.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Echo of Pain",
+        content: "Pain never stays silent.\nIt echoes within walls of memory.\nEvery thought repeats it.\nEvery breath carries it.\nI try to ignore it.\nBut echoes return louder.\nPain remembers everything.\nIt refuses to fade.\nVoices from the past repeat.\nRegret answers them.\nMy chest fills with soundless cries.\nThis echo never rests.\nIt grows in quiet.\nIt sharpens in loneliness.\nPain becomes familiar.\nAlmost comforting.\nBecause it stays.\nWhen others didn’t.",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Scattered Emotions",
+        content: "My emotions lie everywhere.\nUnorganized.\nUncontrolled.\nLove sits beside anger.\nHope beside despair.\nTears interrupt smiles.\nI cannot gather myself.\nFeelings refuse order.\nThey rise unexpectedly.\nThey fall without warning.\nI feel too much.\nThen nothing.\nScattered emotions exhaust me.\nYet define me.\nThey prove I cared.\nThey prove I felt.\nEven when broken.\nI was alive.",
+        date: "DECEMBER 2025"
+    }
+];
+const poems = [
+    {
+        title: "Incomplete Dreams",
+        content: "Dreams visited briefly\nThen left unfinished\nI planned futures alone\nReality erased them quietly\nHope faded mid-sentence\nDreams collapsed without sound\nI still remember their shape\nTheir warmth\nTheir promise\nIncomplete dreams hurt differently\nThey tease possibility\nThey haunt sleep\nI mourn what never happened\nWhat never began fully\nDreams remain suspended\nBetween desire and loss\nI carry them silently\nLike unfinished prayers",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Silence of Silence",
+        content: "Silence has many layers\nThis one suffocates\nIt speaks without words\nIt answers without comfort\nSilence watches me break\nThen stays\nNo interruption\nNo mercy\nThoughts become louder here\nMemories grow heavier\nI fear this silence\nYet depend on it\nIt understands pain\nBetter than people\nSilence holds me together\nWhile tearing me apart\nIt is cruel\nAnd honest",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Burden of Memories",
+        content: "Memories rest heavy on my chest\nThey demand attention\nThey refuse sleep\nEach memory carries weight\nSome sweet\nMost painful\nI carry them daily\nWithout complaint\nWithout choice\nThey slow my steps\nThey bend my posture\nYet I hold them\nBecause they prove love existed\nThey prove I lived\nThe burden never lifts\nIt only settles deeper\nMemories age with me\nFaithful\nUnforgiving",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Deserted Memories",
+        content: "Some memories feel abandoned\nLeft without closure\nThey wander my mind\nLost\nConfused\nUnfinished\nI try to revisit them\nThey resist clarity\nFaces blur\nVoices fade\nFeelings remain sharp\nDeserted memories ache\nThey search for meaning\nI have none to give\nThey stay anyway\nUnwanted\nUnresolved\nStill alive",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Journey of Loneliness",
+        content: "Loneliness began quietly\nIt grew slowly\nStep by step\nI didn’t notice at first\nNow it walks with me\nEverywhere\nIt knows my routine\nMy weaknesses\nMy nights\nLoneliness does not rush\nIt waits patiently\nIt listens\nIt stays\nThis journey has no map\nNo destination\nOnly movement\nOnly endurance\nOnly me",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Silence of the Heart",
+        content: "My heart speaks silently\nNo one hears it\nIt whispers pain carefully\nProtectively\nIt learned silence from loss\nFrom betrayal\nFrom disappointment\nThis silence holds truth\nIt guards vulnerability\nI trust it now\nMore than words\nMore than promises\nThe heart remains quiet\nBut never empty\nIts silence is survival\nIts quiet is strength\nStill beating\nStill feeling",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Witness of Tears",
+        content: "Tears know my story\nThey fall honestly\nWithout explanation\nThey witness my nights\nMy prayers\nMy breaking points\nNo one else stays\nTears do\nThey carry relief\nThen leave exhaustion\nThey never judge\nNever question\nThey only fall\nAgain\nAnd again\nWitnesses to pain\nProof of endurance\nProof of heart",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Broken Shadow",
+        content: "My shadow looks different now\nIt walks heavier\nSlower\nIt knows loss\nIt mirrors my damage\nEven in light\nI remain broken\nThe shadow doesn’t lie\nIt follows honestly\nIt never leaves\nBroken shadows remember\nThey stretch with pain\nThey shrink with fear\nYet stay\nLoyal\nFaithful\nLike sorrow itself",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Incomplete Voice of Separation",
+        content: "My voice failed during goodbye\nWords stopped halfway\nSeparation stole my breath\nI wanted to explain\nTo hold\nTo fix\nBut silence answered\nMy voice trembled\nThen disappeared\nSeparation needs no language\nIt understands pain naturally\nI speak now alone\nTo memories\nTo walls\nTo night\nMy voice remains incomplete\nLike the ending we never had\nUnspoken\nUnhealed",
+        date: "DECEMBER 2025"
+    }
+];
+const poems = [
+    {
+        title: "Shattered Moments",
+        content: "Some moments don’t end they explode inside you\nThey break your breath before tears arrive\nI replay them until my chest feels torn\nThose seconds changed the shape of my soul\nI remember every detail painfully\nThe silence before the damage\nThe look before the loss\nI was still smiling when I shattered\nNo one noticed the crack forming\nMoments don’t warn you\nThey strike suddenly\nI tried to forget them\nBut forgetting hurts more\nBecause memory is all I have left\nThese moments live inside my eyes\nThey fall as tears without permission\nI cry for what happened\nI cry for what didn’t\nShattered moments don’t heal\nThey only grow quieter\nAnd deeper",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Witness of Tears",
+        content: "My tears know my truth\nThey fall honestly\nWithout permission\nThey witness every breakdown\nEvery sleepless night\nNo one else stays\nTears do\nThey wash my face nightly\nThen leave exhaustion\nThey never judge\nNever question\nThey fall again\nAnd again\nProof of pain\nProof of endurance\nProof of heart\nTears remember everything",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Broken Shadow",
+        content: "My shadow looks tired now\nIt follows slowly\nHeavier than before\nEven light can’t fix it\nIt mirrors my damage honestly\nIt stretches when I break\nShrinks when I cry\nMy shadow knows loss\nIt never leaves\nEven when others did\nIt walks with me silently\nThrough dark days\nThrough lonely nights\nBroken shadows stay faithful\nLike sorrow itself",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Incomplete Voice of Separation",
+        content: "My voice failed during goodbye\nWords drowned in tears\nSeparation stole my strength\nI wanted to explain everything\nBut silence answered\nMy voice trembled\nThen disappeared\nSeparation needs no language\nIt understands pain naturally\nI speak now to memories\nTo walls\nTo nights\nMy goodbye remains unfinished\nLike the ending we never had\nUnspoken\nUnhealed\nStill bleeding inside me",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Ashes of Yesterday",
+        content: "Yesterday did not leave gently\nIt burned everything it touched\nI wake up smelling loss in the air\nMemories rise like smoke in my chest\nI try to breathe but it hurts\nWhat once warmed me now suffocates me\nI hold pieces of moments already dead\nThey crumble when I touch them\nYesterday promised healing\nInstead it left ashes\nI cry over things that no longer exist\nYet they refuse to leave me\nPain settles deeper with every memory\nTime does not erase it\nIt only teaches silence\nI sit with ashes in my hands\nWondering how love turned into dust\nWondering why I am still here\nYesterday watches me quietly\nUnapologetic\nUnfinished",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "When the Heart Stops Explaining",
+        content: "My heart is tired of justifying its pain\nIt stopped explaining long ago\nWords never saved it\nPeople never stayed\nIt learned quiet survival\nEach beat carries exhaustion\nI feel pain without language now\nEven tears hesitate\nThe heart closes its doors gently\nNot out of pride\nOut of protection\nIt remembers being misunderstood\nIt remembers begging silently\nNow it speaks only to itself\nLove knocked again\nThe heart did not answer\nNot because it didn’t care\nBut because it was tired of breaking\nSilence became safety\nAnd loneliness became familiar",
+        date: "DECEMBER 2025"
+    },
+    {
+        title: "Grief Has My Name",
+        content: "Grief knows me personally\nIt calls me by name at night\nIt sits beside my bed patiently\nWaiting for weakness\nI try to resist\nBut grief always wins\nIt reminds me of what I lost\nOf who I trusted\nOf who never returned\nMy chest tightens without warning\nBreathing feels like work\nTears arrive without invitation\nGrief never explains itself\nIt doesn’t need permission\nIt lives inside my routine now\nI carry it to work\nTo sleep\nTo prayer\nGrief follows faithfully\nAs if I belong to it",
+        date: "DECEMBER 2025"
+    }
+];
+{
+    title: "The Cry I Never Shared",
+    content: "There is a cry trapped inside me\nIt never reached the world\nI swallowed it for years\nAfraid of being weak\nAfraid of being ignored\nThat cry learned silence early\nIt shakes my chest at night\nBegging to be released\nBut my lips stay closed\nPeople see calm\nThey don’t hear collapse\nThat cry carries names\nFaces\nPromises\nIt aches for expression\nYet remains imprisoned\nI cry without sound\nWithout witnesses\nThis hidden cry is my deepest wound\nAnd my most honest truth",
+    date: "DECEMBER 2025"
+},
+{
+    title: "A Place Where Love Died",
+    content: "There is a place inside me\nWhere love stopped breathing\nI visit it unintentionally\nMemories wait there quietly\nHope lies unfinished\nTrust lies broken\nI remember how it felt to believe\nHow dangerous that was\nLove once lived loudly here\nNow silence owns it\nI sit there often\nFeeling absence deeply\nNo anger remains\nOnly sadness\nOnly fatigue\nThis place does not heal\nIt only remembers\nI leave it slowly each time\nCarrying more weight than before\nLove died here\nAnd took something with it",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Tears After Everyone Left",
+    content: "I did not cry immediately\nI stayed strong too long\nI waited until everyone left\nUntil silence felt safe\nThen tears came violently\nThey shook my body\nThey emptied my chest\nNo one heard them\nNo one saw them\nThat hurt the most\nI cried for hours\nFor people who moved on\nFor words never spoken\nFor endings I didn’t choose\nTears fell honestly\nWithout performance\nWithout comfort\nI wiped my face alone\nAnd stood up quietly\nCarrying pain like nothing happened",
+    date: "DECEMBER 2025"
+},
+{
+    title: "The Night I Couldn’t Breathe",
+    content: "That night pressed its hands on my chest\nBreathing felt like punishment\nThe room was silent but my heart wasn’t\nTears fell without warning\nI tried to stop them\nThey refused\nMemories attacked together\nEvery regret spoke at once\nI sat on the floor shaking\nAsking myself what I did wrong\nNo answer came\nOnly pain stayed\nI whispered names into darkness\nDarkness did not reply\nMy chest burned with loss\nMy hands felt empty\nThat night watched me collapse\nIt did not comfort me\nIt only stayed longer\nI survived somehow\nBut I left a part of myself there",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Grave of Unsaid Words",
+    content: "There are words buried inside me\nI never said them\nI never dared\nThey died quietly\nEach word wanted to heal something\nEach word arrived too late\nNow they rest heavily in my chest\nI feel them when I breathe\nWhen I cry\nWhen I remember\nI replay conversations endlessly\nChanging my silence\nImagining courage\nBut time does not listen\nThose words remain buried\nNo forgiveness reached them\nNo closure touched them\nI mourn sentences\nI mourn honesty\nI mourn the voice I never used\nThis grave belongs to me alone",
+    date: "DECEMBER 2025"
+},
+{
+    title: "I Stayed Until I Disappeared",
+    content: "I stayed longer than I should have\nI stayed when love was gone\nI stayed when respect faded\nI stayed hoping things would change\nThey didn’t\nInstead I changed\nI grew quieter\nSmaller\nInvisible\nI stopped asking questions\nStopped expecting kindness\nStopped recognizing myself\nPeople say I was strong\nThey don’t know I was fading\nI gave everything gently\nUntil nothing remained\nOne day I looked at myself\nAnd didn’t recognize who stayed\nI left eventually\nBut I left empty",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Tears That Had No Witness",
+    content: "I cried when no one was watching\nNot because I wanted privacy\nBecause no one stayed\nMy tears soaked pillows\nSleeves\nHands\nThey fell honestly\nUnfiltered\nUgly\nReal\nI cried for hours\nThen wiped my face quietly\nAnswered messages like nothing happened\nSmiled carefully\nLaughed on command\nNo one asked about my eyes\nNo one noticed my voice shaking\nThat hurt more than crying alone\nThese tears had no witness\nBut they knew the truth",
+    date: "DECEMBER 2025"
+},
+{
+    title: "The Part of Me That Never Returned",
+    content: "Something left me that day\nNot you\nMe\nI laughed later\nWorked later\nLived later\nBut something was missing\nI searched for it in memories\nIn people\nIn prayers\nIt never came back\nThat part trusted deeply\nLoved honestly\nBelieved easily\nPain took it silently\nNow I live carefully\nWith limits\nWith walls\nPeople think I healed\nThey don’t see what never returned",
+    date: "DECEMBER 2025"
+}
+{
+    title: "When Even Tears Give Up",
+    content: "I cried until my eyes forgot how to beg\nTears slowed not from healing but exhaustion\nMy face stayed wet my heart stayed dry\nI stared at the ceiling counting breaths\nEach one felt borrowed\nPain sat quietly confident it would stay\nI tried remembering joy\nMy mind returned emptiness\nNames passed through me without warmth\nPromises sounded foreign\nI wiped my cheeks out of habit\nNothing changed\nSilence grew comfortable with my breaking\nNight leaned closer listening\nI whispered prayers without faith\nFaith did not answer\nMy chest hurt in places words can’t reach\nI felt smaller than my sorrow\nEven tears stepped back\nAnd left me alone with everything else",
+    date: "DECEMBER 2025"
+},
+{
+    title: "The Day I Buried Myself Alive",
+    content: "I smiled that day\nPeople thought I was fine\nInside I was digging carefully\nLayer by layer\nHope went first\nThen trust\nThen my voice\nI buried reactions\nBuried expectations\nBuried my need to be seen\nI learned how to nod politely\nHow to say “it’s okay”\nHow to disappear without leaving\nNo one attended the burial\nNo one noticed the grave\nI stood above it breathing\nLiving above what I lost\nSometimes I feel movement below\nA memory knocking\nI don’t answer\nI buried myself to survive",
+    date: "DECEMBER 2025"
+},
+{
+    title: "After the Last Goodbye Failed",
+    content: "I practiced goodbye for days\nWords lined up carefully\nCourage waited at the door\nThen the moment arrived\nMy voice collapsed\nTears interrupted every sentence\nYou looked away\nI looked down\nGoodbye lost its meaning\nIt turned into silence\nSilence turned into distance\nDistance turned into forever\nI replay that moment nightly\nTrying different endings\nNone work\nGoodbyes require two hearts\nMine stayed open\nYours already left\nNow I say goodbye alone\nTo memories\nTo expectations\nTo who I was before you",
+    date: "DECEMBER 2025"
+},
+{
+    title: "I Am Still Here, Somehow",
+    content: "I don’t know how I survived\nI just did\nDays passed without permission\nNights dragged me through myself\nI learned to function broken\nTo laugh lightly\nTo speak carefully\nPain learned my routine\nIt stopped surprising me\nI stopped fighting it\nPeople say time heals\nTime only taught me endurance\nI carry loss like a second spine\nInvisible but heavy\nI don’t chase happiness anymore\nI accept quiet moments\nMoments without hurting\nIf that is healing\nThen this is it\nI am still here\nSomehow",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Final Words",
+    content: "I reached the end without reaching peace\nSome wounds chose to stay unnamed\nSome memories refused forgiveness\nI no longer search for what was lost\nI only carry what remains\nPain changed its shape not its place\nI learned how to breathe around it\nHow to live without answers\nIf you found yourself in these pages\nKnow this — you were never weak\nYou were feeling\nAnd feeling deeply is survival",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Last Lines",
+    content: "This book does not end with healing\nIt ends with truth\nSome hearts do not mend\nThey only grow quieter\nSome stories do not close\nThey learn silence instead\nI leave these words here\nNot as closure\nBut as proof that pain was real",
+    date: "DECEMBER 2025"
+}
+{
+    title: "Dedication",
+    content: "To the nights that broke me quietly\nTo the tears that had no witness\nTo the love that left without explanation\nTo the version of me that did not survive\nAnd to anyone who kept going\nWhile falling apart inside",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Author’s Note",
+    content: "I did not write to impress\nI wrote to release\nThese pages carry what I could not say aloud\nIf they hurt you\nIt means you understood\n— Hassan Jatoi",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Copyright Page",
+    content: "© 2025 Hassan Jatoi\nAll rights reserved\nNo part of this book may be reproduced stored or transmitted\nin any form or by any means without written permission\nfrom the author except for brief quotations in reviews\n\nThe End\nNot everything ends loudly\nSome things end by becoming quiet\nThis is one of them 🖤",
+    date: "DECEMBER 2025"
+}
+{
+    title: "Veil of Loneliness",
+    content: "The night hides my whispers\nEven shadows refuse company\nI speak to walls\nThey answer only silence\nLoneliness wears a crown on my chest\nNo one sees the throne I sit upon\nPain is my companion\nAnd betrayal my old friend\nI learned to smile while dying inside",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Philosophy of Broken Hearts",
+    content: "Love is a teacher I could not afford\nIt gave lessons in absence and deceit\nEvery promise carried poison\nEvery touch contained farewell\nI studied the weight of emptiness\nThe anatomy of grief\nAnd realized happiness was a story someone else wrote\nMy heart remains a classroom of lost trust",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Shadows of Betrayal",
+    content: "I trusted blindly\nAnd the night laughed\nYour words were daggers hidden in silk\nYour eyes promised warmth but delivered frost\nI carry the echo of your lies\nIt clings to my ribs like smoke\nEven love becomes a haunted house\nAnd I walk inside, afraid of myself",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Silent Abyss",
+    content: "There is an abyss in my chest\nNo one knows how deep it is\nIt swallows joy before I can hold it\nEvery memory drips like acid\nSilence screams\nAnd I answer with nothing\nI float in a void of forgotten names\nEven grief feels temporary here\nBut pain remains eternal",
+    date: "DECEMBER 2025"
+},
+{
+    title: "The Last Trust",
+    content: "I offered my heart one last time\nHoping it would not be broken\nBut betrayal has a language of its own\nIt writes itself across faces\nAnd laughs in familiar voices\nI learned that trust is a fragile flame\nAnd some hearts are meant to burn\nMine burned quietly, leaving ashes behind",
+    date: "DECEMBER 2025"
+}
+{
+    title: "Whispers of Abandoned Hope",
+    content: "Hope whispered softly once\nI listened too late\nPromises vanished like smoke\nDreams turned to dust in my hands\nI walk carefully avoiding joy\nEvery step echoes what could have been\nLoneliness greets me like an old friend\nBetrayal follows silently\nI learned that hope is a fragile lie",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Echoes in the Empty Room",
+    content: "The walls remember what I forgot\nVoices of the past haunt my nights\nEvery laugh once shared now a dagger\nMemories crawl through the cracks of my mind\nI speak to shadows\nThey respond with absence\nGrief writes letters I cannot read\nEven silence feels heavy here\nPain has made this room its home",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Masks of Love",
+    content: "Love wore a mask\nI adored it blindly\nEvery touch hid a secret\nEvery word carried a sting\nI learned to smile through thorns\nTo trust through betrayal\nEven joy became suspect\nEven hearts carry lies\nMine still beats quietly beneath the weight",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Night of Unanswered Questions",
+    content: "Questions pile in my chest\nAnswers never arrive\nI reach into darkness hoping for light\nOnly shadows stretch their fingers toward me\nEach thought pierces softly\nEach memory whispers betrayal\nPhilosophy teaches endurance\nPain teaches survival\nI sleep without comfort, awake without relief",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Fragments of a Broken Soul",
+    content: "Pieces of me scattered across years\nEach fragment stained with grief\nTrust shattered, love betrayed\nJoy became a stranger\nI pick up what I can carry\nThe rest drifts into nothing\nEven memories hurt\nEven silence screams\nI survive in fragments, never whole",
+    date: "DECEMBER 2025"
+},
+{
+    title: "The Shadow That Knew Me",
+    content: "My shadow stayed when everyone left\nIt followed my mistakes silently\nWitnessed my betrayals, my lost loves\nIt never judged, never whispered\nEven in laughter it hung heavy\nEven in hope it reminded me of loss\nI learned loyalty from sorrow itself\nThe shadow is my teacher, my companion\nIt knows the weight of living unseen",
+    date: "DECEMBER 2025"
+}
+{
+    title: "Veins of Sorrow",
+    content: "Sorrow runs like rivers in my veins\nIt carries whispers of what I lost\nEvery heartbeat aches quietly\nEvery breath tastes of absence\nI have grown used to the weight\nEven joy trembles before it\nPain became a teacher\nGrief became my companion\nI move slowly through the shadows of myself",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Labyrinth of Memories",
+    content: "Memories twist like corridors\nI wander endlessly searching for light\nFaces fade, voices distort\nEven laughter carries a sting\nI stumble on shadows of past love\nEvery turn brings betrayal\nHope is a door I cannot open\nEvery exit leads back to myself\nThe labyrinth knows me better than I know me",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Ashes of Trust",
+    content: "I offered my heart in pieces\nEach piece burned quietly\nPromises turned to smoke\nSmiles became mirrors of lies\nEven my tears betrayed me\nI learned that trust is fragile\nThat love is a pyre\nMine still smolders silently\nI carry the ashes in my chest",
+    date: "DECEMBER 2025"
+},
+{
+    title: "The Silence Between Us",
+    content: "Words failed long before our goodbye\nSilence grew like a wall between us\nEvery glance carried unspoken regret\nEvery touch remembered pain\nI speak to the air\nIt answers with absence\nLove died in quiet\nBetrayal whispered softly\nI remain here, listening to the void",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Midnight of Forgotten Names",
+    content: "Night swallows everything I remember\nFaces vanish like smoke\nNames dissolve in my chest\nEven hope seems unreal\nLoneliness wraps around me\nBetrayal hums a familiar tune\nI speak to ghosts\nThey answer in echoes\nTime became my enemy, memory my tormentor",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Eclipsed Heart",
+    content: "My heart hides behind shadows\nLight touches it reluctantly\nEvery beat questions itself\nEvery pulse feels borrowed\nLove appeared once, then vanished\nTrust shattered like glass\nI walk carefully through the ruins\nPain guides my steps\nEven hope trembles before my heart",
+    date: "DECEMBER 2025"
+}
+{
+    title: "Fragments of a Broken Soul",
+    content: "I carry pieces of myself\nShattered by hands I trusted\nEvery fragment whispers pain\nEvery reflection shows absence\nEven laughter feels borrowed\nEven tears arrive too late\nI walk among my ruins\nInvisible to the world\nYet painfully visible to myself",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Echoes of Forgotten Promises",
+    content: "Promises once spoken\nNow echo in empty rooms\nEach word haunts my chest\nEvery vow is a ghost\nI chase what never existed\nI touch what cannot be held\nEven hope seems a stranger\nBetrayal dances quietly\nAnd I remain silently listening",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Labyrinth of Solitude",
+    content: "I wander through corridors of my mind\nWalls close with memories\nLight flickers and disappears\nEvery turn reminds me of absence\nEven joy hides here\nEven laughter echoes with sorrow\nI meet myself in the shadows\nAnd barely recognize the stranger I became",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Thorns of Memory",
+    content: "Memories pierce silently\nI bleed quietly inside\nEvery thought carries a sting\nEvery smile is a wound\nEven dreams tremble\nEven sleep refuses comfort\nI cradle my pain\nIt grows roots in my chest\nAnd refuses to let go",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Veins of Betrayal",
+    content: "Betrayal runs through me like blood\nEvery pulse whispers distrust\nEvery beat trembles with loss\nEven love seems suspicious\nEven trust feels fragile\nI learned caution too early\nI walk carefully among shadows\nEvery step questions loyalty\nAnd still I move forward, wounded",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Shadows of Forgotten Love",
+    content: "Love once bright now hides in shadows\nIt lingers like smoke in empty rooms\nI search for warmth\nOnly to touch emptiness\nEven joy remembers pain\nEven hope fears betrayal\nI walk with echoes of love lost\nHaunted by what cannot return\nAnd I remain, quietly aching",
+    date: "DECEMBER 2025"
+},
+{
+    title: "The Weight of Silence",
+    content: "Silence presses against my chest\nWords cannot escape\nThoughts collapse quietly\nEven tears hesitate\nEvery unspoken truth lingers\nEvery hidden sorrow grows\nI breathe carefully\nNot to disturb the pain\nAnd live among the echoes of my own heart",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Frost on the Heart",
+    content: "My heart learned cold early\nLove touched and froze it\nTrust melted slowly, then vanished\nPain crystallized inside\nEvery beat feels brittle\nEvery hope shivers\nEven warmth seems foreign\nEven light hesitates\nAnd I walk, careful not to break",
+    date: "DECEMBER 2025"
+},
+{
+    title: "Chamber of Lost Dreams",
+    content: "Dreams entered quietly\nThen vanished before dawn\nI held their shapes\nBut they dissolved in my hands\nEven hope was fragile\nEven joy too brief\nI sit in empty rooms\nListening to echoes of might-have-beens\nAnd learn to live among the ghosts",
+    date: "DECEMBER 2025"
+},
+{
+    title: "The Invisible Scars",
+    content: "Scars live beneath my skin\nNo one sees their depth\nEvery smile conceals them\nEvery word hides them\nEven laughter trembles\nEven silence remembers\nI move carefully\nCarrying the weight of pain\nAnd pretending the world does not notice",
+    date: "DECEMBER 2025"
+}
+            // HASSAN: Mazeed articles/poems yahan add karein
+        ]
+    };
+
+    function renderJournal() {
+        const container = document.getElementById('content-container');
+        container.innerHTML = Journal.articles.map((article, index) => `
             <article class="a5-card">
-                <h2 class="poem-title">${p.title}</h2>
-                <div class="poem-body">${p.content}</div>
-                <div class="poem-footer">— ${p.date} —</div>
+                <span class="poem-num">${toRoman(index + 1)}</span>
+                <h2 class="article-title">${article.title}</h2>
+                <div class="article-body">${article.content}</div>
+                <div class="article-footer">${article.date}</div>
             </article>
         `).join('');
         lucide.createIcons();
@@ -252,14 +707,15 @@
     function updateClock() {
         const now = new Date();
         const options = { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
-        document.getElementById('live-clock').textContent = now.toLocaleString('en-US', options).toUpperCase().replace(',', ' •');
+        const timeStr = now.toLocaleString('en-US', options).toUpperCase().replace(',', ' •');
+        document.getElementById('live-clock').textContent = timeStr;
     }
 
     async function downloadPDF() {
         const element = document.getElementById('capture-area');
         const opt = {
             margin: 10,
-            filename: 'Hassan_Jatoi_Collection.pdf',
+            filename: 'Hassan_Jatoi_Archives.pdf',
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: { scale: 2, useCORS: true },
             jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
@@ -268,7 +724,7 @@
     }
 
     window.onload = () => {
-        renderPoetry();
+        renderJournal();
         setInterval(updateClock, 1000);
         updateClock();
         lucide.createIcons();
@@ -277,1516 +733,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-         
-              
-            </p>
-        </article>
-
-       <article class="a5-card" data-aos>
-    <span class="poem-num">II</span>
-    <h2 class="poem-title">Echoes of Waiting</h2>
-    <p class="poem-content">The clock ticks slowly, a rhythm of pain,
-        Searching for footsteps in the pouring rain.
-        The door stays silent, the hallway is cold,
-        A story of waiting, forever untold.
-        I watch the horizon where the sun meets the sea,
-        Hoping a breeze brings you back to me.
-        The scent of your spirit still hangs in the hall,
-        While shadows of memory dance on the wall.
-        My soul is a desert, thirsting for grace,
-        Lost in the absence of your smiling face.
-        Every sunset is heavy, every dawn is a plea,
-        To break these shackles and set my heart free.
-        But the stars remain silent, the moon turns away,
-        As I drift through the ghosts of another long day.
-        The ink on the pages of our story has dried,
-        Carrying the secrets I’ve buried inside.</p>
-</article>
-
-        <article class="a5-card" data-aos>
-    <span class="poem-num">III</span>
-    <h2 class="poem-title">Unspoken Words</h2>
-    <p class="poem-content">A million words written, but none ever said,
-        The paths of my heart are the ones I don't tread.
-        I carry your reflection in the depths of my eyes,
-        Under the weight of these vast, lonely skies.
-        We walk in the same wind, we breathe the same air,
-        Yet the distance between us is more than I bear.
-        A touch that was fleeting, a glance that was brief,
-        Is the root of my joy and the source of my grief.
-        I build you a kingdom in the world of my sleep,
-        With promises made that I’m destined to keep.
-        The world hears my laughter, but never my soul,
-        Missing the pieces that once made me whole.
-        So I’ll stay in the shadows, a witness unseen,
-        Lost in the spaces of what might have been.
-        Loving you quietly, without sound or sign,
-        Knowing you’re out there, but never quite mine.</p>
-</article>
-
-       <article class="a5-card" data-aos>
-    <span class="poem-num">II</span>
-    <h2 class="poem-title">Lost Dreams</h2>
-    <p class="poem-content">Dreams we built now lie in decay,
-        Scattered fragments of a brighter day.
-        I reach for hope but find only dust,
-        Shattered trust, betrayal, and rust.
-        Nights echo with silent screams,
-        Torn by the loss of what might have been.
-        Every step forward feels the same,
-        Haunted by absence, drenched in pain.
-        The moon hides behind a veil of sorrow,
-        No promise shines for the hope of tomorrow.
-        Tears water the soil of regret,
-        Harvesting grief that I cannot forget.
-        Each morning arrives like a stone on my chest,
-        Breathing feels heavy, sleep gives no rest.
-        Shadows play on walls of my mind,
-        Reminding me of the love I cannot find.
-        I wander, lost, in a world turned gray,
-        Searching for fragments that have slipped away.
-        And yet, in this brokenness, I remain,
-        Holding the dreams that will never sustain.
-        Silent echoes of laughter and song,
-        Remind me that what was, is forever gone.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">III</span>
-    <h2 class="poem-title">Dark Night</h2>
-    <p class="poem-content">The night swallows the last light of day,
-        Leaving only darkness to guide my way.
-        Stars blink faintly, indifferent above,
-        While my soul searches for a lost love.
-        Each shadow stretches across the floor,
-        Echoing the pain that I cannot ignore.
-        The wind carries whispers of your name,
-        Filling the silence with sorrow and blame.
-        I lie awake, haunted and torn,
-        Remembering the nights when hope was born.
-        The clock ticks slowly, mocking my despair,
-        Every moment a reminder you’re not there.
-        Tears trace paths down my weary face,
-        Each drop a reminder of your warm embrace.
-        The darkness presses, suffocating my chest,
-        Offering no comfort, denying me rest.
-        I speak to the night, but it answers with pain,
-        A mirror of grief, an endless chain.
-        Silence becomes my only friend tonight,
-        Wrapping me tightly in sorrow’s quiet might.
-        And as the night deepens, I remain alone,
-        Holding memories that are carved in stone.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">IV</span>
-    <h2 class="poem-title">Lonely Moments</h2>
-    <p class="poem-content">I sit alone where shadows creep,
-        The silence is thick, the memories deep.
-        Laughter that once filled these walls is gone,
-        Only whispers linger, soft and drawn.
-        The moon peeks through with a pale cold light,
-        Guiding my sorrow through the endless night.
-        Each heartbeat echoes your absence near,
-        Every sigh carries a trace of fear.
-        I reach for warmth that cannot stay,
-        Fading like dawn, slipping away.
-        The world moves on, unknowing, unkind,
-        While I am tethered to what I cannot find.
-        Tears fall quietly, unnoticed by all,
-        As I answer the grief that answers my call.
-        Each passing hour deepens the ache,
-        A lonely companion no joy can shake.
-        And in this stillness, I quietly grieve,
-        For the love I lost and cannot retrieve.</p>
-</article>
-
-       <article class="a5-card" data-aos>
-    <span class="poem-num">V</span>
-    <h2 class="poem-title">Nameless Sorrow</h2>
-    <p class="poem-content">A sorrow with no name, no face,
-        It drifts through me, leaving no trace.
-        Silent as the wind, heavy as stone,
-        I carry it everywhere, yet I am alone.
-        The night whispers secrets I cannot bear,
-        Filling the dark with despair.
-        Each memory burns like a hidden flame,
-        Reminding me of love and shame.
-        I walk through shadows, searching for peace,
-        But the pain lingers, it will not cease.
-        The stars seem distant, indifferent above,
-        I long for solace, I long for love.
-        Tears fall quietly, unseen, unheard,
-        Each one a fragment of a lost word.
-        And in this quiet, endless and deep,
-        I cradle the sorrow that refuses to sleep.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">VI</span>
-    <h2 class="poem-title">Journey of Pain</h2>
-    <p class="poem-content">I step along a road unkind,
-        Leaving pieces of myself behind.
-        Every mile echoes with a sigh,
-        Every horizon mocks my cry.
-        The wind cuts sharp against my face,
-        I search for comfort, I search for grace.
-        The shadows of memory cling to my heels,
-        Dragging me back to wounds that never heal.
-        I speak to the sky, but it remains mute,
-        A mirror of sorrow, cold and absolute.
-        Nights stretch long, the stars seem dim,
-        A candle flickers, then grows dim.
-        Yet still I walk, though weary and torn,
-        Carrying the weight of a heart forlorn.
-        This path is cruel, yet I must remain,
-        A traveler lost in grief and pain.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">VII</span>
-    <h2 class="poem-title">Empty Room</h2>
-    <p class="poem-content">The room is silent, yet it breathes,
-        Filled with echoes of what it perceives.
-        Shadows stretch across the floor,
-        Whispering of the one I adore.
-        Every chair holds a memory tight,
-        Every corner shivers with the night.
-        I speak, but only the walls reply,
-        Murmurs of absence, a soft goodbye.
-        The moonlight touches objects cold,
-        Reminding me of stories untold.
-        Tears mark the floor, unseen by all,
-        Each one a testament to my fall.
-        I wander this room, a ghost in its space,
-        Haunted by love I cannot replace.
-        And as silence settles, heavy and deep,
-        I lie awake while the room sleeps.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">VIII</span>
-    <h2 class="poem-title">Complaint of the Heart</h2>
-    <p class="poem-content">My heart whispers complaints to the wind,
-        Of love departed, of grief pinned.
-        It aches with burdens too heavy to name,
-        Torn by passion, scorched by flame.
-        I cry to the sky, but no answer comes,
-        Only the echoes of lost drums.
-        Memories pierce like a sharpened blade,
-        Filling the night with the shadows they made.
-        I reach for solace that cannot be found,
-        Wandering lost, my soul unbound.
-        Even laughter feels distant, a cruel jest,
-        Each beat of my heart refuses rest.
-        The weight of absence sits upon my chest,
-        And in this suffering, I find no rest.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">IX</span>
-    <h2 class="poem-title">Moments of Separation</h2>
-    <p class="poem-content">Each second drags with the pain of you,
-        Moments of separation, endless and true.
-        I see your face in every fleeting shadow,
-        Hear your voice in the wind’s quiet flow.
-        The days are long, nights longer still,
-        Carrying memories that refuse to heal.
-        I reach for your hand, but grasp only air,
-        A cruel reminder that you are not there.
-        Tears fall silently, a river of ache,
-        Tracing the loss that nothing can take.
-        The stars watch on, cold and bright,
-        Indifferent to my heart’s endless night.
-        And I remain, a soul torn apart,
-        Counting the pieces of my broken heart.</p>
-</article>
-
-        <article class="a5-card" data-aos>
-    <span class="poem-num">V</span>
-    <h2 class="poem-title">Nameless Sorrow</h2>
-    <p class="poem-content">A sorrow with no name, no face,
-        It drifts through me, leaving no trace.
-        Silent as the wind, heavy as stone,
-        I carry it everywhere, yet I am alone.
-        The night whispers secrets I cannot bear,
-        Filling the dark with despair.
-        Each memory burns like a hidden flame,
-        Reminding me of love and shame.
-        I walk through shadows, searching for peace,
-        But the pain lingers, it will not cease.
-        The stars seem distant, indifferent above,
-        I long for solace, I long for love.
-        Tears fall quietly, unseen, unheard,
-        Each one a fragment of a lost word.
-        And in this quiet, endless and deep,
-        I cradle the sorrow that refuses to sleep.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">VI</span>
-    <h2 class="poem-title">Journey of Pain</h2>
-    <p class="poem-content">I step along a road unkind,
-        Leaving pieces of myself behind.
-        Every mile echoes with a sigh,
-        Every horizon mocks my cry.
-        The wind cuts sharp against my face,
-        I search for comfort, I search for grace.
-        The shadows of memory cling to my heels,
-        Dragging me back to wounds that never heal.
-        I speak to the sky, but it remains mute,
-        A mirror of sorrow, cold and absolute.
-        Nights stretch long, the stars seem dim,
-        A candle flickers, then grows dim.
-        Yet still I walk, though weary and torn,
-        Carrying the weight of a heart forlorn.
-        This path is cruel, yet I must remain,
-        A traveler lost in grief and pain.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">VII</span>
-    <h2 class="poem-title">Empty Room</h2>
-    <p class="poem-content">The room is silent, yet it breathes,
-        Filled with echoes of what it perceives.
-        Shadows stretch across the floor,
-        Whispering of the one I adore.
-        Every chair holds a memory tight,
-        Every corner shivers with the night.
-        I speak, but only the walls reply,
-        Murmurs of absence, a soft goodbye.
-        The moonlight touches objects cold,
-        Reminding me of stories untold.
-        Tears mark the floor, unseen by all,
-        Each one a testament to my fall.
-        I wander this room, a ghost in its space,
-        Haunted by love I cannot replace.
-        And as silence settles, heavy and deep,
-        I lie awake while the room sleeps.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">VIII</span>
-    <h2 class="poem-title">Complaint of the Heart</h2>
-    <p class="poem-content">My heart whispers complaints to the wind,
-        Of love departed, of grief pinned.
-        It aches with burdens too heavy to name,
-        Torn by passion, scorched by flame.
-        I cry to the sky, but no answer comes,
-        Only the echoes of lost drums.
-        Memories pierce like a sharpened blade,
-        Filling the night with the shadows they made.
-        I reach for solace that cannot be found,
-        Wandering lost, my soul unbound.
-        Even laughter feels distant, a cruel jest,
-        Each beat of my heart refuses rest.
-        The weight of absence sits upon my chest,
-        And in this suffering, I find no rest.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">IX</span>
-    <h2 class="poem-title">Moments of Separation</h2>
-    <p class="poem-content">Each second drags with the pain of you,
-        Moments of separation, endless and true.
-        I see your face in every fleeting shadow,
-        Hear your voice in the wind’s quiet flow.
-        The days are long, nights longer still,
-        Carrying memories that refuse to heal.
-        I reach for your hand, but grasp only air,
-        A cruel reminder that you are not there.
-        Tears fall silently, a river of ache,
-        Tracing the loss that nothing can take.
-        The stars watch on, cold and bright,
-        Indifferent to my heart’s endless night.
-        And I remain, a soul torn apart,
-        Counting the pieces of my broken heart.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">X</span>
-    <h2 class="poem-title">Ruin of the Heart</h2>
-    <p class="poem-content">The heart trusted love, and love answered with betrayal.<br>
-        Every beat now carries the echo of what was broken.<br>
-        I tried to rebuild myself from memories that kept collapsing.<br>
-        Your absence became heavier than your presence ever was.<br>
-        Some wounds do not bleed, they quietly destroy the soul.<br>
-        I loved honestly, and that honesty ruined me completely.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XI</span>
-    <h2 class="poem-title">Dark Memories</h2>
-    <p class="poem-content">The past returns at night without asking permission.<br>
-        Memories knock softly, but break everything inside.<br>
-        Faces smile in memory, yet leave pain behind.<br>
-        I drown in moments that were never meant to last.<br>
-        Even sleep refuses to protect me from yesterday.<br>
-        Dark memories do not fade, they wait patiently.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XII</span>
-    <h2 class="poem-title">Silent Whisper</h2>
-    <p class="poem-content">Silence carries your voice better than words ever did.<br>
-        My heart listens to whispers no one else can hear.<br>
-        Pain speaks quietly, yet it never lies.<br>
-        I scream inside, while the world hears nothing.<br>
-        Your betrayal lives in the quiet spaces of my soul.<br>
-        Silence became my loudest confession.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XIII</span>
-    <h2 class="poem-title">Moment of Parting</h2>
-    <p class="poem-content">Goodbyes happen once, but their pain repeats forever.<br>
-        Your eyes left before your body did.<br>
-        I held the moment, but it slipped away bleeding.<br>
-        Parting is the slow death of shared dreams.<br>
-        I watched you leave, and something inside me followed.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XIV</span>
-    <h2 class="poem-title">Empty House</h2>
-    <p class="poem-content">The house remembers voices my heart still searches for.<br>
-        Every wall echoes a love that no longer lives here.<br>
-        Rooms feel wider when they are filled with absence.<br>
-        I walk through silence wearing memories like chains.<br>
-        This house is not empty, it is grieving.</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XV</span>
-    <h2 class="poem-title">Incomplete Happiness</h2>
-    <p class="poem-content">Happiness visited briefly, then forgot my address.<br>
-        Smiles felt real until reality interrupted.<br>
-        Every joy carried the warning of loss.<br>
-        I learned happiness can exist without staying.<br>
-        Some lives are written with unfinished joy.</p>
-</article>
-
-        <article class="a5-card" data-aos>
-    <span class="poem-num">XVI</span>
-    <h2 class="poem-title">Wet Eyes</h2>
-    <p class="poem-content">My eyes are tired of carrying unshed storms.<br>
-        Tears pause at the edge, afraid to fall.<br>
-        Pain hides behind every blink.<br>
-        I look normal, but my gaze is broken.<br>
-        Wet eyes remember what lips refuse to say.<br>
-        They hold names I no longer speak.<br>
-        Every glance trembles with old wounds.<br>
-        Even light feels heavy when it touches them.<br>
-        I smile, yet my eyes betray me.<br>
-        They reflect nights full of silent crying.<br>
-        Some tears do not fall, they settle deep.<br>
-        My eyes have learned sorrow by heart.<br>
-        They have seen love leave slowly.<br>
-        They have watched promises disappear.<br>
-        Wet eyes age faster than time.<br>
-        They carry grief like a permanent shadow.<br>
-        I look ahead, but see the past.<br>
-        My eyes ask for rest, not sympathy.<br>
-        They are wet, not weak.<br>
-        They are alive with pain.</p>
-</article>
-
-       <article class="a5-card" data-aos>
-    <span class="poem-num">XVII</span>
-    <h2 class="poem-title">Tales of a Broken Heart</h2>
-    <p class="poem-content">This heart speaks only in cracked sentences.<br>
-        Every beat tells a story of loss.<br>
-        Love entered like light and left like a storm.<br>
-        Promises were written, never fulfilled.<br>
-        Trust broke quietly, without noise.<br>
-        The heart remembers everything too clearly.<br>
-        Some tales are written with tears, not ink.<br>
-        I loved deeply, and paid fully.<br>
-        The broken heart narrates without a voice.<br>
-        It repeats moments it cannot forget.<br>
-        Each scar holds a chapter.<br>
-        Each silence hides a scream.<br>
-        The heart still hopes, foolishly.<br>
-        It still waits, painfully.<br>
-        Broken does not mean empty.<br>
-        It means used until pain remained.<br>
-        These tales have no happy ending.<br>
-        Only lessons wrapped in grief.<br>
-        The heart survives, but never heals completely.<br>
-        It keeps telling its story in silence.</p>
-</article>
-
-        <article class="a5-card" data-aos>
-    <span class="poem-num">XVIII</span>
-    <h2 class="poem-title">Sorrowful Evening</h2>
-    <p class="poem-content">Evening arrives carrying a familiar sadness.<br>
-        The sky dims, matching my heart.<br>
-        Sunlight fades like forgotten promises.<br>
-        Silence grows heavier with every minute.<br>
-        Loneliness sits beside me quietly.<br>
-        The air feels slower, heavier.<br>
-        Shadows stretch like tired memories.<br>
-        I wait for nothing, yet still wait.<br>
-        This evening remembers my pain.<br>
-        It knows my routine of grief.<br>
-        Tea grows cold, like conversations once warm.<br>
-        Birds return home, I return inward.<br>
-        The world slows, my thoughts race.<br>
-        Sorrow fits evenings perfectly.<br>
-        Night prepares to take over.<br>
-        I remain unfinished between light and dark.<br>
-        This evening asks nothing, gives nothing.<br>
-        It only stays.<br>
-        And that is enough to hurt.</p>
-</article>
-
-        <article class="a5-card" data-aos>
-    <span class="poem-num">XIX</span>
-    <h2 class="poem-title">Silent Moment</h2>
-    <p class="poem-content">A moment passes without sound.<br>
-        Yet it changes everything inside.<br>
-        Silence presses against my chest.<br>
-        Words fail before they begin.<br>
-        Breathing feels loud in this quiet.<br>
-        Truth stands naked in silence.<br>
-        I face myself without escape.<br>
-        Memories surface uninvited.<br>
-        Pain reveals its true weight.<br>
-        This moment refuses distraction.<br>
-        It demands feeling.<br>
-        Silence becomes unbearable.<br>
-        I realize what I lost.<br>
-        I realize what I became.<br>
-        Time pauses, emotions don’t.<br>
-        This moment scars gently.<br>
-        No one notices.<br>
-        But I do.<br>
-        And I will forever.</p>
-</article>
-
-        <article class="a5-card" data-aos>
-    <span class="poem-num">XX</span>
-    <h2 class="poem-title">Sunlight of Memories</h2>
-    <p class="poem-content">Sunlight enters carrying your shadow<br>
-        It warms me briefly then hurts<br>
-        Memories shine brighter than reality<br>
-        Light touches wounds gently painfully<br>
-        I close my eyes still see you<br>
-        Sunlight reminds me of warmth lost<br>
-        It reveals dust on forgotten moments<br>
-        Even brightness can ache<br>
-        Memories glow without permission<br>
-        They arrive dressed as comfort<br>
-        They leave as pain<br>
-        Sunlight fades memories stay<br>
-        I chase warmth that no longer exists<br>
-        This light teaches longing<br>
-        It does not heal<br>
-        It only reminds<br>
-        I sit still surrounded by light and loss<br>
-        Sunlight leaves slowly<br>
-        My memories do not</p>
-</article>
-
-        Night of Loneliness
-
-Night arrives without asking.
-Loneliness welcomes it warmly.
-Darkness feels familiar now.
-Stars watch silently.
-Sleep avoids my mind.
-Thoughts grow louder after midnight.
-The room feels wider, emptier.
-Silence breathes with me.
-Loneliness becomes physical.
-I feel it sitting beside me.
-Night stretches endlessly.
-Time loses meaning.
-I replay words that never mattered.
-I miss people who left long ago.
-Night listens patiently.
-It does not judge.
-It stays until I break.
-Loneliness and night understand each other.
-And they understand me too.
-
-        <article class="a5-card" data-aos>
-    <span class="poem-num">XXI</span>
-    <h2 class="poem-title">Shattered Moments</h2>
-    <p class="poem-content">Some moments do not pass they shatter<br>
-        They break quietly inside the chest<br>
-        Time stops where pain begins<br>
-        I revisit those seconds unwillingly<br>
-        Smiles collapse into silence<br>
-        Words lose their meaning<br>
-        I stand frozen in memory<br>
-        Those moments stole my calm<br>
-        They return without warning<br>
-        Every fragment cuts again<br>
-        I try to move on<br>
-        But moments pull me back<br>
-        They remind me of loss<br>
-        They remind me of trust<br>
-        Shattered moments never heal<br>
-        They only change shape<br>
-        I carry them everywhere<br>
-        Like glass in my soul<br>
-        Invisible<br>
-        But painful</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXII</span>
-    <h2 class="poem-title">Troubled Heart</h2>
-    <p class="poem-content">My heart knows no rest<br>
-        It beats with confusion<br>
-        Love disturbed its peace<br>
-        Hope made it fragile<br>
-        Promises unsettled it deeply<br>
-        Now it trembles silently<br>
-        Trust weighs heavy<br>
-        Memories disturb its rhythm<br>
-        This heart learned pain early<br>
-        It questions everything now<br>
-        Even happiness feels suspicious<br>
-        It listens but doubts<br>
-        It loves but fears<br>
-        Trouble became its nature<br>
-        Still it beats honestly<br>
-        Still it feels deeply<br>
-        A troubled heart survives<br>
-        Not peacefully<br>
-        But faithfully</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXIII</span>
-    <h2 class="poem-title">Empty Roads</h2>
-    <p class="poem-content">Roads stretch endlessly before me<br>
-        Yet none lead home<br>
-        Footsteps echo alone<br>
-        Memories walk beside me<br>
-        Every turn feels unfamiliar<br>
-        The roads forgot laughter<br>
-        Silence guides my path<br>
-        No destination comforts me<br>
-        Empty roads understand loss<br>
-        They accept my pace<br>
-        I walk without urgency<br>
-        Without hope<br>
-        Without fear<br>
-        Just movement<br>
-        Just existence<br>
-        These roads mirror my heart<br>
-        Wide<br>
-        Silent<br>
-        Empty</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXIV</span>
-    <h2 class="poem-title">Echo of Pain</h2>
-    <p class="poem-content">Pain never stays silent<br>
-        It echoes within walls of memory<br>
-        Every thought repeats it<br>
-        Every breath carries it<br>
-        I try to ignore it<br>
-        But echoes return louder<br>
-        Pain remembers everything<br>
-        It refuses to fade<br>
-        Voices from the past repeat<br>
-        Regret answers them<br>
-        My chest fills with soundless cries<br>
-        This echo never rests<br>
-        It grows in quiet<br>
-        It sharpens in loneliness<br>
-        Pain becomes familiar<br>
-        Almost comforting<br>
-        Because it stays<br>
-        When others didn’t</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXV</span>
-    <h2 class="poem-title">Scattered Emotions</h2>
-    <p class="poem-content">My emotions lie everywhere<br>
-        Unorganized<br>
-        Uncontrolled<br>
-        Love sits beside anger<br>
-        Hope beside despair<br>
-        Tears interrupt smiles<br>
-        I cannot gather myself<br>
-        Feelings refuse order<br>
-        They rise unexpectedly<br>
-        They fall without warning<br>
-        I feel too much<br>
-        Then nothing<br>
-        Scattered emotions exhaust me<br>
-        Yet define me<br>
-        They prove I cared<br>
-        They prove I felt<br>
-        Even when broken<br>
-        I was alive</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXVI</span>
-    <h2 class="poem-title">Incomplete Dreams</h2>
-    <p class="poem-content">Dreams visited briefly<br>
-        Then left unfinished<br>
-        I planned futures alone<br>
-        Reality erased them quietly<br>
-        Hope faded mid-sentence<br>
-        Dreams collapsed without sound<br>
-        I still remember their shape<br>
-        Their warmth<br>
-        Their promise<br>
-        Incomplete dreams hurt differently<br>
-        They tease possibility<br>
-        They haunt sleep<br>
-        I mourn what never happened<br>
-        What never began fully<br>
-        Dreams remain suspended<br>
-        Between desire and loss<br>
-        I carry them silently<br>
-        Like unfinished prayers</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXVII</span>
-    <h2 class="poem-title">Silence of Silence</h2>
-    <p class="poem-content">Silence has many layers<br>
-        This one suffocates<br>
-        It speaks without words<br>
-        It answers without comfort<br>
-        Silence watches me break<br>
-        Then stays<br>
-        No interruption<br>
-        No mercy<br>
-        Thoughts become louder here<br>
-        Memories grow heavier<br>
-        I fear this silence<br>
-        Yet depend on it<br>
-        It understands pain<br>
-        Better than people<br>
-        Silence holds me together<br>
-        While tearing me apart<br>
-        It is cruel<br>
-        And honest</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXVIII</span>
-    <h2 class="poem-title">Burden of Memories</h2>
-    <p class="poem-content">Memories rest heavy on my chest<br>
-        They demand attention<br>
-        They refuse sleep<br>
-        Each memory carries weight<br>
-        Some sweet<br>
-        Most painful<br>
-        I carry them daily<br>
-        Without complaint<br>
-        Without choice<br>
-        They slow my steps<br>
-        They bend my posture<br>
-        Yet I hold them<br>
-        Because they prove love existed<br>
-        They prove I lived<br>
-        The burden never lifts<br>
-        It only settles deeper<br>
-        Memories age with me<br>
-        Faithful<br>
-        Unforgiving</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXIX</span>
-    <h2 class="poem-title">Deserted Memories</h2>
-    <p class="poem-content">Some memories feel abandoned<br>
-        Left without closure<br>
-        They wander my mind<br>
-        Lost<br>
-        Confused<br>
-        Unfinished<br>
-        I try to revisit them<br>
-        They resist clarity<br>
-        Faces blur<br>
-        Voices fade<br>
-        Feelings remain sharp<br>
-        Deserted memories ache<br>
-        They search for meaning<br>
-        I have none to give<br>
-        They stay anyway<br>
-        Unwanted<br>
-        Unresolved<br>
-        Still alive</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXX</span>
-    <h2 class="poem-title">Journey of Loneliness</h2>
-    <p class="poem-content">Loneliness began quietly<br>
-        It grew slowly<br>
-        Step by step<br>
-        I didn’t notice at first<br>
-        Now it walks with me<br>
-        Everywhere<br>
-        It knows my routine<br>
-        My weaknesses<br>
-        My nights<br>
-        Loneliness does not rush<br>
-        It waits patiently<br>
-        It listens<br>
-        It stays<br>
-        This journey has no map<br>
-        No destination<br>
-        Only movement<br>
-        Only endurance<br>
-        Only me</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXXI</span>
-    <h2 class="poem-title">Silence of the Heart</h2>
-    <p class="poem-content">My heart speaks silently<br>
-        No one hears it<br>
-        It whispers pain carefully<br>
-        Protectively<br>
-        It learned silence from loss<br>
-        From betrayal<br>
-        From disappointment<br>
-        This silence holds truth<br>
-        It guards vulnerability<br>
-        I trust it now<br>
-        More than words<br>
-        More than promises<br>
-        The heart remains quiet<br>
-        But never empty<br>
-        Its silence is survival<br>
-        Its quiet is strength<br>
-        Still beating<br>
-        Still feeling</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXXII</span>
-    <h2 class="poem-title">Witness of Tears</h2>
-    <p class="poem-content">Tears know my story<br>
-        They fall honestly<br>
-        Without explanation<br>
-        They witness my nights<br>
-        My prayers<br>
-        My breaking points<br>
-        No one else stays<br>
-        Tears do<br>
-        They carry relief<br>
-        Then leave exhaustion<br>
-        They never judge<br>
-        Never question<br>
-        They only fall<br>
-        Again<br>
-        And again<br>
-        Witnesses to pain<br>
-        Proof of endurance<br>
-        Proof of heart</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXXIII</span>
-    <h2 class="poem-title">Broken Shadow</h2>
-    <p class="poem-content">My shadow looks different now<br>
-        It walks heavier<br>
-        Slower<br>
-        It knows loss<br>
-        It mirrors my damage<br>
-        Even in light<br>
-        I remain broken<br>
-        The shadow doesn’t lie<br>
-        It follows honestly<br>
-        It never leaves<br>
-        Broken shadows remember<br>
-        They stretch with pain<br>
-        They shrink with fear<br>
-        Yet stay<br>
-        Loyal<br>
-        Faithful<br>
-        Like sorrow itself</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXXIV</span>
-    <h2 class="poem-title">Incomplete Voice of Separation</h2>
-    <p class="poem-content">My voice failed during goodbye<br>
-        Words stopped halfway<br>
-        Separation stole my breath<br>
-        I wanted to explain<br>
-        To hold<br>
-        To fix<br>
-        But silence answered<br>
-        My voice trembled<br>
-        Then disappeared<br>
-        Separation needs no language<br>
-        It understands pain naturally<br>
-        I speak now alone<br>
-        To memories<br>
-        To walls<br>
-        To night<br>
-        My voice remains incomplete<br>
-        Like the ending we never had<br>
-        Unspoken<br>
-        Unhealed</p>
-</article>
-
-        <article class="a5-card" data-aos>
-    <span class="poem-num">XXXV</span>
-    <h2 class="poem-title">Shattered Moments</h2>
-    <p class="poem-content">Some moments don’t end they explode inside you<br>
-        They break your breath before tears arrive<br>
-        I replay them until my chest feels torn<br>
-        Those seconds changed the shape of my soul<br>
-        I remember every detail painfully<br>
-        The silence before the damage<br>
-        The look before the loss<br>
-        I was still smiling when I shattered<br>
-        No one noticed the crack forming<br>
-        Moments don’t warn you<br>
-        They strike suddenly<br>
-        I tried to forget them<br>
-        But forgetting hurts more<br>
-        Because memory is all I have left<br>
-        These moments live inside my eyes<br>
-        They fall as tears without permission<br>
-        I cry for what happened<br>
-        I cry for what didn’t<br>
-        Shattered moments don’t heal<br>
-        They only grow quieter<br>
-        And deeper</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXXVI</span>
-    <h2 class="poem-title">Witness of Tears</h2>
-    <p class="poem-content">My tears know my truth<br>
-        They fall honestly<br>
-        Without permission<br>
-        They witness every breakdown<br>
-        Every sleepless night<br>
-        No one else stays<br>
-        Tears do<br>
-        They wash my face nightly<br>
-        Then leave exhaustion<br>
-        They never judge<br>
-        Never question<br>
-        They fall again<br>
-        And again<br>
-        Proof of pain<br>
-        Proof of endurance<br>
-        Proof of heart<br>
-        Tears remember everything</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXXVII</span>
-    <h2 class="poem-title">Broken Shadow</h2>
-    <p class="poem-content">My shadow looks tired now<br>
-        It follows slowly<br>
-        Heavier than before<br>
-        Even light can’t fix it<br>
-        It mirrors my damage honestly<br>
-        It stretches when I break<br>
-        Shrinks when I cry<br>
-        My shadow knows loss<br>
-        It never leaves<br>
-        Even when others did<br>
-        It walks with me silently<br>
-        Through dark days<br>
-        Through lonely nights<br>
-        Broken shadows stay faithful<br>
-        Like sorrow itself</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XXXVIII</span>
-    <h2 class="poem-title">Incomplete Voice of Separation</h2>
-    <p class="poem-content">My voice failed during goodbye<br>
-        Words drowned in tears<br>
-        Separation stole my strength<br>
-        I wanted to explain everything<br>
-        But silence answered<br>
-        My voice trembled<br>
-        Then disappeared<br>
-        Separation needs no language<br>
-        It understands pain naturally<br>
-        I speak now to memories<br>
-        To walls<br>
-        To nights<br>
-        My goodbye remains unfinished<br>
-        Like the ending we never had<br>
-        Unspoken<br>
-        Unhealed<br>
-        Still bleeding inside me</p>
-</article>
-
-        <article class="a5-card" data-aos>
-    <span class="poem-num">XXXIX</span>
-    <h2 class="poem-title">Ashes of Yesterday</h2>
-    <p class="poem-content">Yesterday did not leave gently<br>
-        It burned everything it touched<br>
-        I wake up smelling loss in the air<br>
-        Memories rise like smoke in my chest<br>
-        I try to breathe but it hurts<br>
-        What once warmed me now suffocates me<br>
-        I hold pieces of moments already dead<br>
-        They crumble when I touch them<br>
-        Yesterday promised healing<br>
-        Instead it left ashes<br>
-        I cry over things that no longer exist<br>
-        Yet they refuse to leave me<br>
-        Pain settles deeper with every memory<br>
-        Time does not erase it<br>
-        It only teaches silence<br>
-        I sit with ashes in my hands<br>
-        Wondering how love turned into dust<br>
-        Wondering why I am still here<br>
-        Yesterday watches me quietly<br>
-        Unapologetic<br>
-        Unfinished</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XL</span>
-    <h2 class="poem-title">When the Heart Stops Explaining</h2>
-    <p class="poem-content">My heart is tired of justifying its pain<br>
-        It stopped explaining long ago<br>
-        Words never saved it<br>
-        People never stayed<br>
-        It learned quiet survival<br>
-        Each beat carries exhaustion<br>
-        I feel pain without language now<br>
-        Even tears hesitate<br>
-        The heart closes its doors gently<br>
-        Not out of pride<br>
-        Out of protection<br>
-        It remembers being misunderstood<br>
-        It remembers begging silently<br>
-        Now it speaks only to itself<br>
-        Love knocked again<br>
-        The heart did not answer<br>
-        Not because it didn’t care<br>
-        But because it was tired of breaking<br>
-        Silence became safety<br>
-        And loneliness became familiar</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XLI</span>
-    <h2 class="poem-title">Grief Has My Name</h2>
-    <p class="poem-content">Grief knows me personally<br>
-        It calls me by name at night<br>
-        It sits beside my bed patiently<br>
-        Waiting for weakness<br>
-        I try to resist<br>
-        But grief always wins<br>
-        It reminds me of what I lost<br>
-        Of who I trusted<br>
-        Of who never returned<br>
-        My chest tightens without warning<br>
-        Breathing feels like work<br>
-        Tears arrive without invitation<br>
-        Grief never explains itself<br>
-        It doesn’t need permission<br>
-        It lives inside my routine now<br>
-        I carry it to work<br>
-        To sleep<br>
-        To prayer<br>
-        Grief follows faithfully<br>
-        As if I belong to it</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XLII</span>
-    <h2 class="poem-title">The Cry I Never Shared</h2>
-    <p class="poem-content">There is a cry trapped inside me<br>
-        It never reached the world<br>
-        I swallowed it for years<br>
-        Afraid of being weak<br>
-        Afraid of being ignored<br>
-        That cry learned silence early<br>
-        It shakes my chest at night<br>
-        Begging to be released<br>
-        But my lips stay closed<br>
-        People see calm<br>
-        They don’t hear collapse<br>
-        That cry carries names<br>
-        Faces<br>
-        Promises<br>
-        It aches for expression<br>
-        Yet remains imprisoned<br>
-        I cry without sound<br>
-        Without witnesses<br>
-        This hidden cry is my deepest wound<br>
-        And my most honest truth</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XLIII</span>
-    <h2 class="poem-title">A Place Where Love Died</h2>
-    <p class="poem-content">There is a place inside me<br>
-        Where love stopped breathing<br>
-        I visit it unintentionally<br>
-        Memories wait there quietly<br>
-        Hope lies unfinished<br>
-        Trust lies broken<br>
-        I remember how it felt to believe<br>
-        How dangerous that was<br>
-        Love once lived loudly here<br>
-        Now silence owns it<br>
-        I sit there often<br>
-        Feeling absence deeply<br>
-        No anger remains<br>
-        Only sadness<br>
-        Only fatigue<br>
-        This place does not heal<br>
-        It only remembers<br>
-        I leave it slowly each time<br>
-        Carrying more weight than before<br>
-        Love died here<br>
-        And took something with it</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XLIV</span>
-    <h2 class="poem-title">Tears After Everyone Left</h2>
-    <p class="poem-content">I did not cry immediately<br>
-        I stayed strong too long<br>
-        I waited until everyone left<br>
-        Until silence felt safe<br>
-        Then tears came violently<br>
-        They shook my body<br>
-        They emptied my chest<br>
-        No one heard them<br>
-        No one saw them<br>
-        That hurt the most<br>
-        I cried for hours<br>
-        For people who moved on<br>
-        For words never spoken<br>
-        For endings I didn’t choose<br>
-        Tears fell honestly<br>
-        Without performance<br>
-        Without comfort<br>
-        I wiped my face alone<br>
-        And stood up quietly<br>
-        Carrying pain like nothing happened</p>
-</article>
-
-        <article class="a5-card" data-aos>
-    <span class="poem-num">XLV</span>
-    <h2 class="poem-title">The Night I Couldn’t Breathe</h2>
-    <p class="poem-content">That night pressed its hands on my chest<br>
-        Breathing felt like punishment<br>
-        The room was silent but my heart wasn’t<br>
-        Tears fell without warning<br>
-        I tried to stop them<br>
-        They refused<br>
-        Memories attacked together<br>
-        Every regret spoke at once<br>
-        I sat on the floor shaking<br>
-        Asking myself what I did wrong<br>
-        No answer came<br>
-        Only pain stayed<br>
-        I whispered names into darkness<br>
-        Darkness did not reply<br>
-        My chest burned with loss<br>
-        My hands felt empty<br>
-        That night watched me collapse<br>
-        It did not comfort me<br>
-        It only stayed longer<br>
-        I survived somehow<br>
-        But I left a part of myself there</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XLVI</span>
-    <h2 class="poem-title">Grave of Unsaid Words</h2>
-    <p class="poem-content">There are words buried inside me<br>
-        I never said them<br>
-        I never dared<br>
-        They died quietly<br>
-        Each word wanted to heal something<br>
-        Each word arrived too late<br>
-        Now they rest heavily in my chest<br>
-        I feel them when I breathe<br>
-        When I cry<br>
-        When I remember<br>
-        I replay conversations endlessly<br>
-        Changing my silence<br>
-        Imagining courage<br>
-        But time does not listen<br>
-        Those words remain buried<br>
-        No forgiveness reached them<br>
-        No closure touched them<br>
-        I mourn sentences<br>
-        I mourn honesty<br>
-        I mourn the voice I never used<br>
-        This grave belongs to me alone</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XLVII</span>
-    <h2 class="poem-title">I Stayed Until I Disappeared</h2>
-    <p class="poem-content">I stayed longer than I should have<br>
-        I stayed when love was gone<br>
-        I stayed when respect faded<br>
-        I stayed hoping things would change<br>
-        They didn’t<br>
-        Instead I changed<br>
-        I grew quieter<br>
-        Smaller<br>
-        Invisible<br>
-        I stopped asking questions<br>
-        Stopped expecting kindness<br>
-        Stopped recognizing myself<br>
-        People say I was strong<br>
-        They don’t know I was fading<br>
-        I gave everything gently<br>
-        Until nothing remained<br>
-        One day I looked at myself<br>
-        And didn’t recognize who stayed<br>
-        I left eventually<br>
-        But I left empty</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XLVIII</span>
-    <h2 class="poem-title">Tears That Had No Witness</h2>
-    <p class="poem-content">I cried when no one was watching<br>
-        Not because I wanted privacy<br>
-        Because no one stayed<br>
-        My tears soaked pillows<br>
-        Sleeves<br>
-        Hands<br>
-        They fell honestly<br>
-        Unfiltered<br>
-        Ugly<br>
-        Real<br>
-        I cried for hours<br>
-        Then wiped my face quietly<br>
-        Answered messages like nothing happened<br>
-        Smiled carefully<br>
-        Laughed on command<br>
-        No one asked about my eyes<br>
-        No one noticed my voice shaking<br>
-        That hurt more than crying alone<br>
-        These tears had no witness<br>
-        But they knew the truth</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">XLIX</span>
-    <h2 class="poem-title">The Part of Me That Never Returned</h2>
-    <p class="poem-content">Something left me that day<br>
-        Not you<br>
-        Me<br>
-        I laughed later<br>
-        Worked later<br>
-        Lived later<br>
-        But something was missing<br>
-        I searched for it in memories<br>
-        In people<br>
-        In prayers<br>
-        It never came back<br>
-        That part trusted deeply<br>
-        Loved honestly<br>
-        Believed easily<br>
-        Pain took it silently<br>
-        Now I live carefully<br>
-        With limits<br>
-        With walls<br>
-        People think I healed<br>
-        They don’t see what never returned</p>
-</article>
-
-        <article class="a5-card" data-aos>
-    <span class="poem-num">L</span>
-    <h2 class="poem-title">When Even Tears Give Up</h2>
-    <p class="poem-content">I cried until my eyes forgot how to beg<br>
-        Tears slowed not from healing but exhaustion<br>
-        My face stayed wet my heart stayed dry<br>
-        I stared at the ceiling counting breaths<br>
-        Each one felt borrowed<br>
-        Pain sat quietly confident it would stay<br>
-        I tried remembering joy<br>
-        My mind returned emptiness<br>
-        Names passed through me without warmth<br>
-        Promises sounded foreign<br>
-        I wiped my cheeks out of habit<br>
-        Nothing changed<br>
-        Silence grew comfortable with my breaking<br>
-        Night leaned closer listening<br>
-        I whispered prayers without faith<br>
-        Faith did not answer<br>
-        My chest hurt in places words can’t reach<br>
-        I felt smaller than my sorrow<br>
-        Even tears stepped back<br>
-        And left me alone with everything else</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">LI</span>
-    <h2 class="poem-title">The Day I Buried Myself Alive</h2>
-    <p class="poem-content">I smiled that day<br>
-        People thought I was fine<br>
-        Inside I was digging carefully<br>
-        Layer by layer<br>
-        Hope went first<br>
-        Then trust<br>
-        Then my voice<br>
-        I buried reactions<br>
-        Buried expectations<br>
-        Buried my need to be seen<br>
-        I learned how to nod politely<br>
-        How to say “it’s okay”<br>
-        How to disappear without leaving<br>
-        No one attended the burial<br>
-        No one noticed the grave<br>
-        I stood above it breathing<br>
-        Living above what I lost<br>
-        Sometimes I feel movement below<br>
-        A memory knocking<br>
-        I don’t answer<br>
-        I buried myself to survive</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">LII</span>
-    <h2 class="poem-title">After the Last Goodbye Failed</h2>
-    <p class="poem-content">I practiced goodbye for days<br>
-        Words lined up carefully<br>
-        Courage waited at the door<br>
-        Then the moment arrived<br>
-        My voice collapsed<br>
-        Tears interrupted every sentence<br>
-        You looked away<br>
-        I looked down<br>
-        Goodbye lost its meaning<br>
-        It turned into silence<br>
-        Silence turned into distance<br>
-        Distance turned into forever<br>
-        I replay that moment nightly<br>
-        Trying different endings<br>
-        None work<br>
-        Goodbyes require two hearts<br>
-        Mine stayed open<br>
-        Yours already left<br>
-        Now I say goodbye alone<br>
-        To memories<br>
-        To expectations<br>
-        To who I was before you</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">LIII</span>
-    <h2 class="poem-title">I Am Still Here, Somehow</h2>
-    <p class="poem-content">I don’t know how I survived<br>
-        I just did<br>
-        Days passed without permission<br>
-        Nights dragged me through myself<br>
-        I learned to function broken<br>
-        To laugh lightly<br>
-        To speak carefully<br>
-        Pain learned my routine<br>
-        It stopped surprising me<br>
-        I stopped fighting it<br>
-        People say time heals<br>
-        Time only taught me endurance<br>
-        I carry loss like a second spine<br>
-        Invisible but heavy<br>
-        I don’t chase happiness anymore<br>
-        I accept quiet moments<br>
-        Moments without hurting<br>
-        If that is healing<br>
-        Then this is it<br>
-        I am still here<br>
-        Somehow</p>
-</article>
-
-        <article class="a5-card" data-aos>
-    <span class="poem-num">LIV</span>
-    <h2 class="poem-title">Final Words</h2>
-    <p class="poem-content">I reached the end without reaching peace<br>
-        Some wounds chose to stay unnamed<br>
-        Some memories refused forgiveness<br>
-        I no longer search for what was lost<br>
-        I only carry what remains<br>
-        Pain changed its shape not its place<br>
-        I learned how to breathe around it<br>
-        How to live without answers<br>
-        If you found yourself in these pages<br>
-        Know this — you were never weak<br>
-        You were feeling<br>
-        And feeling deeply is survival</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">LV</span>
-    <h2 class="poem-title">Last Lines</h2>
-    <p class="poem-content">This book does not end with healing<br>
-        It ends with truth<br>
-        Some hearts do not mend<br>
-        They only grow quieter<br>
-        Some stories do not close<br>
-        They learn silence instead<br>
-        I leave these words here<br>
-        Not as closure<br>
-        But as proof that pain was real</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">LVI</span>
-    <h2 class="poem-title">Dedication</h2>
-    <p class="poem-content">To the nights that broke me quietly<br>
-        To the tears that had no witness<br>
-        To the love that left without explanation<br>
-        To the version of me that did not survive<br>
-        And to anyone who kept going<br>
-        While falling apart inside</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">LVII</span>
-    <h2 class="poem-title">Author’s Note</h2>
-    <p class="poem-content">I did not write to impress<br>
-        I wrote to release<br>
-        These pages carry what I could not say aloud<br>
-        If they hurt you<br>
-        It means you understood<br>
-        — Hassan Jatoi</p>
-</article>
-
-<article class="a5-card" data-aos>
-    <span class="poem-num">©</span>
-    <h2 class="poem-title">Copyright Page</h2>
-    <p class="poem-content">© 2025 Hassan Jatoi<br>
-        All rights reserved<br>
-        No part of this book may be reproduced stored or transmitted<br>
-        in any form or by any means without written permission<br>
-        from the author except for brief quotations in reviews<br><br>
-        <strong>The End</strong><br>
-        Not everything ends loudly<br>
-        Some things end by becoming quiet<br>
-        This is one of them 🖤</p>
-</article>
-
-   function updateClock() {
-        const now = new Date();
-        const options = { 
-            month: 'short', 
-            day: 'numeric', 
-            year: 'numeric', 
-            hour: '2-digit', 
-            minute: '2-digit', 
-            second: '2-digit', 
-            hour12: false 
-        };
-        const clockStr = now.toLocaleString('en-US', options).toUpperCase().replace(',', ' •');
-        document.getElementById('live-clock').textContent = clockStr;
-    }
-
-    function renderPoetry() {
-        const container = document.getElementById('poetry-container');
-        container.innerHTML = poems.map(poem => `
-            <section class="a5-card poem-card">
-                <h2 class="poem-title">${poem.title}</h2>
-                <div class="poem-body">${poem.content}</div>
-                <div class="poem-footer">— ${poem.date} —</div>
-            </section>
-        `).join('');
-    }
-
-    function toggleStudio() {
-        document.getElementById('studioPanel').classList.toggle('open');
-    }
-
-    function setTheme(themeName, element) {
-        document.querySelectorAll('.option-group:first-child .btn-opt').forEach(btn => btn.classList.remove('active'));
-        element.classList.add('active');
-        document.body.className = 'theme-' + themeName;
-    }
-
-    function setFont(font, element) {
-        document.querySelectorAll('.btn-opt').forEach(btn => btn.classList.remove('active'));
-        element.classList.add('active');
-        // Setting font for body of the poems specifically
-        const cards = document.querySelectorAll('.poem-body, .author, h1');
-        cards.forEach(el => el.style.fontFamily = font);
-        document.getElementById('capture-area').style.fontFamily = font;
-    }
-
-    function setSize(width, element) {
-        document.querySelectorAll('.btn-opt').forEach(btn => btn.classList.remove('active'));
-        element.classList.add('active');
-        document.documentElement.style.setProperty('--page-max-width', width);
-    }
-
-    function showToast(msg) {
-        const t = document.getElementById('toast');
-        t.innerText = msg;
-        t.classList.add('show');
-        setTimeout(() => t.classList.remove('show'), 3000);
-    }
-
-    async function downloadPDF() {
-        showToast("Preparing your collection...");
-        const element = document.getElementById('capture-area');
-        const opt = {
-            margin: 0,
-            filename: 'The_Lonely_Path_Hassan_Jatoi.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, backgroundColor: getComputedStyle(document.body).backgroundColor },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
-        
-        try {
-            await html2pdf().set(opt).from(element).save();
-            showToast("Downloaded Successfully!");
-        } catch (err) {
-            showToast("Export failed. Try again.");
-        }
-    }
-
-    // Initialize
-    window.onload = () => {
-        lucide.createIcons();
-        renderPoetry();
-        setInterval(updateClock, 1000);
-        updateClock();
-    };
-</script>
-
-</body>
-</html> 
