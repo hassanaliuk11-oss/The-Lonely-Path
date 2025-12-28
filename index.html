@@ -302,95 +302,7 @@
         }
     ];
 
-    function updateClock() {
-        const now = new Date();
-        const options = { 
-            month: 'short', 
-            day: 'numeric', 
-            year: 'numeric', 
-            hour: '2-digit', 
-            minute: '2-digit', 
-            second: '2-digit', 
-            hour12: false 
-        };
-        const clockStr = now.toLocaleString('en-US', options).toUpperCase().replace(',', ' •');
-        document.getElementById('live-clock').textContent = clockStr;
-    }
-
-    function renderPoetry() {
-        const container = document.getElementById('poetry-container');
-        container.innerHTML = poems.map(poem => `
-            <section class="a5-card poem-card">
-                <h2 class="poem-title">${poem.title}</h2>
-                <div class="poem-body">${poem.content}</div>
-                <div class="poem-footer">— ${poem.date} —</div>
-            </section>
-        `).join('');
-    }
-
-    function toggleStudio() {
-        document.getElementById('studioPanel').classList.toggle('open');
-    }
-
-    function setTheme(themeName, element) {
-        document.querySelectorAll('.option-group:first-child .btn-opt').forEach(btn => btn.classList.remove('active'));
-        element.classList.add('active');
-        document.body.className = 'theme-' + themeName;
-    }
-
-    function setFont(font, element) {
-        document.querySelectorAll('.btn-opt').forEach(btn => btn.classList.remove('active'));
-        element.classList.add('active');
-        // Setting font for body of the poems specifically
-        const cards = document.querySelectorAll('.poem-body, .author, h1');
-        cards.forEach(el => el.style.fontFamily = font);
-        document.getElementById('capture-area').style.fontFamily = font;
-    }
-
-    function setSize(width, element) {
-        document.querySelectorAll('.btn-opt').forEach(btn => btn.classList.remove('active'));
-        element.classList.add('active');
-        document.documentElement.style.setProperty('--page-max-width', width);
-    }
-
-    function showToast(msg) {
-        const t = document.getElementById('toast');
-        t.innerText = msg;
-        t.classList.add('show');
-        setTimeout(() => t.classList.remove('show'), 3000);
-    }
-
-    async function downloadPDF() {
-        showToast("Preparing your collection...");
-        const element = document.getElementById('capture-area');
-        const opt = {
-            margin: 0,
-            filename: 'The_Lonely_Path_Hassan_Jatoi.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, backgroundColor: getComputedStyle(document.body).backgroundColor },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
-        
-        try {
-            await html2pdf().set(opt).from(element).save();
-            showToast("Downloaded Successfully!");
-        } catch (err) {
-            showToast("Export failed. Try again.");
-        }
-    }
-
-    // Initialize
-    window.onload = () => {
-        lucide.createIcons();
-        renderPoetry();
-        setInterval(updateClock, 1000);
-        updateClock();
-    };
-</script>
-
-</body>
-</html>
-        <article class="a5-card" data-aos>
+            <article class="a5-card" data-aos>
             <span class="poem-num">I</span>
             <h2 class="poem-title">Silent Tears</h2>
             <p class="poem-content">
@@ -1890,78 +1802,91 @@ And they understand me too.
         This is one of them 🖤</p>
 </article>
 
-    </main>
+   function updateClock() {
+        const now = new Date();
+        const options = { 
+            month: 'short', 
+            day: 'numeric', 
+            year: 'numeric', 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            second: '2-digit', 
+            hour12: false 
+        };
+        const clockStr = now.toLocaleString('en-US', options).toUpperCase().replace(',', ' •');
+        document.getElementById('live-clock').textContent = clockStr;
+    }
 
-    <!-- Footer -->
-    <footer style="margin-top: 50px; text-align: center; opacity: 0.3; font-size: 10px; letter-spacing: 5px;">
-        ALL RIGHTS RESERVED © 2025
-    </footer>
-</div>
+    function renderPoetry() {
+        const container = document.getElementById('poetry-container');
+        container.innerHTML = poems.map(poem => `
+            <section class="a5-card poem-card">
+                <h2 class="poem-title">${poem.title}</h2>
+                <div class="poem-body">${poem.content}</div>
+                <div class="poem-footer">— ${poem.date} —</div>
+            </section>
+        `).join('');
+    }
 
-<script>
-    // Initialize Icons
-    lucide.createIcons();
-
-    let currentPrintFormat = 'a5';
-
-    // Scroll Reveal Animation Logic
-    const observerOptions = { threshold: 0.1 };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
-
-    // UI Panel Logic
     function toggleStudio() {
         document.getElementById('studioPanel').classList.toggle('open');
     }
 
-    function setTheme(theme, btn) {
-        document.body.className = 'theme-' + theme;
-        updateActive(btn);
+    function setTheme(themeName, element) {
+        document.querySelectorAll('.option-group:first-child .btn-opt').forEach(btn => btn.classList.remove('active'));
+        element.classList.add('active');
+        document.body.className = 'theme-' + themeName;
     }
 
-    function setFont(font, btn) {
-        document.documentElement.style.setProperty('--font-serif', font + ', serif');
-        updateActive(btn);
+    function setFont(font, element) {
+        document.querySelectorAll('.btn-opt').forEach(btn => btn.classList.remove('active'));
+        element.classList.add('active');
+        // Setting font for body of the poems specifically
+        const cards = document.querySelectorAll('.poem-body, .author, h1');
+        cards.forEach(el => el.style.fontFamily = font);
+        document.getElementById('capture-area').style.fontFamily = font;
     }
 
-    function setSize(widthValue, format, btn) {
-        document.documentElement.style.setProperty('--page-max-width', widthValue);
-        currentPrintFormat = format;
-        updateActive(btn);
+    function setSize(width, element) {
+        document.querySelectorAll('.btn-opt').forEach(btn => btn.classList.remove('active'));
+        element.classList.add('active');
+        document.documentElement.style.setProperty('--page-max-width', width);
     }
 
-    function updateActive(btn) {
-        btn.parentNode.querySelectorAll('.btn-opt').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+    function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.innerText = msg;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 3000);
     }
 
-    // High Quality PDF Export with dynamic sizing
     async function downloadPDF() {
+        showToast("Preparing your collection...");
         const element = document.getElementById('capture-area');
         const opt = {
-            margin: [10, 5, 10, 5],
-            filename: `The_Lonely_Path_${currentPrintFormat.toUpperCase()}.pdf`,
-            image: { type: 'jpeg', quality: 1 },
-            html2canvas: { scale: 3, useCORS: true, letterRendering: true },
-            jsPDF: { unit: 'mm', format: currentPrintFormat, orientation: 'portrait' }
+            margin: 0,
+            filename: 'The_Lonely_Path_Hassan_Jatoi.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true, backgroundColor: getComputedStyle(document.body).backgroundColor },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
         };
-        
-        document.getElementById('studioPanel').classList.remove('open');
         
         try {
             await html2pdf().set(opt).from(element).save();
-        } catch (e) {
-            console.error("PDF Export failed", e);
+            showToast("Downloaded Successfully!");
+        } catch (err) {
+            showToast("Export failed. Try again.");
         }
     }
+
+    // Initialize
+    window.onload = () => {
+        lucide.createIcons();
+        renderPoetry();
+        setInterval(updateClock, 1000);
+        updateClock();
+    };
 </script>
 
 </body>
-</html>
+</html> 
