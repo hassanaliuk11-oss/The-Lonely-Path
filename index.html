@@ -1,206 +1,346 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Lonely Path | Author Hassan Jatoi</title>
+‎<!DOCTYPE html>
+‎<html lang="en">
+‎<head>
+‎    <meta charset="UTF-8">
+‎    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+‎    <title>The Lonely Path | Author Hassan Jatoi</title>
+‎    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400&family=Lora:ital@0;1&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+‎    <style>
+‎        :root {
+‎            --bg-color: #fdfcf8;
+‎            --text-color: #1a1a1a;
+‎            --meta-color: #8c8c8c;
+‎            --border-color: #e8e6e0;
+‎            --heading-font: 'Playfair Display', serif;
+‎            --body-font: 'Crimson Pro', serif;
+‎            --panel-bg: rgba(255, 255, 255, 0.85);
+‎        }
+‎
+‎        body {
+‎            font-family: var(--body-font);
+‎            background-color: var(--bg-color);
+‎            color: var(--text-color);
+‎            margin: 0;
+‎            padding: 0 0 50px 0;
+‎            line-height: 1.8;
+‎            display: flex;
+‎            flex-direction: column;
+‎            align-items: center;
+‎            transition: background-color 0.4s, color 0.4s;
+‎            -webkit-font-smoothing: antialiased;
+‎        }
+‎
+‎        /* Settings Panel */
+‎        #settings-bar {
+‎            position: sticky;
+‎            top: 10px;
+‎            z-index: 100;
+‎            background: var(--panel-bg);
+‎            backdrop-filter: blur(12px);
+‎            border: 1px solid var(--border-color);
+‎            padding: 12px;
+‎            border-radius: 12px;
+‎            margin: 20px auto;
+‎            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+‎            max-width: 90%;
+‎            width: 600px;
+‎        }
+‎
+‎        .settings-group {
+‎            display: flex;
+‎            flex-wrap: wrap;
+‎            gap: 6px;
+‎            align-items: center;
+‎            justify-content: center;
+‎            margin-bottom: 8px;
+‎        }
+‎
+‎        .settings-label {
+‎            font-size: 0.7rem;
+‎            text-transform: uppercase;
+‎            letter-spacing: 0.15em;
+‎            color: var(--meta-color);
+‎            width: 100%;
+‎            text-align: center;
+‎            margin-bottom: 4px;
+‎        }
+‎
+‎        .swatch {
+‎            width: 20px;
+‎            height: 20px;
+‎            border-radius: 50%;
+‎            border: 1px solid rgba(0,0,0,0.1);
+‎            cursor: pointer;
+‎            transition: transform 0.2s;
+‎        }
+‎
+‎        .swatch:hover { transform: scale(1.3); }
+‎
+‎        .font-btn {
+‎            background: none;
+‎            border: 1px solid var(--border-color);
+‎            padding: 3px 10px;
+‎            border-radius: 4px;
+‎            font-size: 0.75rem;
+‎            color: var(--text-color);
+‎            cursor: pointer;
+‎            transition: all 0.2s;
+‎        }
+‎
+‎        .font-btn:hover { background: var(--border-color); }
+‎
+‎        /* Media Sections */
+‎        .front-matter {
+‎            width: 100%;
+‎            max-width: 800px;
+‎            text-align: center;
+‎            margin-bottom: 20px;
+‎            padding: 0 20px;
+‎            box-sizing: border-box;
+‎        }
+‎
+‎        .portrait-img {
+‎            width: 180px;
+‎            height: 180px;
+‎            object-fit: cover;
+‎            border-radius: 50%;
+‎            margin: 40px auto 20px;
+‎            border: 3px solid var(--border-color);
+‎            display: block;
+‎        }
+‎
+‎        .logo-img {
+‎            width: 100px;
+‎            height: auto;
+‎            margin: 10px auto;
+‎            display: block;
+‎        }
+‎
+‎        .cover-container {
+‎            width: 100%;
+‎            margin: 30px 0;
+‎            overflow: hidden;
+‎            border-radius: 8px;
+‎            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+‎        }
+‎
+‎        .cover-img {
+‎            width: 100%;
+‎            height: auto;
+‎            display: block;
+‎        }
+‎
+‎        /* Clock Display */
+‎        #live-clock {
+‎            font-size: 0.85rem;
+‎            letter-spacing: 0.1em;
+‎            color: var(--meta-color);
+‎            margin-bottom: 15px;
+‎            font-family: 'Inter', sans-serif;
+‎            text-transform: uppercase;
+‎        }
+‎
+‎        /* Document Structure */
+‎        header {
+‎            text-align: center;
+‎            margin: 0px 0 80px 0;
+‎            max-width: 650px;
+‎            width: 90%;
+‎            border-bottom: 1px solid var(--border-color);
+‎            padding-bottom: 40px;
+‎        }
+‎
+‎        header h1 {
+‎            font-family: var(--heading-font);
+‎            font-size: 3rem;
+‎            margin: 0 0 5px 0;
+‎            font-weight: 400;
+‎        }
+‎
+‎        header p.author-name {
+‎            font-size: 1.1rem;
+‎            text-transform: uppercase;
+‎            letter-spacing: 0.5em;
+‎            color: var(--meta-color);
+‎            margin-top: 0;
+‎        }
+‎
+‎        .container {
+‎            width: 100%;
+‎            max-width: 650px;
+‎            padding: 0 20px;
+‎            box-sizing: border-box;
+‎        }
+‎
+‎        article {
+‎            margin-bottom: 120px;
+‎            opacity: 0;
+‎            transform: translateY(20px);
+‎            animation: fadeIn 1s ease-out forwards;
+‎        }
+‎
+‎        @keyframes fadeIn {
+‎            to { opacity: 1; transform: translateY(0); }
+‎        }
+‎
+‎        .meta {
+‎            display: flex;
+‎            align-items: center;
+‎            justify-content: center;
+‎            margin-bottom: 35px;
+‎            color: var(--meta-color);
+‎            font-size: 0.9rem;
+‎            letter-spacing: 0.2em;
+‎        }
+‎
+‎        .line-divider {
+‎            flex: 1;
+‎            height: 1px;
+‎            background: var(--border-color);
+‎            margin: 0 20px;
+‎        }
+‎
+‎        h2.poem-title {
+‎            text-align: center;
+‎            margin-bottom: 40px;
+‎            font-size: 2.2rem;
+‎            font-family: var(--heading-font);
+‎            font-style: italic;
+‎        }
+‎
+‎        .content {
+‎            font-size: 1.4rem;
+‎            white-space: pre-line;
+‎            text-align: center;
+‎            max-width: 500px;
+‎            margin: 0 auto;
+‎        }
+‎
+‎        footer {
+‎            margin-top: 60px;
+‎            padding: 60px 20px;
+‎            width: 100%;
+‎            text-align: center;
+‎            border-top: 1px solid var(--border-color);
+‎        }
+‎
+‎        .more-poetry-link {
+‎            display: inline-block;
+‎            margin-bottom: 30px;
+‎            padding: 12px 30px;
+‎            border: 1px solid var(--text-color);
+‎            color: var(--text-color);
+‎            text-decoration: none;
+‎            font-size: 1rem;
+‎            text-transform: uppercase;
+‎            letter-spacing: 0.2em;
+‎            transition: all 0.3s;
+‎        }
+‎
+‎        .more-poetry-link:hover {
+‎            background-color: var(--text-color);
+‎            color: var(--bg-color);
+‎        }
+‎
+‎        .copyright {
+‎            font-size: 0.85rem;
+‎            color: var(--meta-color);
+‎            font-style: italic;
+‎            display: block;
+‎        }
+‎
+‎        @media (max-width: 600px) {
+‎            header h1 { font-size: 2.2rem; }
+‎            .content { font-size: 1.2rem; }
+‎            #settings-bar { width: 95%; }
+‎            .portrait-img { width: 140px; height: 140px; }
+‎        }
+‎    </style>
+‎</head>
+‎<body>
+‎
+‎<div id="settings-bar">
+‎    <div class="settings-label">20 Visual Themes</div>
+‎    <div class="settings-group" id="theme-swatches"></div>
+‎    <div class="settings-label">Typography</div>
+‎    <div class="settings-group">
+‎        <button class="font-btn" onclick="setFont('Playfair Display', 'Crimson Pro')">Classic</button>
+‎        <button class="font-btn" onclick="setFont('EB Garamond', 'EB Garamond')">Antique</button>
+‎        <button class="font-btn" onclick="setFont('Lora', 'Lora')">Literary</button>
+‎        <button class="font-btn" onclick="setFont('Montserrat', 'Inter')">Modern</button>
+‎    </div>
+‎</div>
+‎
+‎<div class="front-matter">
+‎    <!-- Image 1: Portrait -->
+‎    <img src="https://i.ibb.co/XZpNgSJ4/IMG-20251026-WA0025-modified.png" alt="Hassan Jatoi" class="portrait-img">
+‎    
+‎    <!-- Image 2: Logo -->
+‎    <img src="https://i.ibb.co/SXTCQQnP/ei-1760449658890-removebg-preview.png" alt="Logo" class="logo-img">
+‎    
+‎    <!-- Image 3: Page Cover -->
+‎    <div class="cover-container">
+‎        <img src="https://i.ibb.co/SXCQFSJ7/1000203080.jpg" alt="The Lonely Path Cover" class="cover-img">
+‎    </div>
+‎</div>
+‎
+‎<header>
+‎    <div id="live-clock">Loading...</div>
+‎    <h1>The Lonely Path</h1>
+‎    <p class="author-name">Hassan Jatoi</p>
+‎</header>
+‎
+‎<div class="container">
+‎    <article style="animation-delay: 0.2s;">
+‎        <div class="meta">
+‎            <div class="line-divider"></div>
+‎            <span>LIV</span>
+‎            <div class="line-divider"></div>
+‎        </div>
+‎        <h2 class="poem-title">Silence</h2>
+‎        <div class="content">Silence weeps quietly in the chest  
+‎Tears fall like unspoken rain  
+‎Memories haunt empty rooms  
+‎The heart trembles with unvoiced grief  
+‎Shadows listen to whispers of sorrow  
+‎Every breath carries the weight of longing  
+‎The soul searches for solace in darkness  
+‎Dreams glimmer then fade quietly  
+‎Loneliness wraps itself around fragile hope  
+‎Every heartbeat is a soft mournful song  
+‎Pain nestles in unseen corners  
+‎Even silence speaks the language of despair  
+‎Tears trace paths of invisible yearning  
+‎The mind wanders through forgotten corridors  
+‎Night swallows the last glimmer of warmth  
+‎And the heart beats stubbornly alone in grief</div>
+‎    </article>
+‎
+‎    <article style="animation-delay: 0.4s;">
+‎        <div class="meta">
+‎            <div class="line-divider"></div>
+‎            <span>LIX</span>
+‎            <div class="line-divider"></div>
+‎        </div>
+‎        <h2 class="poem-title">Shattered Dreams</h2>
+‎        <div class="content">Dreams lie broken on the cold floor of reality  
+‎I reach for them but they crumble in trembling hands  
+‎The heart beats against invisible walls of longing  
+‎Tears water the barren soil of lost hope  
+‎Memories cling like shadows refusing to leave  
+‎Loneliness whispers softly in darkened halls  
+‎Every heartbeat carries fragments of despair  
+‎The night swallows the faintest traces of light  
+‎Hopes flicker and vanish quietly  
+‎The soul trembles beneath heavy silence  
+‎Every sigh counts the weight of absence  
+‎Pain rests quietly in hidden corners  
+‎The heart longs for warmth never returned  
+‎Dreams shiver and fade in the cold night  
+‎And every echo remembers what was lost</div>
+‎    </article>
+‎</div>
     
-    <!-- Premium Font Library -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;1,300&family=Old+Standard+TT:ital,wght@0,400;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&family=Spectral:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@200;400&family=Inter:wght@300;400&family=Libre+Baskerville:ital@0;1&family=Cardo:ital@0;1&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <style>
-        /* --- DYNAMIC VARIABLES --- */
-        :root {
-            --bg: #fcfaf7;
-            --text: #1a1a1a;
-            --secondary: rgba(0,0,0,0.5);
-            --accent: #c4a484;
-            --border: rgba(0,0,0,0.06);
-            --font-main: 'EB Garamond', serif;
-            --font-title: 'Cormorant Garamond', serif;
-            --grain-opacity: 0.1;
-        }
-
-        /* --- FONT DEFINITIONS --- */
-        body.font-1 { --font-main: 'EB Garamond'; --font-title: 'Cormorant Garamond'; }
-        body.font-2 { --font-main: 'Lora'; --font-title: 'Playfair Display'; }
-        body.font-3 { --font-main: 'Merriweather'; --font-title: 'Merriweather'; }
-        body.font-4 { --font-main: 'Old Standard TT'; --font-title: 'Old Standard TT'; }
-        body.font-5 { --font-main: 'Inter'; --font-title: 'Montserrat'; }
-        body.font-6 { --font-main: 'Crimson Pro'; --font-title: 'Cormorant Garamond'; }
-        body.font-7 { --font-main: 'Spectral'; --font-title: 'Playfair Display'; }
-        body.font-8 { --font-main: 'Libre Baskerville'; --font-title: 'Libre Baskerville'; }
-        body.font-9 { --font-main: 'Cardo'; --font-title: 'Cormorant Garamond'; }
-        body.font-10 { --font-main: 'Montserrat'; --font-title: 'Inter'; }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: var(--font-main), serif;
-            line-height: 1.6;
-            transition: background-color 0.4s ease, color 0.4s ease;
-            position: relative;
-            text-align: center;
-        }
-
-        .paper-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 1;
-            opacity: var(--grain-opacity);
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            padding: 15px 25px; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid var(--border);
-            background-color: var(--bg);
-            transition: 0.5s;
-        }
-        nav.scrolled { backdrop-filter: blur(10px); background-color: rgba(var(--bg), 0.8); }
-
-        .nav-logo { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; font-weight: bold; opacity: 0.7; font-family: 'Montserrat', sans-serif; color: var(--text); }
-        
-        .settings-panel {
-            position: fixed; top: 0; right: 0; width: 350px; height: 100vh;
-            background: var(--bg); border-left: 1px solid var(--border);
-            padding: 30px; z-index: 1001; display: none;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-            overflow-y: auto;
-            text-align: left;
-        }
-        .settings-panel.active { display: block; animation: slideIn 0.3s ease-out; }
-        
-        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
-
-        .settings-label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--text); opacity: 0.6; margin: 25px 0 12px; display: block; font-weight: bold; }
-        
-        .color-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 20px; }
-        .swatch { 
-            width: 100%; aspect-ratio: 1; border: 1px solid var(--border); 
-            cursor: pointer; border-radius: 4px; transition: 0.2s;
-        }
-        .swatch:hover { transform: scale(1.1); border-color: var(--text); }
-        
-        .font-option { 
-            width: 100%; padding: 12px; border: 1px solid var(--border); 
-            background: none; color: var(--text); cursor: pointer; 
-            text-align: left; font-size: 13px; margin-bottom: 6px; border-radius: 6px;
-        }
-        .font-option:hover { background: rgba(0,0,0,0.05); }
-
-        .icon-btn { background: none; border: none; cursor: pointer; color: var(--text); padding: 5px; opacity: 0.8; }
-        .icon-btn:hover { opacity: 1; }
-
-        .container { max-width: 800px; margin: 0 auto; padding: 120px 20px; position: relative; z-index: 2; }
-
-        header { text-align: center; margin-bottom: 120px; }
-        .cover-img { 
-            width: 160px; height: auto; margin: 0 auto 40px; display: block; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2); border: 4px solid #fff;
-        }
-        
-        .title { font-family: var(--font-title); font-size: clamp(45px, 10vw, 80px); font-weight: 300; line-height: 0.9; margin-bottom: 20px; }
-
-        article { margin-bottom: 150px; display: flex; flex-direction: column; align-items: center; }
-        .poem-title { font-family: var(--font-title); font-size: clamp(28px, 5vw, 40px); font-weight: 400; margin-bottom: 30px; text-align: center; color: var(--accent); }
-        
-        .content { 
-            font-size: clamp(17px, 4vw, 20px); 
-            line-height: 2; 
-            text-align: center;
-            white-space: pre-line; 
-            max-width: 600px;
-        }
-
-        .meta { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; width: 100%; max-width: 250px; opacity: 0.5; }
-        .line-divider { flex-grow: 1; height: 1px; background: var(--text); }
-        .roman { font-size: 11px; letter-spacing: 3px; font-family: 'Montserrat', sans-serif; }
-        
-        @media (max-width: 600px) {
-            .settings-panel { width: 100%; }
-        }
-    </style>
-</head>
-<body class="font-1">
-
-    <div class="paper-overlay"></div>
-
-    <nav id="navbar">
-        <div class="nav-logo">Hassan Jatoi</div>
-        <div class="controls">
-            <button class="icon-btn" onclick="toggleSettings()"><i data-lucide="palette"></i></button>
-        </div>
-    </nav>
-
-    <!-- Settings Panel -->
-    <div id="settings" class="settings-panel">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
-            <span style="font-weight:bold; font-size: 14px; letter-spacing: 1px;">DESIGN STUDIO</span>
-            <button class="icon-btn" onclick="toggleSettings()"><i data-lucide="x"></i></button>
-        </div>
-
-        <span class="settings-label">Reading Mode (Background)</span>
-        <div class="color-grid" id="bg-grid">
-            <!-- JS will populate 50 backgrounds -->
-        </div>
-
-        <span class="settings-label">Typography Color</span>
-        <div class="color-grid" id="text-grid">
-            <!-- JS will populate 50 text colors -->
-        </div>
-
-        <span class="settings-label">Curated Pairings</span>
-        <button class="font-option" onclick="setFont('1')">Garamond Heritage</button>
-        <button class="font-option" onclick="setFont('2')">Playfair Modern</button>
-        <button class="font-option" onclick="setFont('4')">Old Standard Type</button>
-        <button class="font-option" onclick="setFont('5')">Montserrat Minimal</button>
-        <button class="font-option" onclick="setFont('8')">Baskerville Journal</button>
-
-        <span class="settings-label">Visual Texture</span>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-            <button class="font-option" style="text-align:center" onclick="setGrain(0)">NONE</button>
-            <button class="font-option" style="text-align:center" onclick="setGrain(0.2)">GRAIN</button>
-        </div>
-        <div style="height: 50px;"></div>
-    </div>
-
-    <div class="container">
-        <header>
-            <img src="https://i.ibb.co/pjzBSrCH/1000203080.jpg" alt="Cover Image" class="cover-img">
-         <h1 class="title">
-    The<br>
-    Lonely<br>
-    Path
-</h1>
-
-<p style="font-style:normal; opacity: 0.7; max-width:600px; margin: 20px auto; line-height:2;">
-Each step I take is weighed with memories  
-The shadows of the past cling to my soul  
-Whispers of lost love drift through empty corridors  
-And the heart beats in quiet agony  
-Time flows like a river that refuses solace  
-Every sigh carries the echo of things never spoken  
-I wander through moments that ache with absence  
-Seeking the light that once lived within me  
-And in this silence, I find both grief and a strange serenity  
-For even in sorrow, the soul learns its own language  
-</p>
-
-<p style="margin-top:25px; font-style:italic; opacity:0.8;">
-Connect with the writer —  
-<a href="https://wa.me/923083500829" target="_blank" style="text-decoration:none; color:#888;">
-WhatsApp: +92 308 3500829
-</a>
-</p>
-
-
-   <main>
 <article>
     <div class="meta"><div class="line-divider"></div><span class="roman">LX</span><div class="line-divider"></div></div>
     <h2 class="poem-title">Tears in Silence</h2>
@@ -3763,107 +3903,87 @@ Memories swirl like leaves in autumn
 And grief drifts with every gust
     </div>
 </article>
-
-            <article>
-                <div class="meta"><div class="line-divider"></div><span class="roman">IV</span><div class="line-divider"></div></div>
-                <h2 class="poem-title">Shattered Glass</h2>
-                <div class="content">Love is like holding a mirror; once it breaks, you can try to glue the pieces back together, but your reflection will always be distorted. Every shard holds a memory that cuts the hands that try to heal it.</div>
-            </article>
-
-            <article>
-                <div class="meta"><div class="line-divider"></div><span class="roman">V</span><div class="line-divider"></div></div>
-                <h2 class="poem-title">The Loneliness of Crowds</h2>
-                <div class="content">There is no isolation quite like standing in a room full of laughing people and feeling like a foreign language that no one wants to translate. You are a ghost among the living, invisible even to those who look right at you.</div>
-            </article>
-        </main>
-
-        <footer style="margin-top: 100px; opacity: 0.3; padding-bottom: 40px;">
-            <p style="font-size: 10px; letter-spacing: 5px; text-transform: uppercase;">The Archive Continues</p>
-        </footer>
-    </div>
-
-    <script>
-        lucide.createIcons();
-
-        // 50 Background Colors (Reading Modes)
-        const bgColors = [
-            'Ivory', 'AntiqueWhite', 'Linen', 'Seashell', 'Honeydew', 
-            'MintCream', 'Azure', 'AliceBlue', 'GhostWhite', 'WhiteSmoke', 
-            'Beige', 'LightYellow', 'LemonChiffon', 'LightGoldenrodYellow', 'PapayaWhip', 
-            'Moccasin', 'Cornsilk', 'LavenderBlush', 'MistyRose', 'OldLace', 
-            'FloralWhite', 'Snow', 'Gainsboro', 'LightGray', 'Silver', 
-            'LightSteelBlue', 'PowderBlue', 'PaleTurquoise', 'LightCyan', 'PaleGreen', 
-            'Wheat', 'SandyBrown', 'BlanchedAlmond', 'Khaki', 'LightSalmon', 
-            'Salmon', 'LightPink', 'Pink', 'Lavender', 'Thistle', 
-            '#F5F5DC', '#FFFDD0', '#FCFBF4', '#F3E5AB', '#FFDAB9', 
-            '#FFF1CC', '#FAEBD7', '#EADDCA', '#F2F0EF', '#FFFFFF'
-        ];
-
-        // 50 Font Colors (Text)
-        const textColors = [
-            'Black', 'DimGray', 'Gray', 'DarkGray', 'Silver', 
-            'SlateGray', 'LightSlateGray', 'DarkSlateGray', 'Navy', 'DarkBlue', 
-            'MediumBlue', 'RoyalBlue', 'CornflowerBlue', 'DodgerBlue', 'DeepSkyBlue', 
-            'SkyBlue', 'LightSkyBlue', 'SteelBlue', 'Teal', 'DarkCyan', 
-            'CadetBlue', 'MediumTurquoise', 'Turquoise', 'LightSeaGreen', 'MediumAquamarine', 
-            'Aquamarine', 'DarkGreen', 'Green', 'ForestGreen', 'SeaGreen', 
-            'MediumSeaGreen', 'LimeGreen', 'Lime', 'OliveDrab', 'DarkOliveGreen', 
-            'YellowGreen', 'Chartreuse', 'SpringGreen', 'LightGreen', 'PaleGreen', 
-            'DarkKhaki', 'Goldenrod', 'DarkGoldenrod', 'Orange', 'DarkOrange', 
-            'Coral', 'Tomato', 'Red', 'FireBrick', 'Maroon'
-        ];
-
-        function populateGrids() {
-            const bgGrid = document.getElementById('bg-grid');
-            const textGrid = document.getElementById('text-grid');
-
-            bgColors.forEach(color => {
-                const div = document.createElement('div');
-                div.className = 'swatch';
-                div.style.backgroundColor = color;
-                div.title = color;
-                div.onclick = () => {
-                    document.documentElement.style.setProperty('--bg', color);
-                    // Update accent to be a darker version of the text if needed
-                };
-                bgGrid.appendChild(div);
-            });
-
-            textColors.forEach(color => {
-                const div = document.createElement('div');
-                div.className = 'swatch';
-                div.style.backgroundColor = color;
-                div.title = color;
-                div.onclick = () => {
-                    document.documentElement.style.setProperty('--text', color);
-                    document.documentElement.style.setProperty('--accent', color); // Title color follows text
-                };
-                textGrid.appendChild(div);
-            });
-        }
-
-        function toggleSettings() {
-            document.getElementById('settings').classList.toggle('active');
-        }
-
-        function setFont(num) {
-            document.body.className = 'font-' + num;
-        }
-
-        function setGrain(val) {
-            document.documentElement.style.setProperty('--grain-opacity', val);
-        }
-
-        window.onload = populateGrids;
-
-        window.onscroll = function() {
-            const nav = document.getElementById('navbar');
-            if (window.pageYOffset > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        };
-    </script>
-</body>
-</html>
+</div>
+‎
+‎<footer>
+‎    <a href="https://hassanaliuk11-oss.github.io/Hassanalipoetry-/" target="_blank" class="more-poetry-link">Explore More Poetry</a>
+‎    <span class="copyright">&copy; 2025 | The Lonely Path by Hassan Jatoi</span>
+‎</footer>
+‎
+‎<script>
+‎    // Robust Live Clock
+‎    function updateClock() {
+‎        const now = new Date();
+‎        const options = { 
+‎            weekday: 'long', 
+‎            year: 'numeric', 
+‎            month: 'long', 
+‎            day: 'numeric',
+‎            hour: '2-digit', 
+‎            minute: '2-digit', 
+‎            second: '2-digit',
+‎            hour12: true 
+‎        };
+‎        document.getElementById('live-clock').textContent = now.toLocaleDateString('en-US', options);
+‎    }
+‎    
+‎    setInterval(updateClock, 1000);
+‎    updateClock();
+‎
+‎    const themes = [
+‎        { bg: "#fdfcf8", text: "#1a1a1a", meta: "#8c8c8c", border: "#e8e6e0" },
+‎        { bg: "#ffffff", text: "#000000", meta: "#999999", border: "#eeeeee" },
+‎        { bg: "#121212", text: "#e0e0e0", meta: "#666666", border: "#333333" },
+‎        { bg: "#1a1b26", text: "#c0caf5", meta: "#565f89", border: "#24283b" },
+‎        { bg: "#f4f1ea", text: "#433e37", meta: "#9a938a", border: "#dcd6cc" },
+‎        { bg: "#2d3436", text: "#dfe6e9", meta: "#636e72", border: "#b2bec3" },
+‎        { bg: "#fffaf0", text: "#2f4f4f", meta: "#708090", border: "#dcdcdc" },
+‎        { bg: "#0f172a", text: "#f8fafc", meta: "#475569", border: "#1e293b" },
+‎        { bg: "#fdf6e3", text: "#657b83", meta: "#93a1a1", border: "#eee8d5" },
+‎        { bg: "#002b36", text: "#839496", meta: "#586e75", border: "#073642" },
+‎        { bg: "#fafafa", text: "#2d3436", meta: "#b2bec3", border: "#dfe6e9" },
+‎        { bg: "#282c34", text: "#abb2bf", meta: "#5c6370", border: "#3e4451" },
+‎        { bg: "#f0f4f8", text: "#102a43", meta: "#627d98", border: "#bcccdc" },
+‎        { bg: "#fff5f5", text: "#63171b", meta: "#c53030", border: "#feb2b2" },
+‎        { bg: "#f0fff4", text: "#22543d", meta: "#38a169", border: "#9ae6b4" },
+‎        { bg: "#fefcbf", text: "#744210", meta: "#d69e2e", border: "#faf089" },
+‎        { bg: "#1a202c", text: "#edf2f7", meta: "#4a5568", border: "#2d3748" },
+‎        { bg: "#322659", text: "#faf5ff", meta: "#9f7aea", border: "#553c9a" },
+‎        { bg: "#ebf8ff", text: "#2c5282", meta: "#4299e1", border: "#bee3f8" },
+‎        { bg: "#212121", text: "#ffeb3b", meta: "#757575", border: "#424242" }
+‎    ];
+‎
+‎    const swatchContainer = document.getElementById('theme-swatches');
+‎    themes.forEach(theme => {
+‎        const span = document.createElement('div');
+‎        span.className = 'swatch';
+‎        span.style.backgroundColor = theme.bg;
+‎        span.onclick = () => {
+‎            document.documentElement.style.setProperty('--bg-color', theme.bg);
+‎            document.documentElement.style.setProperty('--text-color', theme.text);
+‎            document.documentElement.style.setProperty('--meta-color', theme.meta);
+‎            document.documentElement.style.setProperty('--border-color', theme.border);
+‎            
+‎            // Adjust panel opacity for dark themes
+‎            const isDark = isColorDark(theme.bg);
+‎            document.documentElement.style.setProperty('--panel-bg', isDark ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.85)');
+‎        };
+‎        swatchContainer.appendChild(span);
+‎    });
+‎
+‎    function isColorDark(color) {
+‎        const hex = color.replace('#', '');
+‎        const r = parseInt(hex.substr(0, 2), 16);
+‎        const g = parseInt(hex.substr(2, 2), 16);
+‎        const b = parseInt(hex.substr(4, 2), 16);
+‎        return (r * 0.299 + g * 0.587 + b * 0.114) < 128;
+‎    }
+‎
+‎    function setFont(heading, body) {
+‎        document.documentElement.style.setProperty('--heading-font', `'${heading}', serif`);
+‎        document.documentElement.style.setProperty('--body-font', `'${body}', serif`);
+‎    }
+‎</script>
+‎
+‎</body>
+‎</html>
