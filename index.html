@@ -1,350 +1,360 @@
-‎<!DOCTYPE html>
-‎<html lang="en">
-‎<head>
-‎    <meta charset="UTF-8">
-‎    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-‎    <title>The Lonely Path | Author Hassan Jatoi</title>
-‎    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400&family=Lora:ital@0;1&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-‎    <style>
-‎        :root {
-‎            --bg-color: #fdfcf8;
-‎            --text-color: #1a1a1a;
-‎            --meta-color: #8c8c8c;
-‎            --border-color: #e8e6e0;
-‎            --heading-font: 'Playfair Display', serif;
-‎            --body-font: 'Crimson Pro', serif;
-‎            --panel-bg: rgba(255, 255, 255, 0.85);
-‎        }
-‎
-‎        body {
-‎            font-family: var(--body-font);
-‎            background-color: var(--bg-color);
-‎            color: var(--text-color);
-‎            margin: 0;
-‎            padding: 0 0 50px 0;
-‎            line-height: 1.8;
-‎            display: flex;
-‎            flex-direction: column;
-‎            align-items: center;
-‎            transition: background-color 0.4s, color 0.4s;
-‎            -webkit-font-smoothing: antialiased;
-‎        }
-‎
-‎        /* Settings Panel */
-‎        #settings-bar {
-‎            position: sticky;
-‎            top: 10px;
-‎            z-index: 100;
-‎            background: var(--panel-bg);
-‎            backdrop-filter: blur(12px);
-‎            border: 1px solid var(--border-color);
-‎            padding: 12px;
-‎            border-radius: 12px;
-‎            margin: 20px auto;
-‎            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-‎            max-width: 90%;
-‎            width: 600px;
-‎        }
-‎
-‎        .settings-group {
-‎            display: flex;
-‎            flex-wrap: wrap;
-‎            gap: 6px;
-‎            align-items: center;
-‎            justify-content: center;
-‎            margin-bottom: 8px;
-‎        }
-‎
-‎        .settings-label {
-‎            font-size: 0.7rem;
-‎            text-transform: uppercase;
-‎            letter-spacing: 0.15em;
-‎            color: var(--meta-color);
-‎            width: 100%;
-‎            text-align: center;
-‎            margin-bottom: 4px;
-‎        }
-‎
-‎        .swatch {
-‎            width: 20px;
-‎            height: 20px;
-‎            border-radius: 50%;
-‎            border: 1px solid rgba(0,0,0,0.1);
-‎            cursor: pointer;
-‎            transition: transform 0.2s;
-‎        }
-‎
-‎        .swatch:hover { transform: scale(1.3); }
-‎
-‎        .font-btn {
-‎            background: none;
-‎            border: 1px solid var(--border-color);
-‎            padding: 3px 10px;
-‎            border-radius: 4px;
-‎            font-size: 0.75rem;
-‎            color: var(--text-color);
-‎            cursor: pointer;
-‎            transition: all 0.2s;
-‎        }
-‎
-‎        .font-btn:hover { background: var(--border-color); }
-‎
-‎        /* Media Sections */
-‎        .front-matter {
-‎            width: 100%;
-‎            max-width: 800px;
-‎            text-align: center;
-‎            margin-bottom: 20px;
-‎            padding: 0 20px;
-‎            box-sizing: border-box;
-‎        }
-‎
-‎        .portrait-img {
-‎            width: 180px;
-‎            height: 180px;
-‎            object-fit: cover;
-‎            border-radius: 50%;
-‎            margin: 40px auto 20px;
-‎            border: 3px solid var(--border-color);
-‎            display: block;
-‎        }
-‎
-‎        .logo-img {
-‎            width: 100px;
-‎            height: auto;
-‎            margin: 10px auto;
-‎            display: block;
-‎        }
-‎
-‎        .cover-container {
-‎            width: 100%;
-‎            margin: 30px 0;
-‎            overflow: hidden;
-‎            border-radius: 8px;
-‎            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-‎        }
-‎
-‎        .cover-img {
-‎            width: 100%;
-‎            height: auto;
-‎            display: block;
-‎        }
-‎
-‎        /* Clock Display */
-‎        #live-clock {
-‎            font-size: 0.85rem;
-‎            letter-spacing: 0.1em;
-‎            color: var(--meta-color);
-‎            margin-bottom: 15px;
-‎            font-family: 'Inter', sans-serif;
-‎            text-transform: uppercase;
-‎        }
-‎
-‎        /* Document Structure */
-‎        header {
-‎            text-align: center;
-‎            margin: 0px 0 80px 0;
-‎            max-width: 650px;
-‎            width: 90%;
-‎            border-bottom: 1px solid var(--border-color);
-‎            padding-bottom: 40px;
-‎        }
-‎
-‎        header h1 {
-‎            font-family: var(--heading-font);
-‎            font-size: 3rem;
-‎            margin: 0 0 5px 0;
-‎            font-weight: 400;
-‎        }
-‎
-‎        header p.author-name {
-‎            font-size: 1.1rem;
-‎            text-transform: uppercase;
-‎            letter-spacing: 0.5em;
-‎            color: var(--meta-color);
-‎            margin-top: 0;
-‎        }
-‎
-‎        .container {
-‎            width: 100%;
-‎            max-width: 650px;
-‎            padding: 0 20px;
-‎            box-sizing: border-box;
-‎        }
-‎
-‎        article {
-‎            margin-bottom: 120px;
-‎            opacity: 0;
-‎            transform: translateY(20px);
-‎            animation: fadeIn 1s ease-out forwards;
-‎        }
-‎
-‎        @keyframes fadeIn {
-‎            to { opacity: 1; transform: translateY(0); }
-‎        }
-‎
-‎        .meta {
-‎            display: flex;
-‎            align-items: center;
-‎            justify-content: center;
-‎            margin-bottom: 35px;
-‎            color: var(--meta-color);
-‎            font-size: 0.9rem;
-‎            letter-spacing: 0.2em;
-‎        }
-‎
-‎        .line-divider {
-‎            flex: 1;
-‎            height: 1px;
-‎            background: var(--border-color);
-‎            margin: 0 20px;
-‎        }
-‎
-‎        h2.poem-title {
-‎            text-align: center;
-‎            margin-bottom: 40px;
-‎            font-size: 2.2rem;
-‎            font-family: var(--heading-font);
-‎            font-style: italic;
-‎        }
-‎
-‎        .content {
-‎            font-size: 1.4rem;
-‎            white-space: pre-line;
-‎            text-align: center;
-‎            max-width: 500px;
-‎            margin: 0 auto;
-‎        }
-‎
-‎        footer {
-‎            margin-top: 60px;
-‎            padding: 60px 20px;
-‎            width: 100%;
-‎            text-align: center;
-‎            border-top: 1px solid var(--border-color);
-‎        }
-‎
-‎        .more-poetry-link {
-‎            display: inline-block;
-‎            margin-bottom: 30px;
-‎            padding: 12px 30px;
-‎            border: 1px solid var(--text-color);
-‎            color: var(--text-color);
-‎            text-decoration: none;
-‎            font-size: 1rem;
-‎            text-transform: uppercase;
-‎            letter-spacing: 0.2em;
-‎            transition: all 0.3s;
-‎        }
-‎
-‎        .more-poetry-link:hover {
-‎            background-color: var(--text-color);
-‎            color: var(--bg-color);
-‎        }
-‎
-‎        .copyright {
-‎            font-size: 0.85rem;
-‎            color: var(--meta-color);
-‎            font-style: italic;
-‎            display: block;
-‎        }
-‎
-‎        @media (max-width: 600px) {
-‎            header h1 { font-size: 2.2rem; }
-‎            .content { font-size: 1.2rem; }
-‎            #settings-bar { width: 95%; }
-‎            .portrait-img { width: 140px; height: 140px; }
-‎        }
-‎    </style>
-‎</head>
-‎<body>
-‎
-‎<div id="settings-bar">
-‎    <div class="settings-label">20 Visual Themes</div>
-‎    <div class="settings-group" id="theme-swatches"></div>
-‎    <div class="settings-label">Typography</div>
-‎    <div class="settings-group">
-‎        <button class="font-btn" onclick="setFont('Playfair Display', 'Crimson Pro')">Classic</button>
-‎        <button class="font-btn" onclick="setFont('EB Garamond', 'EB Garamond')">Antique</button>
-‎        <button class="font-btn" onclick="setFont('Lora', 'Lora')">Literary</button>
-‎        <button class="font-btn" onclick="setFont('Montserrat', 'Inter')">Modern</button>
-‎    </div>
-‎</div>
-‎
-‎<div class="front-matter">
-‎    <!-- Image 1: Portrait -->
-‎    <img src="https://i.ibb.co/XZpNgSJ4/IMG-20251026-WA0025-modified.png" alt="Hassan Jatoi" class="portrait-img">
-‎    
-‎    <!-- Image 2: Logo -->
-‎    <img src="https://i.ibb.co/SXTCQQnP/ei-1760449658890-removebg-preview.png" alt="Logo" class="logo-img">
-‎    
-‎    <!-- Image 3: Page Cover -->
-‎    <div class="cover-container">
-‎        <img src="https://i.ibb.co/SXCQFSJ7/1000203080.jpg" alt="The Lonely Path Cover" class="cover-img">
-‎    </div>
-‎</div>
-‎
-‎<header>
-‎    <div id="live-clock">Loading...</div>
-‎    <h1>The Lonely Path</h1>
-‎    <p class="author-name">Hassan Jatoi</p>
-‎</header>
-‎
-‎<div class="container">
-‎    <article style="animation-delay: 0.2s;">
-‎        <div class="meta">
-‎            <div class="line-divider"></div>
-‎            <span>LIV</span>
-‎            <div class="line-divider"></div>
-‎        </div>
-‎        <h2 class="poem-title">Silence</h2>
-‎        <div class="content">Silence weeps quietly in the chest  
-‎Tears fall like unspoken rain  
-‎Memories haunt empty rooms  
-‎The heart trembles with unvoiced grief  
-‎Shadows listen to whispers of sorrow  
-‎Every breath carries the weight of longing  
-‎The soul searches for solace in darkness  
-‎Dreams glimmer then fade quietly  
-‎Loneliness wraps itself around fragile hope  
-‎Every heartbeat is a soft mournful song  
-‎Pain nestles in unseen corners  
-‎Even silence speaks the language of despair  
-‎Tears trace paths of invisible yearning  
-‎The mind wanders through forgotten corridors  
-‎Night swallows the last glimmer of warmth  
-‎And the heart beats stubbornly alone in grief</div>
-‎    </article>
-‎
-‎    <article style="animation-delay: 0.4s;">
-‎        <div class="meta">
-‎            <div class="line-divider"></div>
-‎            <span>LIX</span>
-‎            <div class="line-divider"></div>
-‎        </div>
-‎        <h2 class="poem-title">Shattered Dreams</h2>
-‎        <div class="content">Dreams lie broken on the cold floor of reality  
-‎I reach for them but they crumble in trembling hands  
-‎The heart beats against invisible walls of longing  
-‎Tears water the barren soil of lost hope  
-‎Memories cling like shadows refusing to leave  
-‎Loneliness whispers softly in darkened halls  
-‎Every heartbeat carries fragments of despair  
-‎The night swallows the faintest traces of light  
-‎Hopes flicker and vanish quietly  
-‎The soul trembles beneath heavy silence  
-‎Every sigh counts the weight of absence  
-‎Pain rests quietly in hidden corners  
-‎The heart longs for warmth never returned  
-‎Dreams shiver and fade in the cold night  
-‎And every echo remembers what was lost</div>
-‎    </article>
-‎</div>
+‎‎  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lonely Path | Author Hassan Jatoi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400&family=Lora:ital@0;1&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fdfcf8;
+            --text-color: #1a1a1a;
+            --meta-color: #8c8c8c;
+            --border-color: #e8e6e0;
+            --heading-font: 'Playfair Display', serif;
+            --body-font: 'Crimson Pro', serif;
+            --panel-bg: rgba(255, 255, 255, 0.85);
+        }
+
+        body {
+            font-family: var(--body-font);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0 0 50px 0;
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: background-color 0.4s, color 0.4s;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Settings Panel */
+        #settings-bar {
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 12px;
+            margin: 20px auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            max-width: 90%;
+            width: 600px;
+        }
+
+        .settings-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+
+        .settings-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--meta-color);
+            width: 100%;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .swatch {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .swatch:hover { transform: scale(1.3); }
+
+        .font-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .font-btn:hover { background: var(--border-color); }
+
+        /* Media Sections */
+        .front-matter {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .portrait-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 40px auto 20px;
+            border: 3px solid var(--border-color);
+            display: block;
+        }
+
+        .logo-img {
+            width: 100px;
+            height: auto;
+            margin: 10px auto;
+            display: block;
+        }
+
+        .cover-container {
+            width: 100%;
+            margin: 30px 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .cover-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Clock Display */
+        #live-clock {
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            color: var(--meta-color);
+            margin-bottom: 15px;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Document Structure */
+        header {
+            text-align: center;
+            margin: 0px 0 80px 0;
+            max-width: 650px;
+            width: 90%;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 40px;
+        }
+
+        header h1 {
+            font-family: var(--heading-font);
+            font-size: 3rem;
+            margin: 0 0 5px 0;
+            font-weight: 400;
+        }
+
+        header p.author-name {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5em;
+            color: var(--meta-color);
+            margin-top: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        article {
+            margin-bottom: 120px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 35px;
+            color: var(--meta-color);
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+        }
+
+        .line-divider {
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+            margin: 0 20px;
+        }
+
+        h2.poem-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            font-family: var(--heading-font);
+            font-style: italic;
+        }
+
+        .content {
+            font-size: 1.4rem;
+            white-space: pre-line;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 60px 20px;
+            width: 100%;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .more-poetry-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 12px 30px;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: all 0.3s;
+        }
+
+        .more-poetry-link:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: var(--meta-color);
+            font-style: italic;
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.2rem; }
+            .content { font-size: 1.2rem; }
+            #settings-bar { width: 95%; }
+            .portrait-img { width: 140px; height: 140px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="settings-bar">
+    <div class="settings-label">20 Visual Themes</div>
+    <div class="settings-group" id="theme-swatches"></div>
+    <div class="settings-label">Typography</div>
+    <div class="settings-group">
+        <button class="font-btn" onclick="setFont('Playfair Display', 'Crimson Pro')">Classic</button>
+        <button class="font-btn" onclick="setFont('EB Garamond', 'EB Garamond')">Antique</button>
+        <button class="font-btn" onclick="setFont('Lora', 'Lora')">Literary</button>
+        <button class="font-btn" onclick="setFont('Montserrat', 'Inter')">Modern</button>
+    </div>
+</div>
+
+<div class="front-matter">
+    <!-- Image 1: Portrait -->
+    <img src="https://i.ibb.co/XZpNgSJ4/IMG-20251026-WA0025-modified.png" alt="Hassan Jatoi" class="portrait-img">
     
-<article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">LX</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">Tears in Silence</h2>
-    <div class="content">
+    <!-- Image 2: Logo -->
+    <img src="https://i.ibb.co/SXTCQQnP/ei-1760449658890-removebg-preview.png" alt="Logo" class="logo-img">
+    
+    <!-- Image 3: Page Cover -->
+    <div class="cover-container">
+        <img src="https://i.ibb.co/SXCQFSJ7/1000203080.jpg" alt="The Lonely Path Cover" class="cover-img">
+    </div>
+</div>
+
+<header>
+    <div id="live-clock">Loading...</div>
+    <h1>The Lonely Path</h1>
+    <p class="author-name">Hassan Jatoi</p>
+</header>
+
+<div class="container">
+    <!-- Poem 1 -->
+    <article style="animation-delay: 0.2s;">
+        <div class="meta">
+            <div class="line-divider"></div>
+            <span>LIV</span>
+            <div class="line-divider"></div>
+        </div>
+        <h2 class="poem-title">Silence</h2>
+        <div class="content">
+Silence weeps quietly in the chest  
+Tears fall like unspoken rain  
+Memories haunt empty rooms  
+The heart trembles with unvoiced grief  
+Shadows listen to whispers of sorrow  
+Every breath carries the weight of longing  
+The soul searches for solace in darkness  
+Dreams glimmer then fade quietly  
+Loneliness wraps itself around fragile hope  
+Every heartbeat is a soft mournful song  
+Pain nestles in unseen corners  
+Even silence speaks the language of despair  
+Tears trace paths of invisible yearning  
+The mind wanders through forgotten corridors  
+Night swallows the last glimmer of warmth  
+And the heart beats stubbornly alone in grief
+        </div>
+    </article>
+
+    <!-- Poem 2 -->
+    <article style="animation-delay: 0.4s;">
+        <div class="meta">
+            <div class="line-divider"></div>
+            <span>LIX</span>
+            <div class="line-divider"></div>
+        </div>
+        <h2 class="poem-title">Shattered Dreams</h2>
+        <div class="content">
+Dreams lie broken on the cold floor of reality  
+I reach for them but they crumble in trembling hands  
+The heart beats against invisible walls of longing  
+Tears water the barren soil of lost hope  
+Memories cling like shadows refusing to leave  
+Loneliness whispers softly in darkened halls  
+Every heartbeat carries fragments of despair  
+The night swallows the faintest traces of light  
+Hopes flicker and vanish quietly  
+The soul trembles beneath heavy silence  
+Every sigh counts the weight of absence  
+Pain rests quietly in hidden corners  
+The heart longs for warmth never returned  
+Dreams shiver and fade in the cold night  
+And every echo remembers what was lost
+        </div>
+    </article>
+
+    <!-- Poem 3 -->
+    <article style="animation-delay: 0.6s;">
+        <div class="meta">
+            <div class="line-divider"></div>
+            <span>LX</span>
+            <div class="line-divider"></div>
+        </div>
+        <h2 class="poem-title">Tears in Silence</h2>
+        <div class="content">
 Silence weeps quietly in the chest  
 Tears fall like unspoken rain  
 Memories haunt empty rooms  
@@ -361,81 +371,17 @@ Tears trace paths of invisible yearning
 The mind wanders through forgotten corridors  
 Night swallows the last glimmer of warmth  
 And the heart beats stubbornly, alone in grief
+        </div>
+    </article>
+</div>
+    
+<!-- Poem 4 -->
+<article style="animation-delay: 0.8s;">
+    <div class="meta">
+        <div class="line-divider"></div>
+        <span>4</span>
+        <div class="line-divider"></div>
     </div>
-</article>
-
-       <article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">LIX</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">Shattered Dreams</h2>
-    <div class="content">
-Dreams lie broken on the cold floor of reality  
-I reach for them, but they crumble in trembling hands  
-The heart beats against invisible walls of longing  
-Tears water the barren soil of lost hope  
-Memories cling like shadows refusing to leave  
-Loneliness whispers softly in darkened halls  
-Every heartbeat carries fragments of despair  
-The night swallows the faintest traces of light  
-Hopes flicker and vanish quietly  
-The soul trembles beneath heavy silence  
-Every sigh counts the weight of absence  
-Pain rests quietly in hidden corners  
-The heart longs for warmth never returned  
-Dreams shiver and fade in the cold night  
-And every echo remembers what was lost
-    </div>
-</article>
-
-       <article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">LVIII</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">Heart’s Solitude</h2>
-    <div class="content">
-The heart beats in silent chambers of longing  
-Each pulse echoes with unspoken sorrow  
-Memories cling like fragile, thorned vines  
-Tears carve paths through hidden valleys  
-Night drapes its heavy cloak over restless thoughts  
-Dreams shiver and fade like mist  
-Loneliness whispers softly in the ears  
-Hope trembles, fragile and pale  
-The soul searches for warmth in shadowed corners  
-Every breath tastes of quiet despair  
-Pain lingers in invisible corners of memory  
-Tears fall in secret rivers of grief  
-The heart remembers the laughter now gone  
-Even silence seems unbearable and loud  
-Every sigh counts the missing pieces  
-And the night holds the quiet witness of despair
-    </div>
-</article>
-
-       <article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">LV</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">Tears of the Night</h2>
-    <div class="content">
-Night weeps quietly in my chest  
-Tears fall like silent rain  
-Memories echo through empty rooms  
-The heart trembles with unvoiced pain  
-Shadows listen to the unspoken sorrow  
-Every breath carries grief  
-The soul searches for comfort in darkness  
-Dreams shimmer, then fade quietly  
-Loneliness whispers softly in the ear  
-Every heartbeat is a soft lament  
-Hope flickers, hesitant and weak  
-Even silence speaks of longing  
-Tears mark paths unseen  
-The mind drifts through invisible corridors  
-Pain rests quietly in every corner  
-Night swallows the faintest light  
-The heart beats, stubborn and alone  
-And the soul cries softly in secret
-    </div>
-</article>
-
-  <article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">LVII</span><div class="line-divider"></div></div>
     <h2 class="poem-title">Fading Echoes</h2>
     <div class="content">
 Echoes of love linger in hollow halls  
@@ -457,8 +403,13 @@ And every sigh carries a lifetime of sorrow
     </div>
 </article>
 
-       <article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">LVI</span><div class="line-divider"></div></div>
+<!-- Poem 5 -->
+<article style="animation-delay: 1s;">
+    <div class="meta">
+        <div class="line-divider"></div>
+        <span>5</span>
+        <div class="line-divider"></div>
+    </div>
     <h2 class="poem-title">Soul’s Lament</h2>
     <div class="content">
 The soul cries silently under the weight of memories  
@@ -480,8 +431,13 @@ And the soul whispers its endless lament
     </div>
 </article>
 
-       <article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">LIV</span><div class="line-divider"></div></div>
+<!-- Poem 6 -->
+<article style="animation-delay: 1.2s;">
+    <div class="meta">
+        <div class="line-divider"></div>
+        <span>6</span>
+        <div class="line-divider"></div>
+    </div>
     <h2 class="poem-title">Shattered Hopes</h2>
     <div class="content">
 Hopes once bright lie broken on the floor  
@@ -506,34 +462,13 @@ And the heart remembers what it has lost
     </div>
 </article>
 
-       <article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">LIV</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">Shattered Hopes</h2>
-    <div class="content">
-Hopes once bright lie broken on the floor  
-I reach for them, but they crumble in hands  
-Each dream slips quietly into night  
-The heart beats against invisible walls  
-Tears water the soil of patience  
-Memories linger like fading shadows  
-Every step echoes with quiet despair  
-Even joy seems distant and fragile  
-The soul searches for warmth in darkness  
-Longing trembles in each breath  
-Night swallows every fragment of light  
-The mind drifts through silent corridors  
-Shadows of love whisper faintly  
-Hope flickers, hesitant and frail  
-Tears mark the passage of unspoken pain  
-Loneliness grows as a gentle companion  
-Every heartbeat counts the lost pieces  
-The world seems colder without dreams  
-And the heart remembers what it has lost
+<!-- Poem 7 -->
+<article style="animation-delay: 1.4s;">
+    <div class="meta">
+        <div class="line-divider"></div>
+        <span>7</span>
+        <div class="line-divider"></div>
     </div>
-</article>
-
-       <article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">LIII</span><div class="line-divider"></div></div>
     <h2 class="poem-title">Broken Echoes</h2>
     <div class="content">
 Echoes shatter against empty walls  
@@ -557,9 +492,14 @@ Even silence is heavy with sorrow
 And the heart aches quietly in the dark
     </div>
 </article>
-
-       <article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">LII</span><div class="line-divider"></div></div>
+   
+<!-- Poem 8 -->
+<article style="animation-delay: 1.6s;">
+    <div class="meta">
+        <div class="line-divider"></div>
+        <span>8</span>
+        <div class="line-divider"></div>
+    </div>
     <h2 class="poem-title">Fading Memories</h2>
     <div class="content">
 Memories fade like mist at dawn  
@@ -583,8 +523,13 @@ And the heart remembers only what it has lost
     </div>
 </article>
 
-       <article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">LI</span><div class="line-divider"></div></div>
+<!-- Poem 9 -->
+<article style="animation-delay: 1.8s;">
+    <div class="meta">
+        <div class="line-divider"></div>
+        <span>9</span>
+        <div class="line-divider"></div>
+    </div>
     <h2 class="poem-title">Soul’s Solitude</h2>
     <div class="content">
 The soul wanders through empty corridors  
@@ -610,8 +555,13 @@ And the night holds the quiet witness of grief
     </div>
 </article>
 
-       <article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">L</span><div class="line-divider"></div></div>
+<!-- Poem 10 -->
+<article style="animation-delay: 2s;">
+    <div class="meta">
+        <div class="line-divider"></div>
+        <span>10</span>
+        <div class="line-divider"></div>
+    </div>
     <h2 class="poem-title">Empty Heart</h2>
     <div class="content">
 The heart sits in an empty room  
@@ -633,8 +583,324 @@ Yet stubbornly continues to beat
 Carrying both pain and the faintest light  
 Even emptiness cannot silence its rhythm
     </div>
+</article>   
+    
+<!-- Poem 11 -->
+<article style="animation-delay: 2.2s;">
+    <div class="meta">
+        <div class="line-divider"></div>
+        <span>11</span>
+        <div class="line-divider"></div>
+    </div>
+    <h2 class="poem-title">Dimmed Hope</h2>
+    <div class="content">
+Hope flickered once, bright as morning sun  
+Now it dims beneath clouds of regret  
+Every dream feels farther away  
+The heart struggles against invisible chains  
+Even joy feels fragile and fleeting  
+Memories pull at the edges of faith  
+The soul longs for a single light  
+But finds only shadows that stretch endlessly  
+Tears water the soil of patience  
+Every heartbeat searches for what is lost  
+The night whispers doubts softly  
+The mind trembles with unanswered questions  
+Even laughter feels hollow  
+Each step carries the weight of longing  
+And the world seems quieter without hope  
+Yet still the heart beats, stubbornly alive
+    </div>
 </article>
 
+<!-- Poem 12 -->
+<article style="animation-delay: 2.4s;">
+    <div class="meta">
+        <div class="line-divider"></div>
+        <span>12</span>
+        <div class="line-divider"></div>
+    </div>
+    <h2 class="poem-title">Hollow Cries</h2>
+    <div class="content">
+Cries echo where no one listens  
+The chest tightens with unvoiced anguish  
+Each tear falls like a silent plea  
+The heart beats in rhythm with despair  
+Night swallows every fragment of voice  
+Even the stars seem indifferent  
+Pain hides behind trembling lips  
+Memories scream silently in the mind  
+Shadows of sorrow stretch endlessly  
+Every whisper is a ghost  
+The soul trembles in quiet desperation  
+Hope retreats from the sound of emptiness  
+The air itself seems heavy with grief  
+Every moment hums a mournful tune  
+Tears carve paths unseen  
+Loneliness answers with gentle cruelty  
+And the heart remembers only what it has lost
+    </div>
+</article>
+
+<!-- Poem 13 -->
+<article style="animation-delay: 2.6s;">
+    <div class="meta">
+        <div class="line-divider"></div>
+        <span>13</span>
+        <div class="line-divider"></div>
+    </div>
+    <h2 class="poem-title">Inner Silence</h2>
+    <div class="content">
+Silence grows heavy in the empty chest  
+Words fail where the heart trembles  
+Even thoughts dissolve into nothing  
+The world hums, but I hear only echoes  
+Moments stretch in the vacuum of quiet  
+Every sigh carries unspoken sorrow  
+Tears fall without a witness  
+Shadows listen more than anyone  
+The soul trembles under the weight of stillness  
+Memories whisper without sound  
+Even hope seems muted  
+The mind wanders through invisible corridors  
+The heart calls, but no one answers  
+Night folds itself around the restless spirit  
+Every heartbeat a soft lament  
+Loneliness becomes a constant companion  
+And silence grows louder than words
+    </div>
+</article>
+
+<!-- Poem 14 -->
+<article style="animation-delay: 2.8s;">
+    <div class="meta">
+        <div class="line-divider"></div>
+        <span>14</span>
+        <div class="line-divider"></div>
+    </div>
+    <h2 class="poem-title">Spiritual Pain</h2>
+    <div class="content">
+The soul aches in ways words cannot touch  
+A silent scream echoes through veins  
+Every thought turns inward and trembles  
+Faith struggles against the weight of despair  
+Even hope bends under relentless nights  
+Memories carve lines the heart cannot erase  
+Pain wears the mask of quiet dignity  
+Every tear is a prayer unanswered  
+The spirit longs for release and calm  
+But finds only the echo of itself  
+Shadows become teachers of endurance  
+The dark whispers lessons of sorrow  
+Even light feels distant and faint  
+Every moment stretches with invisible chains  
+The heart grows wise in silent suffering  
+Yet stubbornly refuses to crumble  
+The soul whispers its own survival song  
+And carries on, wounded but alive
+    </div>
+</article>
+
+<!-- Poem 15 -->
+<article style="animation-delay: 3s;">
+    <div class="meta">
+        <div class="line-divider"></div>
+        <span>15</span>
+        <div class="line-divider"></div>
+    </div>
+    <h2 class="poem-title">Lost Dreams</h2>
+    <div class="content">
+Dreams once bright lie scattered on cold floors  
+I reach for them, but they crumble in my hands  
+Every hope turned fragile with time  
+The night swallows what daylight left behind  
+Memories haunt the empty corridors of mind  
+Each thought a ghost of what could have been  
+Tears water the roots of abandoned ambitions  
+The heart mourns quietly, unseen  
+Even laughter feels like a distant echo  
+Shadows of dreams linger in the corners  
+I walk through them with heavy steps  
+Every breath carries their weight  
+The soul longs for the warmth of fulfillment  
+But finds only the chill of absence  
+The sky seems dimmer without their light  
+Yet still I gather the fragments  
+Piecing together whispers of tomorrow  
+Even lost dreams leave traces of love
+    </div>
+</article>
+
+<!-- Poem 16 -->
+<article style="animation-delay: 3.2s;">
+    <div class="meta">
+        <div class="line-divider"></div>
+        <span>16</span>
+        <div class="line-divider"></div>
+    </div>
+    <h2 class="poem-title">Search for Peace</h2>
+    <div class="content">
+Peace hides in corners of a restless mind  
+I chase it through sleepless nights  
+Every step meets the weight of grief  
+Hope flickers and falters in the dark  
+The heart longs for stillness it cannot find  
+Even silence trembles with unanswered questions  
+Memories crowd the spaces meant for calm  
+Tears water the soil of patience  
+Every thought is a wandering storm  
+Even dreams carry fragments of unrest  
+I listen for the whisper of relief  
+But only shadows answer in kind  
+Peace feels like a distant shore  
+Watched by waves of past regrets  
+Still, I walk, following its faint light  
+Though it hides behind veils of doubt  
+Each breath carries the quest onward  
+Even suffering cannot halt the search
+    </div>
+</article>    
+ add poetry here 
+<footer>
+    <a href="https://hassanaliuk11-oss.github.io/Hassanalipoetry-/" target="_blank" class="more-poetry-link">Explore More Poetry</a>
+    <span class="copyright">&copy; 2025 | The Lonely Path by Hassan Jatoi</span>
+</footer>
+
+<script>
+    // Robust Live Clock
+    function updateClock() {
+        const now = new Date();
+        const options = { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: '2-digit', 
+            minute: '2-digit', 
+            second: '2-digit',
+            hour12: true 
+        };
+        document.getElementById('live-clock').textContent = now.toLocaleDateString('en-US', options);
+    }
+    
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    const themes = [
+        { bg: "#fdfcf8", text: "#1a1a1a", meta: "#8c8c8c", border: "#e8e6e0" },
+        { bg: "#ffffff", text: "#000000", meta: "#999999", border: "#eeeeee" },
+        { bg: "#121212", text: "#e0e0e0", meta: "#666666", border: "#333333" },
+        { bg: "#1a1b26", text: "#c0caf5", meta: "#565f89", border: "#24283b" },
+        { bg: "#f4f1ea", text: "#433e37", meta: "#9a938a", border: "#dcd6cc" },
+        { bg: "#2d3436", text: "#dfe6e9", meta: "#636e72", border: "#b2bec3" },
+        { bg: "#fffaf0", text: "#2f4f4f", meta: "#708090", border: "#dcdcdc" },
+        { bg: "#0f172a", text: "#f8fafc", meta: "#475569", border: "#1e293b" },
+        { bg: "#fdf6e3", text: "#657b83", meta: "#93a1a1", border: "#eee8d5" },
+        { bg: "#002b36", text: "#839496", meta: "#586e75", border: "#073642" },
+        { bg: "#fafafa", text: "#2d3436", meta: "#b2bec3", border: "#dfe6e9" },
+        { bg: "#282c34", text: "#abb2bf", meta: "#5c6370", border: "#3e4451" },
+        { bg: "#f0f4f8", text: "#102a43", meta: "#627d98", border: "#bcccdc" },
+        { bg: "#fff5f5", text: "#63171b", meta: "#c53030", border: "#feb2b2" },
+        { bg: "#f0fff4", text: "#22543d", meta: "#38a169", border: "#9ae6b4" },
+        { bg: "#fefcbf", text: "#744210", meta: "#d69e2e", border: "#faf089" },
+        { bg: "#1a202c", text: "#edf2f7", meta: "#4a5568", border: "#2d3748" },
+        { bg: "#322659", text: "#faf5ff", meta: "#9f7aea", border: "#553c9a" },
+        { bg: "#ebf8ff", text: "#2c5282", meta: "#4299e1", border: "#bee3f8" },
+        { bg: "#212121", text: "#ffeb3b", meta: "#757575", border: "#424242" }
+    ];
+
+    const swatchContainer = document.getElementById('theme-swatches');
+    themes.forEach(theme => {
+        const span = document.createElement('div');
+        span.className = 'swatch';
+        span.style.backgroundColor = theme.bg;
+        span.onclick = () => {
+            document.documentElement.style.setProperty('--bg-color', theme.bg);
+            document.documentElement.style.setProperty('--text-color', theme.text);
+            document.documentElement.style.setProperty('--meta-color', theme.meta);
+            document.documentElement.style.setProperty('--border-color', theme.border);
+            
+            // Adjust panel opacity for dark themes
+            const isDark = isColorDark(theme.bg);
+            document.documentElement.style.setProperty('--panel-bg', isDark ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.85)');
+        };
+        swatchContainer.appendChild(span);
+    });
+
+    function isColorDark(color) {
+        const hex = color.replace('#', '');
+        const r = parseInt(hex.substr(0, 2), 16);
+        const g = parseInt(hex.substr(2, 2), 16);
+        const b = parseInt(hex.substr(4, 2), 16);
+        return (r * 0.299 + g * 0.587 + b * 0.114) < 128;
+    }
+
+    function setFont(heading, body) {
+        document.documentElement.style.setProperty('--heading-font', `'${heading}', serif`);
+        document.documentElement.style.setProperty('--body-font', `'${body}', serif`);
+    }
+</script>
+
+</body>
+        </html>          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+       
+
+       
+
+       
+       <Walls echo the absence of warmth  
+Every beat feels like a hollow drum  
+Tears gather in silent corners  
+Memories drift like forgotten letters  
+Hope trembles and retreats  
+Even the sun feels distant  
+Shadows of love linger faintly  
+The chest aches with invisible weight  
+Dreams lie broken at its feet  
+Each sigh a soft confession  
+The soul whispers secrets to the night  
+Every breath tastes of solitude  
+Loneliness becomes a familiar voice  
+The heart remembers what it has lost  
+Yet stubbornly continues to beat  
+Carrying both pain and the faintest light  
+Even emptiness cannot silence its rhythm
+    </div>
+</article>
+
+cut 
        <article>
     <div class="meta"><div class="line-divider"></div><span class="roman">XLIX</span><div class="line-divider"></div></div>
     <h2 class="poem-title">Dimmed Hope</h2>
@@ -671,79 +937,6 @@ Even the stars seem indifferent
 Pain hides behind trembling lips  
 Memories scream silently in the mind  
 Shadows of sorrow stretch endlessly  
-Every whisper is a ghost  
-The soul trembles in quiet desperation  
-Hope retreats from the sound of emptiness  
-The air itself seems heavy with grief  
-Every moment hums a mournful tune  
-Tears carve paths unseen  
-Loneliness answers with gentle cruelty  
-And the heart remembers only what it has lost
-    </div>
-</article>
-
-       <article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">XLVII</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">Inner Silence</h2>
-    <div class="content">
-Silence grows heavy in the empty chest  
-Words fail where the heart trembles  
-Even thoughts dissolve into nothing  
-The world hums, but I hear only echoes  
-Moments stretch in the vacuum of quiet  
-Every sigh carries unspoken sorrow  
-Tears fall without a witness  
-Shadows listen more than anyone  
-The soul trembles under the weight of stillness  
-Memories whisper without sound  
-Even hope seems muted  
-The mind wanders through invisible corridors  
-The heart calls, but no one answers  
-Night folds itself around the restless spirit  
-Every heartbeat a soft lament  
-Loneliness becomes a constant companion  
-And silence grows louder than words
-    </div>
-</article>
-
-       <article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">XLV</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">Spiritual Pain</h2>
-    <div class="content">
-The soul aches in ways words cannot touch  
-A silent scream echoes through veins  
-Every thought turns inward and trembles  
-Faith struggles against the weight of despair  
-Even hope bends under relentless nights  
-Memories carve lines the heart cannot erase  
-Pain wears the mask of quiet dignity  
-Every tear is a prayer unanswered  
-The spirit longs for release and calm  
-But finds only the echo of itself  
-Shadows become teachers of endurance  
-The dark whispers lessons of sorrow  
-Even light feels distant and faint  
-Every moment stretches with invisible chains  
-The heart grows wise in silent suffering  
-Yet stubbornly refuses to crumble  
-The soul whispers its own survival song  
-And carries on, wounded but alive
-    </div>
-</article>
-     
-       <article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">XLVI</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">Lost Dreams</h2>
-    <div class="content">
-Dreams once bright lie scattered on cold floors  
-I reach for them, but they crumble in my hands  
-Every hope turned fragile with time  
-The night swallows what daylight left behind  
-Memories haunt the empty corridors of mind  
-Each thought a ghost of what could have been  
-Tears water the roots of abandoned ambitions  
-The heart mourns quietly, unseen  
-Even laughter feels like a distant echo  
 Shadows of dreams linger in the corners  
 I walk through them with heavy steps  
 Every breath carries their weight  
@@ -1375,107 +1568,6 @@ And silence answers with emptiness
     </div>
 </article>
 
-<article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">VI</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">Failure in Love</h2>
-    <div class="content">
-Dreams of us collapse quietly  
-Every promise fades like morning mist  
-The heart struggles with unspoken sorrow  
-Tears fall for moments that could not last  
-Hope seems fragile, slipping through fingers  
-And the soul drifts in endless longing
-    </div>
-</article>
-
-<article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">VII</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">Moments Without Support</h2>
-    <div class="content">
-Alone in the silence of fleeting hours  
-The heart searches for an anchor  
-Every shadow feels heavier than before  
-Tears fall quietly in empty rooms  
-Hope flickers faintly in the distance  
-And solitude clings like a second skin
-    </div>
-</article>
-
-<article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">VIII</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">The Silence of Night</h2>
-    <div class="content">
-Night stretches endlessly over weary eyes  
-Shadows whisper secrets of forgotten days  
-Tears fall quietly onto cold sheets  
-The heart remembers moments of warmth  
-Hope hides beneath the moon’s pale gaze  
-And darkness hums with the ache of solitude
-    </div>
-</article>
-
-<article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">IX</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">Incomplete Words</h2>
-    <div class="content">
-Things left unsaid linger in the air  
-Every silence echoes louder than words  
-The heart longs for conversations lost  
-Tears fall where understanding should dwell  
-Hope struggles to fill the gaps  
-And the soul listens to its own unanswered questions
-    </div>
-</article>
-
-<article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">X</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">The Breaking of Dreams</h2>
-    <div class="content">
-Dreams collapse quietly in the night  
-Every hope dissolves into fragile mist  
-The heart aches for possibilities lost  
-Tears fall for visions that never were  
-Hope trembles beneath the weight of absence  
-And the soul mourns what could never be
-    </div>
-</article>
-
-            <article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">CXCI</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">The Silent Cry of an Empty Heart</h2>
-    <div class="content">
-The heart whispers secrets into the void  
-Tears fall where laughter once lived  
-Every beat echoes loneliness  
-Memories haunt the hollow chambers  
-Hope trembles like a fragile flame  
-The soul searches for a forgotten warmth  
-Shadows stretch across abandoned dreams  
-And silence listens to the quiet ache  
-    </div>
-</article>
-
-<article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">CXCII</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">The Lost Moments of Love</h2>
-    <div class="content">
-Moments we cherished now lie scattered  
-Every smile fades into distant shadows  
-Tears remember the warmth of your touch  
-Hope clings to echoes of vanished joy  
-The heart beats in silent mourning  
-Every step recalls what once was  
-And the lost moments linger in empty rooms  
-    </div>
-</article>
-
-<article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">CXCIII</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">Echoes of Forgotten Promises</h2>
-    <div class="content">
-Promises whispered under the quiet sky  
-Now lie broken in the dust of memory  
-The heart aches at each fading echo  
 Tears fall for what cannot return  
 Hope trembles beneath the weight of absence  
 Every memory is a ghost that lingers  
@@ -3880,110 +3972,3 @@ And grief shadows every step
     </div>
 </article>
 
-<article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">LXXIX</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">Deserted Heart</h2>
-    <div class="content">
-The heart stands empty, abandoned and bare  
-Its beats echo in endless solitude  
-Love once bloomed, now buried in sand  
-I search for life in barren stretches  
-And despair stretches infinitely
-    </div>
-</article>
-
-<article>
-    <div class="meta"><div class="line-divider"></div><span class="roman">LXXX</span><div class="line-divider"></div></div>
-    <h2 class="poem-title">Whispers in the Wind</h2>
-    <div class="content">
-The wind carries voices I cannot reach  
-They whisper secrets of lost days  
-I strain to listen but only hear silence  
-Memories swirl like leaves in autumn  
-And grief drifts with every gust
-    </div>
-</article>
-</div>
-‎
-‎<footer>
-‎    <a href="https://hassanaliuk11-oss.github.io/Hassanalipoetry-/" target="_blank" class="more-poetry-link">Explore More Poetry</a>
-‎    <span class="copyright">&copy; 2025 | The Lonely Path by Hassan Jatoi</span>
-‎</footer>
-‎
-‎<script>
-‎    // Robust Live Clock
-‎    function updateClock() {
-‎        const now = new Date();
-‎        const options = { 
-‎            weekday: 'long', 
-‎            year: 'numeric', 
-‎            month: 'long', 
-‎            day: 'numeric',
-‎            hour: '2-digit', 
-‎            minute: '2-digit', 
-‎            second: '2-digit',
-‎            hour12: true 
-‎        };
-‎        document.getElementById('live-clock').textContent = now.toLocaleDateString('en-US', options);
-‎    }
-‎    
-‎    setInterval(updateClock, 1000);
-‎    updateClock();
-‎
-‎    const themes = [
-‎        { bg: "#fdfcf8", text: "#1a1a1a", meta: "#8c8c8c", border: "#e8e6e0" },
-‎        { bg: "#ffffff", text: "#000000", meta: "#999999", border: "#eeeeee" },
-‎        { bg: "#121212", text: "#e0e0e0", meta: "#666666", border: "#333333" },
-‎        { bg: "#1a1b26", text: "#c0caf5", meta: "#565f89", border: "#24283b" },
-‎        { bg: "#f4f1ea", text: "#433e37", meta: "#9a938a", border: "#dcd6cc" },
-‎        { bg: "#2d3436", text: "#dfe6e9", meta: "#636e72", border: "#b2bec3" },
-‎        { bg: "#fffaf0", text: "#2f4f4f", meta: "#708090", border: "#dcdcdc" },
-‎        { bg: "#0f172a", text: "#f8fafc", meta: "#475569", border: "#1e293b" },
-‎        { bg: "#fdf6e3", text: "#657b83", meta: "#93a1a1", border: "#eee8d5" },
-‎        { bg: "#002b36", text: "#839496", meta: "#586e75", border: "#073642" },
-‎        { bg: "#fafafa", text: "#2d3436", meta: "#b2bec3", border: "#dfe6e9" },
-‎        { bg: "#282c34", text: "#abb2bf", meta: "#5c6370", border: "#3e4451" },
-‎        { bg: "#f0f4f8", text: "#102a43", meta: "#627d98", border: "#bcccdc" },
-‎        { bg: "#fff5f5", text: "#63171b", meta: "#c53030", border: "#feb2b2" },
-‎        { bg: "#f0fff4", text: "#22543d", meta: "#38a169", border: "#9ae6b4" },
-‎        { bg: "#fefcbf", text: "#744210", meta: "#d69e2e", border: "#faf089" },
-‎        { bg: "#1a202c", text: "#edf2f7", meta: "#4a5568", border: "#2d3748" },
-‎        { bg: "#322659", text: "#faf5ff", meta: "#9f7aea", border: "#553c9a" },
-‎        { bg: "#ebf8ff", text: "#2c5282", meta: "#4299e1", border: "#bee3f8" },
-‎        { bg: "#212121", text: "#ffeb3b", meta: "#757575", border: "#424242" }
-‎    ];
-‎
-‎    const swatchContainer = document.getElementById('theme-swatches');
-‎    themes.forEach(theme => {
-‎        const span = document.createElement('div');
-‎        span.className = 'swatch';
-‎        span.style.backgroundColor = theme.bg;
-‎        span.onclick = () => {
-‎            document.documentElement.style.setProperty('--bg-color', theme.bg);
-‎            document.documentElement.style.setProperty('--text-color', theme.text);
-‎            document.documentElement.style.setProperty('--meta-color', theme.meta);
-‎            document.documentElement.style.setProperty('--border-color', theme.border);
-‎            
-‎            // Adjust panel opacity for dark themes
-‎            const isDark = isColorDark(theme.bg);
-‎            document.documentElement.style.setProperty('--panel-bg', isDark ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.85)');
-‎        };
-‎        swatchContainer.appendChild(span);
-‎    });
-‎
-‎    function isColorDark(color) {
-‎        const hex = color.replace('#', '');
-‎        const r = parseInt(hex.substr(0, 2), 16);
-‎        const g = parseInt(hex.substr(2, 2), 16);
-‎        const b = parseInt(hex.substr(4, 2), 16);
-‎        return (r * 0.299 + g * 0.587 + b * 0.114) < 128;
-‎    }
-‎
-‎    function setFont(heading, body) {
-‎        document.documentElement.style.setProperty('--heading-font', `'${heading}', serif`);
-‎        document.documentElement.style.setProperty('--body-font', `'${body}', serif`);
-‎    }
-‎</script>
-‎
-‎</body>
-‎</html>
