@@ -760,127 +760,8 @@ Each breath carries the quest onward
 Even suffering cannot halt the search
     </div>
 </article>    
- add poetry here 
-<footer>
-    <a href="https://hassanaliuk11-oss.github.io/Hassanalipoetry-/" target="_blank" class="more-poetry-link">Explore More Poetry</a>
-    <span class="copyright">&copy; 2025 | The Lonely Path by Hassan Jatoi</span>
-</footer>
 
-<script>
-    // Robust Live Clock
-    function updateClock() {
-        const now = new Date();
-        const options = { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric',
-            hour: '2-digit', 
-            minute: '2-digit', 
-            second: '2-digit',
-            hour12: true 
-        };
-        document.getElementById('live-clock').textContent = now.toLocaleDateString('en-US', options);
-    }
-    
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    const themes = [
-        { bg: "#fdfcf8", text: "#1a1a1a", meta: "#8c8c8c", border: "#e8e6e0" },
-        { bg: "#ffffff", text: "#000000", meta: "#999999", border: "#eeeeee" },
-        { bg: "#121212", text: "#e0e0e0", meta: "#666666", border: "#333333" },
-        { bg: "#1a1b26", text: "#c0caf5", meta: "#565f89", border: "#24283b" },
-        { bg: "#f4f1ea", text: "#433e37", meta: "#9a938a", border: "#dcd6cc" },
-        { bg: "#2d3436", text: "#dfe6e9", meta: "#636e72", border: "#b2bec3" },
-        { bg: "#fffaf0", text: "#2f4f4f", meta: "#708090", border: "#dcdcdc" },
-        { bg: "#0f172a", text: "#f8fafc", meta: "#475569", border: "#1e293b" },
-        { bg: "#fdf6e3", text: "#657b83", meta: "#93a1a1", border: "#eee8d5" },
-        { bg: "#002b36", text: "#839496", meta: "#586e75", border: "#073642" },
-        { bg: "#fafafa", text: "#2d3436", meta: "#b2bec3", border: "#dfe6e9" },
-        { bg: "#282c34", text: "#abb2bf", meta: "#5c6370", border: "#3e4451" },
-        { bg: "#f0f4f8", text: "#102a43", meta: "#627d98", border: "#bcccdc" },
-        { bg: "#fff5f5", text: "#63171b", meta: "#c53030", border: "#feb2b2" },
-        { bg: "#f0fff4", text: "#22543d", meta: "#38a169", border: "#9ae6b4" },
-        { bg: "#fefcbf", text: "#744210", meta: "#d69e2e", border: "#faf089" },
-        { bg: "#1a202c", text: "#edf2f7", meta: "#4a5568", border: "#2d3748" },
-        { bg: "#322659", text: "#faf5ff", meta: "#9f7aea", border: "#553c9a" },
-        { bg: "#ebf8ff", text: "#2c5282", meta: "#4299e1", border: "#bee3f8" },
-        { bg: "#212121", text: "#ffeb3b", meta: "#757575", border: "#424242" }
-    ];
-
-    const swatchContainer = document.getElementById('theme-swatches');
-    themes.forEach(theme => {
-        const span = document.createElement('div');
-        span.className = 'swatch';
-        span.style.backgroundColor = theme.bg;
-        span.onclick = () => {
-            document.documentElement.style.setProperty('--bg-color', theme.bg);
-            document.documentElement.style.setProperty('--text-color', theme.text);
-            document.documentElement.style.setProperty('--meta-color', theme.meta);
-            document.documentElement.style.setProperty('--border-color', theme.border);
-            
-            // Adjust panel opacity for dark themes
-            const isDark = isColorDark(theme.bg);
-            document.documentElement.style.setProperty('--panel-bg', isDark ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.85)');
-        };
-        swatchContainer.appendChild(span);
-    });
-
-    function isColorDark(color) {
-        const hex = color.replace('#', '');
-        const r = parseInt(hex.substr(0, 2), 16);
-        const g = parseInt(hex.substr(2, 2), 16);
-        const b = parseInt(hex.substr(4, 2), 16);
-        return (r * 0.299 + g * 0.587 + b * 0.114) < 128;
-    }
-
-    function setFont(heading, body) {
-        document.documentElement.style.setProperty('--heading-font', `'${heading}', serif`);
-        document.documentElement.style.setProperty('--body-font', `'${body}', serif`);
-    }
-</script>
-
-</body>
-        </html>          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-       
-
-       
-
-       
-       <Walls echo the absence of warmth  
+ <Walls echo the absence of warmth  
 Every beat feels like a hollow drum  
 Tears gather in silent corners  
 Memories drift like forgotten letters  
@@ -3971,4 +3852,86 @@ I walk through hours in silence
 And grief shadows every step
     </div>
 </article>
+    add poetry here 
+<footer>
+    <a href="https://hassanaliuk11-oss.github.io/Hassanalipoetry-/" target="_blank" class="more-poetry-link">Explore More Poetry</a>
+    <span class="copyright">&copy; 2025 | The Lonely Path by Hassan Jatoi</span>
+</footer>
 
+<script>
+    // Robust Live Clock
+    function updateClock() {
+        const now = new Date();
+        const options = { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: '2-digit', 
+            minute: '2-digit', 
+            second: '2-digit',
+            hour12: true 
+        };
+        document.getElementById('live-clock').textContent = now.toLocaleDateString('en-US', options);
+    }
+    
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    const themes = [
+        { bg: "#fdfcf8", text: "#1a1a1a", meta: "#8c8c8c", border: "#e8e6e0" },
+        { bg: "#ffffff", text: "#000000", meta: "#999999", border: "#eeeeee" },
+        { bg: "#121212", text: "#e0e0e0", meta: "#666666", border: "#333333" },
+        { bg: "#1a1b26", text: "#c0caf5", meta: "#565f89", border: "#24283b" },
+        { bg: "#f4f1ea", text: "#433e37", meta: "#9a938a", border: "#dcd6cc" },
+        { bg: "#2d3436", text: "#dfe6e9", meta: "#636e72", border: "#b2bec3" },
+        { bg: "#fffaf0", text: "#2f4f4f", meta: "#708090", border: "#dcdcdc" },
+        { bg: "#0f172a", text: "#f8fafc", meta: "#475569", border: "#1e293b" },
+        { bg: "#fdf6e3", text: "#657b83", meta: "#93a1a1", border: "#eee8d5" },
+        { bg: "#002b36", text: "#839496", meta: "#586e75", border: "#073642" },
+        { bg: "#fafafa", text: "#2d3436", meta: "#b2bec3", border: "#dfe6e9" },
+        { bg: "#282c34", text: "#abb2bf", meta: "#5c6370", border: "#3e4451" },
+        { bg: "#f0f4f8", text: "#102a43", meta: "#627d98", border: "#bcccdc" },
+        { bg: "#fff5f5", text: "#63171b", meta: "#c53030", border: "#feb2b2" },
+        { bg: "#f0fff4", text: "#22543d", meta: "#38a169", border: "#9ae6b4" },
+        { bg: "#fefcbf", text: "#744210", meta: "#d69e2e", border: "#faf089" },
+        { bg: "#1a202c", text: "#edf2f7", meta: "#4a5568", border: "#2d3748" },
+        { bg: "#322659", text: "#faf5ff", meta: "#9f7aea", border: "#553c9a" },
+        { bg: "#ebf8ff", text: "#2c5282", meta: "#4299e1", border: "#bee3f8" },
+        { bg: "#212121", text: "#ffeb3b", meta: "#757575", border: "#424242" }
+    ];
+
+    const swatchContainer = document.getElementById('theme-swatches');
+    themes.forEach(theme => {
+        const span = document.createElement('div');
+        span.className = 'swatch';
+        span.style.backgroundColor = theme.bg;
+        span.onclick = () => {
+            document.documentElement.style.setProperty('--bg-color', theme.bg);
+            document.documentElement.style.setProperty('--text-color', theme.text);
+            document.documentElement.style.setProperty('--meta-color', theme.meta);
+            document.documentElement.style.setProperty('--border-color', theme.border);
+            
+            // Adjust panel opacity for dark themes
+            const isDark = isColorDark(theme.bg);
+            document.documentElement.style.setProperty('--panel-bg', isDark ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.85)');
+        };
+        swatchContainer.appendChild(span);
+    });
+
+    function isColorDark(color) {
+        const hex = color.replace('#', '');
+        const r = parseInt(hex.substr(0, 2), 16);
+        const g = parseInt(hex.substr(2, 2), 16);
+        const b = parseInt(hex.substr(4, 2), 16);
+        return (r * 0.299 + g * 0.587 + b * 0.114) < 128;
+    }
+
+    function setFont(heading, body) {
+        document.documentElement.style.setProperty('--heading-font', `'${heading}', serif`);
+        document.documentElement.style.setProperty('--body-font', `'${body}', serif`);
+    }
+</script>
+
+</body>
+        </html>          
